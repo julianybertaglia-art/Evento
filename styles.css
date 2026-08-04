@@ -154,6 +154,7 @@ h1,h2,h3,summary,.logo b,.top-cta{color:var(--text)}
 .duo{padding:18px;border:1px solid #70531f;background:#1b1710;margin:16px 0}
 .duo small{display:block;color:var(--gold2);font-weight:800}
 .duo strong{font-size:21px;color:#fff}
+.duo-note{margin:10px 0 0;color:#d6d0c6;font-size:13px;line-height:1.55}
 .full{width:100%}
 .offer-trust{
   display:grid;gap:8px;margin-top:18px;text-align:center;
