@@ -1,8 +1,17 @@
-const media = window.MEDIA_V4 || {};
+const media = {
+  hero: 'assets/hero.webp?v=6',
+  operation: 'assets/operation-fixed.webp?v=6',
+  stage: 'assets/stage-fixed.webp?v=6',
+  audience: 'assets/audience-fixed.webp?v=6'
+};
 
 document.querySelectorAll('img[data-media]').forEach((img) => {
   const key = img.dataset.media;
-  if (media[key]) img.src = media[key];
+  if (!media[key]) return;
+  img.src = media[key];
+  img.decoding = 'async';
+  if (key === 'hero') img.loading = 'eager';
+  else img.loading = 'lazy';
 });
 
 const observer = new IntersectionObserver((entries) => {
