@@ -1,8 +1,9 @@
+const embedded = window.MEDIA_V4 || {};
 const media = {
-  hero: 'assets/hero.webp?v=6',
-  operation: 'assets/operation-fixed.webp?v=6',
-  stage: 'assets/stage-fixed.webp?v=6',
-  audience: 'assets/audience-fixed.webp?v=6'
+  hero: embedded.hero || 'assets/hero.webp?v=7',
+  operation: embedded.operation || 'assets/operation-fixed.webp?v=7',
+  stage: embedded.stage || 'assets/stage-fixed.webp?v=7',
+  audience: embedded.audience || 'assets/audience-fixed.webp?v=7'
 };
 
 document.querySelectorAll('img[data-media]').forEach((img) => {
@@ -10,8 +11,12 @@ document.querySelectorAll('img[data-media]').forEach((img) => {
   if (!media[key]) return;
   img.src = media[key];
   img.decoding = 'async';
-  if (key === 'hero') img.loading = 'eager';
-  else img.loading = 'lazy';
+  if (key === 'hero') {
+    img.loading = 'eager';
+    img.fetchPriority = 'high';
+  } else {
+    img.loading = 'lazy';
+  }
 });
 
 const observer = new IntersectionObserver((entries) => {
