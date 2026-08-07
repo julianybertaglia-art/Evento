@@ -1,10 +1,8 @@
-const assets = window.INLINE_ASSETS || {};
-document.querySelectorAll('img').forEach((img) => {
-  const src = img.getAttribute('src') || '';
-  if (src.includes('hero.webp') && assets.hero) img.src = assets.hero;
-  if (src.includes('operation.webp') && assets.operation) img.src = assets.operation;
-  if (src.includes('stage.webp') && assets.stage) img.src = assets.stage;
-  if (src.includes('proofs-grid.webp') && assets.proofs) img.src = assets.proofs;
+const media = window.MEDIA_V4 || {};
+
+document.querySelectorAll('img[data-media]').forEach((img) => {
+  const key = img.dataset.media;
+  if (media[key]) img.src = media[key];
 });
 
 const observer = new IntersectionObserver((entries) => {
