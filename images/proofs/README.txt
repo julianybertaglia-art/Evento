@@ -1,0 +1,1 @@
+Provas sociais reais da landing. Os arquivos JPG desta pasta devem ser servidos diretamente pelo Vercel.
