@@ -1,0 +1,53 @@
+name: Ajustar landing
+
+on:
+  push:
+    paths:
+      - '.github/workflows/patch-landing.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Aplicar ajustes na landing
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+
+          hero_button = '<div class="actions"><a class="btn ghost" href="https://wa.me/5511923990244?text=Olá!%20Quero%20saber%20mais%20sobre%20a%20Imersão%20Ecommerce." target="_blank" rel="noopener">Falar com a equipe</a></div>'
+          if hero_button not in s:
+              raise SystemExit('Botão da hero não encontrado')
+          s = s.replace(hero_button, '', 1)
+
+          mobile_hide = '.media figure:last-child{display:none}'
+          if mobile_hide not in s:
+              raise SystemExit('Regra mobile da segunda foto não encontrada')
+          s = s.replace(mobile_hide, '.media{grid-template-columns:1.15fr .85fr}.media figure:last-child{display:block}.media figure:last-child img{min-height:0;aspect-ratio:3/4}', 1)
+
+          final_team = '<a class="btn ghost" href="https://wa.me/5511923990244" target="_blank" rel="noopener">Falar com a equipe</a>'
+          s = s.replace(final_team, '', 1)
+
+          payment_end = '</div></div></div></div></section>\n\n<section class="section" id="faq">'
+          if payment_end not in s:
+              raise SystemExit('Final do bloco de pagamento não encontrado')
+          wa_block = '<div class="whatsapp-choice"><a class="btn whatsapp-buy" href="https://wa.me/5511923990244?text=Olá!%20Quero%20comprar%20meu%20ingresso%20para%20a%20Imersão%20Ecommerce." target="_blank" rel="noopener">Comprar pelo WhatsApp</a><a class="whatsapp-help" href="https://wa.me/5511923990244?text=Olá!%20Ainda%20tenho%20algumas%20dúvidas%20sobre%20a%20Imersão%20Ecommerce." target="_blank" rel="noopener">Ainda tenho dúvidas, quero falar com a equipe</a></div>'
+          s = s.replace(payment_end, '</div></div></div>' + wa_block + '</div></section>\n\n<section class="section" id="faq">', 1)
+
+          style_patch = '.whatsapp-choice{max-width:950px;margin:18px auto 0;text-align:center}.whatsapp-buy{width:100%;background:#25D366;color:#fff;box-shadow:0 14px 32px rgba(37,211,102,.16)}.whatsapp-help{display:inline-block;margin-top:11px;color:#b9b3aa;font-size:13px;text-decoration:underline;text-underline-offset:3px}.whatsapp-help:hover{color:#fff}.sticky,.wa{display:none!important}'
+          s = s.replace('</style>', style_patch + '\n</style>', 1)
+
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Salvar ajustes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Ajusta WhatsApp e fotos no mobile"
+          git push
