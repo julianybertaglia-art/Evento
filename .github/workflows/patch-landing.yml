@@ -1,4 +1,4 @@
-name: Ajustar landing
+name: Refinar landing comercial
 
 on:
   push:
@@ -13,34 +13,65 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Aplicar ajustes na landing
+      - name: Aplicar ajustes visuais e de copy
         run: |
           python - <<'PY'
           from pathlib import Path
+
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
 
-          hero_button = '<div class="actions"><a class="btn ghost" href="https://wa.me/5511923990244?text=Olá!%20Quero%20saber%20mais%20sobre%20a%20Imersão%20Ecommerce." target="_blank" rel="noopener">Falar com a equipe</a></div>'
-          if hero_button not in s:
-              raise SystemExit('Botão da hero não encontrado')
-          s = s.replace(hero_button, '', 1)
+          def repl(old, new, label):
+              global s
+              if old not in s:
+                  raise SystemExit(f'Não encontrei: {label}')
+              s = s.replace(old, new, 1)
 
-          mobile_hide = '.media figure:last-child{display:none}'
-          if mobile_hide not in s:
-              raise SystemExit('Regra mobile da segunda foto não encontrada')
-          s = s.replace(mobile_hide, '.media{grid-template-columns:1.15fr .85fr}.media figure:last-child{display:block}.media figure:last-child img{min-height:0;aspect-ratio:3/4}', 1)
+          repl(
+              '.identify{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.identify article{padding:22px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:linear-gradient(145deg,#101010,#0b0b0b)}.identify b{display:block;margin-bottom:7px}.identify span{font-size:13px;color:#9d978e}',
+              '.identify{display:grid;grid-template-columns:repeat(2,1fr);gap:0 42px;border-top:1px solid rgba(255,255,255,.09)}.identify article{position:relative;padding:24px 4px 24px 42px;border:0;border-bottom:1px solid rgba(255,255,255,.09);border-radius:0;background:none}.identify article:before{content:"→";position:absolute;left:0;top:20px;color:var(--gold2);font-size:28px;font-weight:950;line-height:1}.identify b{display:block;margin:0;font-size:clamp(22px,2.15vw,31px);line-height:1.05;letter-spacing:-.035em;color:#f5efe6}.identify span{display:block;margin-top:7px;font-size:14px;color:#9d978e}',
+              'css para quem'
+          )
 
-          final_team = '<a class="btn ghost" href="https://wa.me/5511923990244" target="_blank" rel="noopener">Falar com a equipe</a>'
-          s = s.replace(final_team, '', 1)
+          repl(
+              '.proof-caption{padding:15px}.proof-caption b{display:block;color:var(--gold2);font-size:15px}.proof-caption small{display:block;margin-top:3px;color:#918c83}',
+              '.proof-caption{padding:18px 16px 20px}.proof-caption b{display:block;color:var(--gold2);font-size:21px;line-height:1.08;letter-spacing:-.025em}',
+              'css provas'
+          )
 
-          payment_end = '</div></div></div></div></section>\n\n<section class="section" id="faq">'
-          if payment_end not in s:
-              raise SystemExit('Final do bloco de pagamento não encontrado')
-          wa_block = '<div class="whatsapp-choice"><a class="btn whatsapp-buy" href="https://wa.me/5511923990244?text=Olá!%20Quero%20comprar%20meu%20ingresso%20para%20a%20Imersão%20Ecommerce." target="_blank" rel="noopener">Comprar pelo WhatsApp</a><a class="whatsapp-help" href="https://wa.me/5511923990244?text=Olá!%20Ainda%20tenho%20algumas%20dúvidas%20sobre%20a%20Imersão%20Ecommerce." target="_blank" rel="noopener">Ainda tenho dúvidas, quero falar com a equipe</a></div>'
-          s = s.replace(payment_end, '</div></div></div>' + wa_block + '</div></section>\n\n<section class="section" id="faq">', 1)
+          repl(
+              '.bonus{display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center;padding:36px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,rgba(216,166,46,.11),#0e0e0e)}.bonus h2{font-size:clamp(36px,5vw,58px);line-height:1;letter-spacing:-.05em;margin:0 0 13px}.bonus p{color:#b3ada4}.bonus-price{border-left:1px solid var(--line);padding-left:28px}.bonus-price s{display:block;color:#888;font-size:19px}.bonus-price strong{display:block;color:var(--gold2);font-size:48px;line-height:1}',
+              '.bonus{display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center;padding:36px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,rgba(216,166,46,.11),#0e0e0e)}.bonus-kicker{margin:0 0 10px!important;color:var(--gold2)!important;font-size:20px!important;font-weight:950;letter-spacing:.08em;text-transform:uppercase}.bonus h2{font-size:clamp(36px,5vw,58px);line-height:1;letter-spacing:-.05em;margin:0 0 13px}.bonus p{color:#b3ada4}.bonus-price{border-left:1px solid var(--line);padding-left:28px}.bonus-price s{display:block;color:#888;font-size:19px}.bonus-price strong{display:block;color:var(--gold2);font-size:48px;line-height:1}',
+              'css bônus'
+          )
 
-          style_patch = '.whatsapp-choice{max-width:950px;margin:18px auto 0;text-align:center}.whatsapp-buy{width:100%;background:#25D366;color:#fff;box-shadow:0 14px 32px rgba(37,211,102,.16)}.whatsapp-help{display:inline-block;margin-top:11px;color:#b9b3aa;font-size:13px;text-decoration:underline;text-underline-offset:3px}.whatsapp-help:hover{color:#fff}.sticky,.wa{display:none!important}'
-          s = s.replace('</style>', style_patch + '\n</style>', 1)
+          repl(
+              '@media(max-width:900px){.nav,.header .btn{display:none}.hero{min-height:810px;align-items:flex-end}.hero-bg img{width:100%;height:100%;object-position:67% 8%}.hero-bg:after{background:linear-gradient(180deg,rgba(5,5,5,.02) 0%,rgba(5,5,5,.06) 25%,rgba(5,5,5,.28) 42%,rgba(5,5,5,.82) 61%,#050505 87%,#050505 100%)}.hero-inner{padding:330px 0 34px}.hero h1{font-size:clamp(44px,11.6vw,62px)}.event-main{flex-wrap:wrap}.content-top,.editorial,.faq{grid-template-columns:1fr}.content-pitch{position:static}.numbers{grid-template-columns:1fr 1fr}.number:nth-child(2){border-right:0}.identify{grid-template-columns:1fr 1fr}.media{grid-template-columns:1.15fr .85fr}',
+              '@media(max-width:900px){.nav,.header .btn{display:none}.hero{min-height:810px;align-items:flex-end}.hero-bg img{width:100%;height:100%;object-position:67% 8%}.hero-bg:after{background:linear-gradient(180deg,rgba(5,5,5,.02) 0%,rgba(5,5,5,.06) 25%,rgba(5,5,5,.28) 42%,rgba(5,5,5,.82) 61%,#050505 87%,#050505 100%)}.hero-inner{padding:330px 0 34px}.hero h1{font-size:clamp(44px,11.6vw,62px)}.event-main{flex-wrap:wrap}.content-top,.editorial,.faq{grid-template-columns:1fr}.content-pitch{position:static}.numbers{grid-template-columns:1fr 1fr}.number:nth-child(2){border-right:0}.identify{grid-template-columns:1fr}.media{grid-template-columns:1.15fr .85fr}',
+              'responsivo para quem'
+          )
+
+          old_content = '''<section class="section content-intro" id="conteudo"><div class="shell"><div class="content-top"><div class="content-pitch"><p class="eyebrow">Conteúdo da imersão</p><h2>Menos teoria solta.<br><strong>Mais decisão prática.</strong></h2><p>Você vai entender o que realmente move uma operação — e onde estão os gargalos que travam margem, crescimento e execução.</p></div><div class="topic-list"><article class="topic-row"><h3>Estratégias de escala</h3><p>Como destravar o crescimento e estruturar uma operação preparada para <b>faturar milhões com mais controle.</b></p></article><article class="topic-row"><h3>Mercado Livre</h3><p>Algoritmo, anúncios, reputação e conversão: entenda <b>o que realmente faz uma operação vender mais.</b></p></article><article class="topic-row"><h3>Importação na prática</h3><p>Como importar com mais inteligência para <b>aumentar margem e criar vantagem competitiva.</b></p></article><article class="topic-row"><h3>Nubimetrics</h3><p>Use dados para encontrar oportunidades, analisar concorrentes e <b>parar de decidir no achismo.</b></p></article><article class="topic-row"><h3>IA para vender mais</h3><p>Aprenda a usar a inteligência artificial para vender mais e <b>transformá-la em um braço da sua operação.</b></p></article></div></div></div></section>'''
+          new_content = '''<section class="section content-intro" id="conteudo"><div class="shell"><div class="content-top"><div class="content-pitch"><p class="eyebrow">Conteúdo da imersão</p><h2>Menos teoria solta.<br><strong>Mais decisão prática.</strong></h2><p>Direção clara para entender o que trava sua operação e saber onde agir.</p></div><div class="topic-list"><article class="topic-row"><h3>Estratégias de escala</h3><p>Cresça com <b>estrutura, margem e controle.</b></p></article><article class="topic-row"><h3>Mercado Livre</h3><p>Anúncios, reputação e conversão para <b>vender mais.</b></p></article><article class="topic-row"><h3>Importação na prática</h3><p>Aumente margem e crie <b>vantagem competitiva.</b></p></article><article class="topic-row"><h3>Nubimetrics</h3><p>Encontre oportunidades com <b>dados, não achismo.</b></p></article><article class="topic-row"><h3>IA para vender mais</h3><p>Transforme a IA em <b>braço da sua operação.</b></p></article><article class="topic-row"><h3>Hot seat</h3><p>Análises ao vivo e <b>direcionamento prático.</b></p></article><article class="topic-row"><h3>Networking</h3><p>Troca direta com <b>sellers e empresários.</b></p></article></div></div></div></section>'''
+          repl(old_content, new_content, 'seção conteúdo')
+
+          old_identify = '''<section class="section" id="para-quem"><div class="shell"><div class="heading"><p class="eyebrow">Para quem é esta imersão</p><h2>Para quem quer parar de operar no escuro.</h2><p>Uma experiência para quem quer tratar o ecommerce como negócio — com melhores decisões, mais estrutura e visão completa da operação.</p></div><div class="identify"><article><b>Já vende, mas a margem não acompanha.</b><span>Quer crescer sem transformar faturamento em problema.</span></article><article><b>Precisa estruturar melhor a operação.</b><span>Estoque, logística e equipe ainda dependem de improviso.</span></article><article><b>Quer escolher produtos com mais inteligência.</b><span>Busca critérios melhores para oportunidades e concorrência.</span></article><article><b>Quer melhorar anúncios e reputação.</b><span>Precisa sustentar competitividade no Mercado Livre.</span></article><article><b>Pretende começar a importar.</b><span>Quer conectar produto, fornecedor, risco e margem.</span></article><article><b>Cansou de conteúdos desconectados.</b><span>Quer uma visão integrada de operação e crescimento.</span></article></div></div></section>'''
+          new_identify = '''<section class="section" id="para-quem"><div class="shell"><div class="heading"><p class="eyebrow">Se você se identifica com isso</p><h2>Essa imersão é pra você.</h2></div><div class="identify"><article><b>Fatura, mas a margem não acompanha.</b><span>Vende mais e sobra menos.</span></article><article><b>Seu negócio cresceu, mas a operação não.</b><span>Estoque, logística e equipe ainda no improviso.</span></article><article><b>Não sabe qual produto vale a pena escalar.</b><span>Falta clareza para decidir onde colocar dinheiro.</span></article><article><b>Seus anúncios não acompanham o potencial da conta.</b><span>Reputação e conversão travam o crescimento.</span></article><article><b>Quer importar, mas não sabe por onde começar.</b><span>Produto, fornecedor, custo e margem ainda parecem confusos.</span></article><article><b>Sente que está ficando para trás.</b><span>IA, dados e ferramentas mudam rápido demais.</span></article></div></div></section>'''
+          repl(old_identify, new_identify, 'seção para quem')
+
+          proof_replacements = {
+              '<figcaption class="proof-caption"><b>Evolução de performance</b><small>Resultado compartilhado por aluno/mentorado.</small></figcaption>': '<figcaption class="proof-caption"><b>7 dias faturando mais que o mês inteiro</b></figcaption>',
+              '<figcaption class="proof-caption"><b>Faturamento em crescimento</b><small>Print original — toque para ampliar.</small></figcaption>': '<figcaption class="proof-caption"><b>De menos de R$ 1 mil/mês para R$ 10 mil/semana</b></figcaption>',
+              '<figcaption class="proof-caption"><b>Reputação e evolução da conta</b><small>Resultado real compartilhado.</small></figcaption>': '<figcaption class="proof-caption"><b>Do vermelho para Mercado Líder</b></figcaption>',
+              '<figcaption class="proof-caption"><b>Virada de faturamento</b><small>Evolução registrada no print original.</small></figcaption>': '<figcaption class="proof-caption"><b>De R$ 47 mil para R$ 87 mil</b></figcaption>',
+              '<figcaption class="proof-caption"><b>Resultado compartilhado por aluno</b><small>Print original — sem alteração de dados.</small></figcaption>': '<figcaption class="proof-caption"><b>R$ 8.076 em um único dia</b></figcaption>'
+          }
+          for old, new in proof_replacements.items():
+              repl(old, new, f'prova social {old[:45]}')
+
+          old_bonus = '''<section class="section"><div class="shell bonus"><div><p class="eyebrow">🎁 Bônus exclusivo</p><h2>Treinamento online Renda Livre.</h2><p>Quem garante o ingresso também recebe acesso ao Renda Livre, com mais de <b>30 horas de aulas gravadas</b> sobre os principais conceitos para vender no Mercado Livre.</p></div><div class="bonus-price"><span>Valor do treinamento online</span><s>R$ 197</s><strong>GRÁTIS</strong><small>para participantes da imersão</small></div></div></section>'''
+          new_bonus = '''<section class="section"><div class="shell bonus"><div><p class="bonus-kicker">🎁 BÔNUS EXCLUSIVO</p><h2>Treinamento online Renda Livre.</h2><p>Mais de <b>30 horas de aulas gravadas</b> para começar pelo básico e chegar mais preparado à imersão.</p></div><div class="bonus-price"><span>Valor do treinamento online</span><s>R$ 197</s><strong>GRÁTIS</strong><small>para participantes da imersão</small></div></div></section>'''
+          repl(old_bonus, new_bonus, 'bônus')
 
           p.write_text(s, encoding='utf-8')
           PY
@@ -49,5 +80,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Ajusta WhatsApp e fotos no mobile"
+          git commit -m "Deixa landing mais visual e comercial"
           git push
