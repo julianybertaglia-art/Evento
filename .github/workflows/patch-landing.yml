@@ -1,4 +1,4 @@
-name: Refinar landing comercial
+name: Refinar copy landing PRO
 
 on:
   push:
@@ -13,65 +13,83 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Aplicar ajustes visuais e de copy
+      - name: Aplicar nova copy persuasiva
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
 
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
 
-          def repl(old, new, label):
+          def sub_section(pattern, replacement, label):
               global s
-              if old not in s:
-                  raise SystemExit(f'Não encontrei: {label}')
-              s = s.replace(old, new, 1)
+              new_s, n = re.subn(pattern, replacement, s, count=1, flags=re.S)
+              if n != 1:
+                  raise SystemExit(f'Não consegui alterar: {label} ({n})')
+              s = new_s
 
-          repl(
-              '.identify{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.identify article{padding:22px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:linear-gradient(145deg,#101010,#0b0b0b)}.identify b{display:block;margin-bottom:7px}.identify span{font-size:13px;color:#9d978e}',
-              '.identify{display:grid;grid-template-columns:repeat(2,1fr);gap:0 42px;border-top:1px solid rgba(255,255,255,.09)}.identify article{position:relative;padding:24px 4px 24px 42px;border:0;border-bottom:1px solid rgba(255,255,255,.09);border-radius:0;background:none}.identify article:before{content:"→";position:absolute;left:0;top:20px;color:var(--gold2);font-size:28px;font-weight:950;line-height:1}.identify b{display:block;margin:0;font-size:clamp(22px,2.15vw,31px);line-height:1.05;letter-spacing:-.035em;color:#f5efe6}.identify span{display:block;margin-top:7px;font-size:14px;color:#9d978e}',
-              'css para quem'
+          # HERO — qualifica o seller e posiciona a promessa sem exagero.
+          sub_section(
+              r'<section class="hero" id="top">.*?</section>',
+              '''<section class="hero" id="top"><div class="hero-bg"><img src="images/hero.jpg" width="1365" height="2048" fetchpriority="high" alt="Gui Nonato na Imersão Ecommerce"></div><div class="shell"><div class="hero-inner"><p class="eyebrow">Imersão Ecommerce • Mercado Livre PRO</p><h1>Sua operação já vende. <strong>Agora ela precisa estar preparada para escalar.</strong></h1><p class="lead">Um dia presencial para sellers que querem tomar melhores decisões sobre <b>produto, margem, estoque, anúncios, importação, dados, caixa e escala</b> — com aplicação prática na própria operação.</p><div class="event-main"><div class="event-box"><b>26 SET 2026</b><span>A partir das 9h30</span></div><div class="event-box"><b>TATUAPÉ - SÃO PAULO</b><span>Evento presencial</span></div></div><div class="hero-facts"><span>Apenas 50 participantes</span><span>Conteúdo avançado</span><span>Análises ao vivo</span></div><div class="micro"><span>Operações reais</span><span>•</span><span>Plano de ação para os próximos 90 dias</span><span>•</span><span>Coffee break e networking</span></div></div></div></section>''',
+              'hero'
           )
 
-          repl(
-              '.proof-caption{padding:15px}.proof-caption b{display:block;color:var(--gold2);font-size:15px}.proof-caption small{display:block;margin-top:3px;color:#918c83}',
-              '.proof-caption{padding:18px 16px 20px}.proof-caption b{display:block;color:var(--gold2);font-size:21px;line-height:1.08;letter-spacing:-.025em}',
-              'css provas'
+          # CONTEÚDO — transforma a seção em entregáveis claros.
+          sub_section(
+              r'<section class="section content-intro" id="conteudo">.*?</section>',
+              '''<section class="section content-intro" id="conteudo"><div class="shell"><div class="content-top"><div class="content-pitch"><p class="eyebrow">Você sai com</p><h2>Menos teoria.<br><strong>Mais direção para escalar.</strong></h2><p>A ideia não é você sair inspirado. É voltar para a operação sabendo <b>o que fazer, por que fazer e o que priorizar primeiro.</b></p></div><div class="topic-list"><article class="topic-row"><h3>Mapa da escala</h3><p>Entenda o que muda entre <b>R$10K, R$100K, R$500K e R$1M/mês</b> — e os gargalos que aparecem em cada estágio.</p></article><article class="topic-row"><h3>Plano de 90 dias</h3><p>Defina o que <b>escalar, corrigir, pausar ou priorizar</b> quando voltar para a sua operação.</p></article><article class="topic-row"><h3>Produto + margem + capital</h3><p>Descubra onde seu dinheiro está trabalhando e onde está ficando preso. <b>Custos, taxas, frete, impostos e anúncios na mesa.</b></p></article><article class="topic-row"><h3>Importação na prática</h3><p>Fornecedor, custo, negociação, impostos e logística — inclusive <b>quando importar e quando não colocar o caixa em risco.</b></p></article><article class="topic-row"><h3>Mercado Livre + dados</h3><p>Anúncios, conversão, catálogo, reputação, posicionamento e Nubimetrics para saber <b>o que corrigir, escalar ou cortar.</b></p></article><article class="topic-row"><h3>IA na operação</h3><p>Como usar IA como uma ferramenta prática de análise e execução — <b>não só como geradora de texto.</b></p></article><article class="topic-row"><h3>Hot seats ao vivo</h3><p>Análises de operações reais para identificar <b>gargalos, dinheiro perdido e a primeira decisão que precisa ser tomada.</b></p></article></div></div></div></section>''',
+              'conteúdo'
           )
 
-          repl(
-              '.bonus{display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center;padding:36px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,rgba(216,166,46,.11),#0e0e0e)}.bonus h2{font-size:clamp(36px,5vw,58px);line-height:1;letter-spacing:-.05em;margin:0 0 13px}.bonus p{color:#b3ada4}.bonus-price{border-left:1px solid var(--line);padding-left:28px}.bonus-price s{display:block;color:#888;font-size:19px}.bonus-price strong{display:block;color:var(--gold2);font-size:48px;line-height:1}',
-              '.bonus{display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center;padding:36px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,rgba(216,166,46,.11),#0e0e0e)}.bonus-kicker{margin:0 0 10px!important;color:var(--gold2)!important;font-size:20px!important;font-weight:950;letter-spacing:.08em;text-transform:uppercase}.bonus h2{font-size:clamp(36px,5vw,58px);line-height:1;letter-spacing:-.05em;margin:0 0 13px}.bonus p{color:#b3ada4}.bonus-price{border-left:1px solid var(--line);padding-left:28px}.bonus-price s{display:block;color:#888;font-size:19px}.bonus-price strong{display:block;color:var(--gold2);font-size:48px;line-height:1}',
-              'css bônus'
+          # PARA QUEM — qualifica sem repetir demais.
+          sub_section(
+              r'<section class="section" id="para-quem">.*?</section>',
+              '''<section class="section" id="para-quem"><div class="shell"><div class="heading"><p class="eyebrow">Para quem é a Imersão PRO</p><h2>Para quem já está no jogo e quer chegar ao próximo nível.</h2><p>Essa imersão foi criada principalmente para quem já vende, já colocou dinheiro na operação e agora precisa fazer esse dinheiro trabalhar melhor.</p></div><div class="identify"><article><b>Já vende no Mercado Livre.</b><span>Tem produtos e uma operação rodando.</span></article><article><b>Fatura, mas a margem não acompanha.</b><span>Vende mais e sente que sobra menos do que deveria.</span></article><article><b>Não sabe onde colocar capital.</b><span>Precisa decidir melhor quais produtos escalar, cortar ou comprar.</span></article><article><b>A operação cresceu e ficou mais complexa.</b><span>Estoque, caixa, anúncios e estrutura começaram a cobrar decisões melhores.</span></article><article><b>Quer importar com mais inteligência.</b><span>Busca margem na origem sem colocar o caixa em risco.</span></article><article><b>Sente que o mercado está mudando rápido.</b><span>IA, dados e novas ferramentas já estão mudando a forma de operar.</span></article></div><p style="margin:26px 0 0;color:#9d978e"><b style="color:#eee9e0">Não é uma aula básica de como fazer a primeira venda.</b> O foco do presencial é quem quer analisar operação, tomar decisões e construir o próximo estágio de crescimento.</p></div></section>''',
+              'para quem'
           )
 
-          repl(
-              '@media(max-width:900px){.nav,.header .btn{display:none}.hero{min-height:810px;align-items:flex-end}.hero-bg img{width:100%;height:100%;object-position:67% 8%}.hero-bg:after{background:linear-gradient(180deg,rgba(5,5,5,.02) 0%,rgba(5,5,5,.06) 25%,rgba(5,5,5,.28) 42%,rgba(5,5,5,.82) 61%,#050505 87%,#050505 100%)}.hero-inner{padding:330px 0 34px}.hero h1{font-size:clamp(44px,11.6vw,62px)}.event-main{flex-wrap:wrap}.content-top,.editorial,.faq{grid-template-columns:1fr}.content-pitch{position:static}.numbers{grid-template-columns:1fr 1fr}.number:nth-child(2){border-right:0}.identify{grid-template-columns:1fr 1fr}.media{grid-template-columns:1.15fr .85fr}',
-              '@media(max-width:900px){.nav,.header .btn{display:none}.hero{min-height:810px;align-items:flex-end}.hero-bg img{width:100%;height:100%;object-position:67% 8%}.hero-bg:after{background:linear-gradient(180deg,rgba(5,5,5,.02) 0%,rgba(5,5,5,.06) 25%,rgba(5,5,5,.28) 42%,rgba(5,5,5,.82) 61%,#050505 87%,#050505 100%)}.hero-inner{padding:330px 0 34px}.hero h1{font-size:clamp(44px,11.6vw,62px)}.event-main{flex-wrap:wrap}.content-top,.editorial,.faq{grid-template-columns:1fr}.content-pitch{position:static}.numbers{grid-template-columns:1fr 1fr}.number:nth-child(2){border-right:0}.identify{grid-template-columns:1fr}.media{grid-template-columns:1.15fr .85fr}',
-              'responsivo para quem'
+          # AUTORIDADE — leva a transformação do Gui para mais cedo e conecta com decisões.
+          sub_section(
+              r'<section class="section dark"><div class="shell editorial">.*?</section>',
+              '''<section class="section dark"><div class="shell editorial"><div class="media"><figure><img src="images/operation.jpg" loading="lazy" alt="Operação real de ecommerce"></figure><figure><img src="images/stage.jpg" loading="lazy" alt="Gui Nonato conduzindo conteúdo"></figure></div><div><p class="eyebrow">De cerca de R$500 mil para +R$3 milhões/mês</p><h2>Estratégia construída dentro de uma operação real.</h2><p>Essa imersão não nasceu da teoria. Gui Nonato vai abrir as decisões, processos e aprendizados de uma operação que hoje processa <b>+30 mil pedidos por mês</b> e já ultrapassou <b>R$200 milhões em vendas</b>.</p><p>Você vai entender como <b>produto, custo, importação, margem, estoque, preço, anúncios, dados e operação</b> precisam se conectar para crescer sem transformar escala em mais caos, capital preso e margem em pó.</p></div></div></section>''',
+              'autoridade'
           )
 
-          old_content = '''<section class="section content-intro" id="conteudo"><div class="shell"><div class="content-top"><div class="content-pitch"><p class="eyebrow">Conteúdo da imersão</p><h2>Menos teoria solta.<br><strong>Mais decisão prática.</strong></h2><p>Você vai entender o que realmente move uma operação — e onde estão os gargalos que travam margem, crescimento e execução.</p></div><div class="topic-list"><article class="topic-row"><h3>Estratégias de escala</h3><p>Como destravar o crescimento e estruturar uma operação preparada para <b>faturar milhões com mais controle.</b></p></article><article class="topic-row"><h3>Mercado Livre</h3><p>Algoritmo, anúncios, reputação e conversão: entenda <b>o que realmente faz uma operação vender mais.</b></p></article><article class="topic-row"><h3>Importação na prática</h3><p>Como importar com mais inteligência para <b>aumentar margem e criar vantagem competitiva.</b></p></article><article class="topic-row"><h3>Nubimetrics</h3><p>Use dados para encontrar oportunidades, analisar concorrentes e <b>parar de decidir no achismo.</b></p></article><article class="topic-row"><h3>IA para vender mais</h3><p>Aprenda a usar a inteligência artificial para vender mais e <b>transformá-la em um braço da sua operação.</b></p></article></div></div></div></section>'''
-          new_content = '''<section class="section content-intro" id="conteudo"><div class="shell"><div class="content-top"><div class="content-pitch"><p class="eyebrow">Conteúdo da imersão</p><h2>Menos teoria solta.<br><strong>Mais decisão prática.</strong></h2><p>Direção clara para entender o que trava sua operação e saber onde agir.</p></div><div class="topic-list"><article class="topic-row"><h3>Estratégias de escala</h3><p>Cresça com <b>estrutura, margem e controle.</b></p></article><article class="topic-row"><h3>Mercado Livre</h3><p>Anúncios, reputação e conversão para <b>vender mais.</b></p></article><article class="topic-row"><h3>Importação na prática</h3><p>Aumente margem e crie <b>vantagem competitiva.</b></p></article><article class="topic-row"><h3>Nubimetrics</h3><p>Encontre oportunidades com <b>dados, não achismo.</b></p></article><article class="topic-row"><h3>IA para vender mais</h3><p>Transforme a IA em <b>braço da sua operação.</b></p></article><article class="topic-row"><h3>Hot seat</h3><p>Análises ao vivo e <b>direcionamento prático.</b></p></article><article class="topic-row"><h3>Networking</h3><p>Troca direta com <b>sellers e empresários.</b></p></article></div></div></div></section>'''
-          repl(old_content, new_content, 'seção conteúdo')
+          # EXPERIÊNCIA — explica por que o presencial importa.
+          sub_section(
+              r'<section class="experience">.*?</section>',
+              '''<section class="experience"><img src="images/audience.jpg" loading="lazy" alt="Participantes em evento presencial"><div class="shell experience-copy"><p class="eyebrow">Por que presencial?</p><h2>Informação você encontra online.<br>Visão externa, não.</h2><p>Na sala você vai ouvir problemas reais, comparar decisões, fazer perguntas e entender como outros sellers estão lidando com <b>estoque, margem, produto, anúncios e capital</b>.</p><p><b>Você pode perceber em algumas horas um gargalo que sozinho levaria meses para enxergar.</b></p></div></section>''',
+              'experiência'
+          )
 
-          old_identify = '''<section class="section" id="para-quem"><div class="shell"><div class="heading"><p class="eyebrow">Para quem é esta imersão</p><h2>Para quem quer parar de operar no escuro.</h2><p>Uma experiência para quem quer tratar o ecommerce como negócio — com melhores decisões, mais estrutura e visão completa da operação.</p></div><div class="identify"><article><b>Já vende, mas a margem não acompanha.</b><span>Quer crescer sem transformar faturamento em problema.</span></article><article><b>Precisa estruturar melhor a operação.</b><span>Estoque, logística e equipe ainda dependem de improviso.</span></article><article><b>Quer escolher produtos com mais inteligência.</b><span>Busca critérios melhores para oportunidades e concorrência.</span></article><article><b>Quer melhorar anúncios e reputação.</b><span>Precisa sustentar competitividade no Mercado Livre.</span></article><article><b>Pretende começar a importar.</b><span>Quer conectar produto, fornecedor, risco e margem.</span></article><article><b>Cansou de conteúdos desconectados.</b><span>Quer uma visão integrada de operação e crescimento.</span></article></div></div></section>'''
-          new_identify = '''<section class="section" id="para-quem"><div class="shell"><div class="heading"><p class="eyebrow">Se você se identifica com isso</p><h2>Essa imersão é pra você.</h2></div><div class="identify"><article><b>Fatura, mas a margem não acompanha.</b><span>Vende mais e sobra menos.</span></article><article><b>Seu negócio cresceu, mas a operação não.</b><span>Estoque, logística e equipe ainda no improviso.</span></article><article><b>Não sabe qual produto vale a pena escalar.</b><span>Falta clareza para decidir onde colocar dinheiro.</span></article><article><b>Seus anúncios não acompanham o potencial da conta.</b><span>Reputação e conversão travam o crescimento.</span></article><article><b>Quer importar, mas não sabe por onde começar.</b><span>Produto, fornecedor, custo e margem ainda parecem confusos.</span></article><article><b>Sente que está ficando para trás.</b><span>IA, dados e ferramentas mudam rápido demais.</span></article></div></div></section>'''
-          repl(old_identify, new_identify, 'seção para quem')
+          # BÔNUS — mantém valor sem deslocar o posicionamento PRO.
+          sub_section(
+              r'<section class="section"><div class="shell bonus">.*?</section>',
+              '''<section class="section"><div class="shell bonus"><div><p class="bonus-kicker">🎁 BÔNUS EXCLUSIVO</p><h2>Treinamento online Renda Livre.</h2><p>Mais de <b>30 horas de aulas gravadas</b>, avaliado em R$197, para reforçar fundamentos e chegar ao presencial ainda mais preparado — ou compartilhar com alguém da equipe que precisa dominar a base.</p></div><div class="bonus-price"><span>Valor do treinamento online</span><s>R$ 197</s><strong>GRÁTIS</strong><small>para participantes da imersão</small></div></div></section>''',
+              'bônus'
+          )
 
-          proof_replacements = {
-              '<figcaption class="proof-caption"><b>Evolução de performance</b><small>Resultado compartilhado por aluno/mentorado.</small></figcaption>': '<figcaption class="proof-caption"><b>7 dias faturando mais que o mês inteiro</b></figcaption>',
-              '<figcaption class="proof-caption"><b>Faturamento em crescimento</b><small>Print original — toque para ampliar.</small></figcaption>': '<figcaption class="proof-caption"><b>De menos de R$ 1 mil/mês para R$ 10 mil/semana</b></figcaption>',
-              '<figcaption class="proof-caption"><b>Reputação e evolução da conta</b><small>Resultado real compartilhado.</small></figcaption>': '<figcaption class="proof-caption"><b>Do vermelho para Mercado Líder</b></figcaption>',
-              '<figcaption class="proof-caption"><b>Virada de faturamento</b><small>Evolução registrada no print original.</small></figcaption>': '<figcaption class="proof-caption"><b>De R$ 47 mil para R$ 87 mil</b></figcaption>',
-              '<figcaption class="proof-caption"><b>Resultado compartilhado por aluno</b><small>Print original — sem alteração de dados.</small></figcaption>': '<figcaption class="proof-caption"><b>R$ 8.076 em um único dia</b></figcaption>'
-          }
-          for old, new in proof_replacements.items():
-              repl(old, new, f'prova social {old[:45]}')
+          # PREÇO — reforça valor do duplo e entregáveis do presencial.
+          sub_section(
+              r'<section class="section dark" id="ingressos">.*?</section>',
+              '''<section class="section dark" id="ingressos"><div class="shell"><div class="heading center"><p class="eyebrow">Investimento</p><h2>Um dia inteiro para tomar decisões melhores sobre a sua operação.</h2><p>50 pessoas na sala de propósito: mais espaço para interação, perguntas, análises e networking de verdade.</p></div><div class="price-grid"><article class="price-card"><p class="eyebrow">Individual</p><h3>1 participante</h3><div class="price">R$ 257</div><ul><li>Um dia completo de evento presencial</li><li>Hot seats e análises ao vivo</li><li>Networking e perguntas diretamente com o Gui</li><li>Coffee break</li><li>Treinamento Renda Livre com +30h de aulas</li></ul><a class="btn ghost checkout" href="https://pay.kiwify.com.br/SLCUydd" target="_blank" rel="noopener">Garantir minha vaga →</a></article><article class="price-card featured"><span class="badge">Melhor custo-benefício</span><p class="eyebrow">Duplo</p><h3>2 participantes</h3><div class="price">R$ 297</div><p><b>Por apenas R$40 a mais, leve seu sócio ou alguém da equipe.</b></p><p style="color:#a9a39a;font-size:13px">Porque voltar cheio de decisões para implementar é muito mais fácil quando quem executa com você também estava na sala.</p><ul><li>2 acessos ao evento presencial</li><li>Hot seats e análises ao vivo</li><li>Networking e perguntas diretamente com o Gui</li><li>Coffee break</li><li>Treinamento Renda Livre com +30h de aulas</li></ul><a class="btn primary checkout" href="https://pay.kiwify.com.br/SLCUydd" target="_blank" rel="noopener">Garantir 2 ingressos →</a></article></div><div class="secure"><div class="secure-box"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><div><b>Pagamento processado pela Kiwify</b><span>Checkout externo para finalizar a compra.</span></div></div><div class="secure-box"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg><div><b>PIX ou cartão de crédito</b><span>Cartão com opção de parcelamento em até 12x.</span></div></div></div><div class="whatsapp-choice"><a class="btn whatsapp-buy" href="https://wa.me/5511923990244?text=Olá!%20Quero%20comprar%20meu%20ingresso%20para%20a%20Imersão%20Ecommerce." target="_blank" rel="noopener">Comprar pelo WhatsApp</a><a class="whatsapp-help" href="https://wa.me/5511923990244?text=Olá!%20Ainda%20tenho%20algumas%20dúvidas%20sobre%20a%20Imersão%20Ecommerce." target="_blank" rel="noopener">Ainda tenho dúvidas, quero falar com a equipe</a></div></div></section>''',
+              'ingressos'
+          )
 
-          old_bonus = '''<section class="section"><div class="shell bonus"><div><p class="eyebrow">🎁 Bônus exclusivo</p><h2>Treinamento online Renda Livre.</h2><p>Quem garante o ingresso também recebe acesso ao Renda Livre, com mais de <b>30 horas de aulas gravadas</b> sobre os principais conceitos para vender no Mercado Livre.</p></div><div class="bonus-price"><span>Valor do treinamento online</span><s>R$ 197</s><strong>GRÁTIS</strong><small>para participantes da imersão</small></div></div></section>'''
-          new_bonus = '''<section class="section"><div class="shell bonus"><div><p class="bonus-kicker">🎁 BÔNUS EXCLUSIVO</p><h2>Treinamento online Renda Livre.</h2><p>Mais de <b>30 horas de aulas gravadas</b> para começar pelo básico e chegar mais preparado à imersão.</p></div><div class="bonus-price"><span>Valor do treinamento online</span><s>R$ 197</s><strong>GRÁTIS</strong><small>para participantes da imersão</small></div></div></section>'''
-          repl(old_bonus, new_bonus, 'bônus')
+          # FAQ — alinha expectativa sobre iniciantes sem excluir quem já compraria pelo bônus.
+          s = s.replace(
+              '<details><summary>O evento serve para iniciantes?</summary><p>Sim. Ao garantir sua vaga, você recebe de presente o <b>treinamento online Renda Livre</b>, com mais de 30 horas de aulas gravadas. Assim, você já pode começar a estudar e aplicar os principais conceitos antes do evento, chegar mais preparado e aproveitar a imersão muito melhor, mesmo que ainda esteja começando no Mercado Livre.</p></details>',
+              '<details><summary>O evento serve para iniciantes?</summary><p>O conteúdo presencial é principalmente voltado para quem <b>já vende e já tem uma operação rodando</b>. Quem está começando também recebe o treinamento online Renda Livre, com mais de 30 horas de aulas gravadas, para construir a base e chegar mais preparado ao evento.</p></details>'
+          )
+
+          # CTA FINAL — mais específico para o seller.
+          sub_section(
+              r'<section class="final">.*?</section>',
+              '''<section class="final"><div class="shell"><p class="eyebrow">26/09/2026 • Tatuapé, São Paulo • 50 vagas</p><h2>Saia do modo automático e descubra onde atacar primeiro na sua operação.</h2><p>Você não sai com mais teoria. Sai sabendo o que fazer, por que fazer e quais decisões priorizar nos próximos 90 dias.</p><div class="actions" style="justify-content:center"><a class="btn primary checkout" href="https://pay.kiwify.com.br/SLCUydd" target="_blank" rel="noopener">Garantir minha vaga →</a></div></div></section>''',
+              'cta final'
+          )
 
           p.write_text(s, encoding='utf-8')
           PY
@@ -80,5 +98,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "Deixa landing mais visual e comercial"
+          git commit -m "Refina copy para sellers e escala"
           git push
