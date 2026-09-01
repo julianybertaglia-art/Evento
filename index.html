@@ -45,16 +45,29 @@ fbq('track','PageView');
 @media(max-width:760px){.video-grid{grid-auto-flow:column;grid-auto-columns:82%;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 2px 10px}.video-card{scroll-snap-align:start}}
 
 
-.argo-section{padding:78px 0;background:linear-gradient(180deg,#050505,#0a0a0a)}
-.argo-card{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center;padding:38px;border:1px solid rgba(241,199,91,.25);border-radius:24px;background:radial-gradient(circle at top right,rgba(216,166,46,.14),transparent 42%),#0d0d0d}
+.argo-section{padding:78px 0;scroll-margin-top:68px;background:linear-gradient(180deg,var(--bg),#0a0a0a)}
+.argo-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px 48px;align-items:center;padding:38px;border:1px solid var(--line);border-radius:24px;background:radial-gradient(circle at top right,rgba(216,166,46,.14),transparent 42%),var(--panel)}
+.argo-logo{width:220px;height:auto;margin-bottom:24px;mix-blend-mode:screen}
+.argo-copy .eyebrow{margin-bottom:12px}
 .argo-card h2{font-size:clamp(38px,4.8vw,62px);line-height:.98;letter-spacing:-.055em;margin:0 0 14px}
 .argo-card h2 strong{color:var(--gold2)}
-.argo-card p{margin:0;color:#b8b1a7}
-.argo-points{display:grid;gap:10px}
-.argo-point{padding:16px 18px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:#101010}
-.argo-point b{display:block;color:#f3ede4;margin-bottom:4px}
-.argo-point span{display:block;color:#9e988f;font-size:13px}
-@media(max-width:900px){.argo-card{grid-template-columns:1fr;padding:28px}}
+.argo-intro{margin:0;color:#b8b1a7;font-size:16px}
+.argo-intro strong{color:var(--txt)}
+.argo-benefit{margin:18px 0 0;color:var(--txt);font-size:16px;font-weight:750}
+.argo-points{list-style:none;margin:0;padding:0;display:grid}
+.argo-point{position:relative;padding:15px 0 15px 28px;border-bottom:1px solid rgba(255,255,255,.09)}
+.argo-point:first-child{padding-top:0}
+.argo-point:last-child{padding-bottom:0;border-bottom:0}
+.argo-point:before{content:"✓";position:absolute;left:0;top:15px;color:var(--gold2);font-size:17px;font-weight:900}
+.argo-point:first-child:before{top:0}
+.argo-point b{display:block;color:var(--txt);margin-bottom:4px;font-size:16px}
+.argo-point span{display:block;color:var(--muted);font-size:14px;line-height:1.5}
+.argo-access{grid-column:1/-1;display:grid;grid-template-columns:180px 1fr;gap:20px;align-items:center;padding-top:24px;border-top:1px solid var(--line)}
+.argo-access p{margin:0;color:#b8b1a7;font-size:14px}
+.argo-access .argo-access-label{color:var(--gold2);font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+.argo-access strong{color:var(--txt)}
+@media(max-width:900px){.argo-card{grid-template-columns:1fr;padding:28px;gap:28px}.argo-copy{max-width:620px}}
+@media(max-width:560px){.argo-section{padding:62px 0;scroll-margin-top:62px}.argo-card{padding:24px 20px;border-radius:22px}.argo-logo{width:200px;margin-bottom:20px}.argo-card h2{font-size:38px}.argo-access{grid-template-columns:1fr;gap:8px}}
 
 </style>
 </head>
@@ -66,7 +79,29 @@ fbq('track','PageView');
 
 <section class="section content-intro" id="conteudo"><div class="shell"><div class="content-top"><div class="content-pitch"><p class="eyebrow">Você sai com</p><h2>Menos teoria.<br><strong>Mais direção para escalar.</strong></h2><p>A ideia não é você sair inspirado. É voltar para a operação sabendo <b>o que fazer, por que fazer e o que priorizar primeiro.</b></p></div><div class="topic-list"><article class="topic-row"><h3>Mapa da escala</h3><p>Entenda o que muda entre <b>R$10K, R$100K, R$500K e R$1M/mês</b> — e os gargalos que aparecem em cada estágio.</p></article><article class="topic-row"><h3>Plano de 90 dias</h3><p>Defina o que <b>escalar, corrigir, pausar ou priorizar</b> quando voltar para a sua operação.</p></article><article class="topic-row"><h3>Produto + margem + capital</h3><p>Descubra onde seu dinheiro está trabalhando e onde está ficando preso. <b>Custos, taxas, frete, impostos e anúncios na mesa.</b></p></article><article class="topic-row"><h3>Importação na prática</h3><p>Fornecedor, custo, negociação, impostos e logística — inclusive <b>quando importar e quando não colocar o caixa em risco.</b></p></article><article class="topic-row"><h3>Mercado Livre + dados</h3><p>Anúncios, conversão, catálogo, reputação, posicionamento e Nubimetrics para saber <b>o que corrigir, escalar ou cortar.</b></p></article><article class="topic-row"><h3>IA na operação</h3><p>Como usar IA como uma ferramenta prática de análise e execução — <b>não só como geradora de texto.</b></p></article><article class="topic-row"><h3>Hot seats ao vivo</h3><p>Análises de operações reais para identificar <b>gargalos, dinheiro perdido e a primeira decisão que precisa ser tomada.</b></p></article></div></div></div></section>
 
-<section class="argo-section" id="argo"><div class="shell"><div class="argo-card"><div><p class="eyebrow">Apresentação exclusiva • Hub ARGO</p><h2>Conheça a plataforma criada para dar <strong>mais clareza à sua operação.</strong></h2><p>Durante a imersão, você vai acompanhar uma apresentação prática do Hub ARGO e entender como a plataforma organiza informações da operação para ajudar na leitura de produtos, anúncios, estoque, desempenho e decisões do dia a dia.</p><p style="margin-top:14px"><b style="color:#eee9e0">E quem estiver presencialmente na sala terá acesso exclusivo para testar a ferramenta na própria operação.</b></p></div><div class="argo-points"><div class="argo-point"><b>Veja a plataforma funcionando</b><span>Apresentação prática durante o evento.</span></div><div class="argo-point"><b>Teste com a sua própria operação</b><span>Acesso exclusivo para os participantes experimentarem a ferramenta na prática.</span></div><div class="argo-point"><b>Decida com mais contexto</b><span>Menos informação solta e mais clareza para identificar o que merece atenção primeiro.</span></div></div></div></div></section>
+<section class="argo-section" id="argo" aria-labelledby="argo-title">
+  <div class="shell"><div class="argo-card">
+    <div class="argo-copy">
+      <img class="argo-logo" src="images/argo-logo-oficial.png" alt="ARGO — Commerce Navigation" width="513" height="159" loading="lazy" decoding="async">
+      <p class="eyebrow">Conheça o Hub ARGO na imersão</p>
+      <h2 id="argo-title">Ferramentas essenciais.<br><strong>Uma só plataforma.</strong></h2>
+      <p class="argo-intro">Desenvolvido <strong>dentro da nossa operação</strong>, o ARGO foi pensado para automatizar tarefas, facilitar o dia a dia e reunir ferramentas indispensáveis para o seu e-commerce.</p>
+      <p class="argo-benefit">Menos tarefas manuais. Mais clareza para crescer.</p>
+    </div>
+    <ul class="argo-points" aria-label="Principais funções do ARGO">
+      <li class="argo-point"><b>Operação e estoque</b><span>Dados reunidos para acompanhar produtos, estoque e prioridades.</span></li>
+      <li class="argo-point"><b>Expedição e etiquetas</b><span>Organização dos envios e impressão de etiquetas em lote.</span></li>
+      <li class="argo-point"><b>Anúncios e resultados</b><span>Acompanhe o desempenho e identifique pontos de melhoria.</span></li>
+      <li class="argo-point"><b>Mercado e oportunidades</b><span>Informações do mercado para apoiar suas próximas decisões.</span></li>
+      <li class="argo-point"><b>Atendimento</b><span>Respostas com mais contexto e informações da operação.</span></li>
+      <li class="argo-point"><b>Mira, a IA do ARGO</b><span>Faça perguntas, compare dados e receba recomendações.</span></li>
+    </ul>
+    <div class="argo-access">
+      <p class="argo-access-label">Exclusivo no presencial</p>
+      <p>Veja o ARGO funcionando na imersão e tenha <strong>acesso para testar a ferramenta na sua própria operação.</strong></p>
+    </div>
+  </div></div>
+</section>
 
 <section class="section" id="para-quem"><div class="shell"><div class="heading"><p class="eyebrow">Para quem é a Imersão PRO</p><h2>Para quem já está no jogo e quer chegar ao próximo nível.</h2><p>Essa imersão foi criada principalmente para quem já vende, já colocou dinheiro na operação e agora precisa fazer esse dinheiro trabalhar melhor.</p></div><div class="identify"><article><b>Já vende no Mercado Livre.</b><span>Tem produtos e uma operação rodando.</span></article><article><b>Fatura, mas a margem não acompanha.</b><span>Vende mais e sente que sobra menos do que deveria.</span></article><article><b>Não sabe onde colocar capital.</b><span>Precisa decidir melhor quais produtos escalar, cortar ou comprar.</span></article><article><b>A operação cresceu e ficou mais complexa.</b><span>Estoque, caixa, anúncios e estrutura começaram a cobrar decisões melhores.</span></article><article><b>Quer importar com mais inteligência.</b><span>Busca margem na origem sem colocar o caixa em risco.</span></article><article><b>Sente que o mercado está mudando rápido.</b><span>IA, dados e novas ferramentas já estão mudando a forma de operar.</span></article></div><p style="margin:26px 0 0;color:#9d978e"><b style="color:#eee9e0">Não é uma aula básica de como fazer a primeira venda.</b> O foco do presencial é quem quer analisar operação, tomar decisões e construir o próximo estágio de crescimento.</p></div></section>
 
