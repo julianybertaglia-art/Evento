@@ -120,6 +120,60 @@ h1,h2,h3,.brand,.price,.platform-name,.date-stamp{font-family:var(--display)}
 }
 @media(max-width:380px){.hero h1{font-size:2.45rem}.hero-visual{height:275px}.marquee-track{gap:12px;font-size:9px}.outcome h3{font-size:21px}.ticket{padding:21px 17px}}
 @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/* Full-bleed video hero + editorial de-boxing pass */
+.hero{min-height:min(820px,calc(100svh - 78px));display:flex;align-items:flex-end;padding:0;background:#080907}
+.hero:after{display:none}
+.hero-media{position:absolute;inset:0;z-index:0;overflow:hidden;background:#080907}
+.hero-video{width:100%;height:100%;display:block;object-fit:cover;object-position:68% center;filter:saturate(.78) contrast(1.1) brightness(.62)}
+.hero-vignette{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,9,7,.97) 0%,rgba(8,9,7,.84) 34%,rgba(8,9,7,.34) 75%,rgba(8,9,7,.64) 100%),linear-gradient(0deg,rgba(8,9,7,.98) 0%,transparent 38%,rgba(8,9,7,.28) 100%)}
+.hero-wrap{position:relative;z-index:1;width:min(var(--max),calc(100% - 64px))}
+.hero-grid{display:block}
+.hero-copy{max-width:840px;padding:clamp(88px,12vh,148px) 0 48px}
+.hero h1{max-width:860px;font-size:clamp(52px,6.5vw,90px);line-height:.97;text-shadow:0 4px 24px rgba(0,0,0,.24)}
+.hero-lead{max-width:585px;color:#e0e2d8;text-shadow:0 2px 12px rgba(0,0,0,.24)}
+.hero-includes{gap:18px;margin-bottom:24px}
+.hero-includes li{padding:0;border:0;border-radius:0;background:transparent;font-size:12px;letter-spacing:.02em}
+.hero-gift{max-width:600px;padding:14px 18px;border:0;border-left:2px solid var(--yellow);border-radius:0;background:rgba(10,12,9,.52);box-shadow:none;backdrop-filter:blur(10px)}
+.hero-gift strong{font-size:15px}
+.hero-cta .button{min-width:286px;border-radius:999px;box-shadow:0 12px 30px rgba(242,211,76,.18)}
+.hero-urgency{max-width:600px;border-color:rgba(242,211,76,.62);border-radius:10px;background:rgba(10,12,9,.56);box-shadow:none;backdrop-filter:blur(10px)}
+.event-strip{margin-top:0;padding:22px 0 29px;border-top-color:rgba(242,211,76,.38);color:#d6d9cd}
+.event-strip>div+div{border-left-color:rgba(242,211,76,.2)}
+.event-strip b{font-size:14px}
+.event-strip span{color:#adb4a5}
+
+.audience{gap:0;margin-bottom:38px}
+.audience>div{padding:25px 0 28px;border:0;border-top:1px solid rgba(17,18,16,.2);border-radius:0;background:transparent;box-shadow:none}
+.audience>div:first-child{background:transparent;color:var(--ink);border-color:rgba(17,18,16,.2)}
+.audience>div:first-child p{color:var(--muted)}
+.outcomes{gap:0 44px}
+.outcome{display:grid;grid-template-columns:42px 1fr;gap:20px;min-height:0;padding:28px 0;border:0;border-top:1px solid rgba(17,18,16,.2);border-radius:0;background:transparent;box-shadow:none}
+.outcome-number{display:block;width:auto;height:auto;padding-top:5px;margin:0;border-radius:0;background:transparent;color:#777e64}
+.experience-list{display:block}
+.experience-list li{padding:14px 0;border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;box-shadow:none}
+.platform{border-radius:0;box-shadow:none}
+.faq-list{padding:0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.ticket{box-shadow:0 16px 36px rgba(17,18,16,.15)}
+
+@media(max-width:760px){
+  .hero{min-height:calc(100svh - 68px);display:block}
+  .hero-wrap{width:calc(100% - 36px)}
+  .hero-video{object-position:62% center;filter:saturate(.72) contrast(1.08) brightness(.55)}
+  .hero-vignette{background:linear-gradient(180deg,rgba(8,9,7,.25) 0%,rgba(8,9,7,.56) 31%,rgba(8,9,7,.9) 61%,#080907 100%),linear-gradient(90deg,rgba(8,9,7,.48),transparent 75%)}
+  .hero-copy{max-width:620px;padding:70px 0 31px}
+  .hero h1{font-size:clamp(42px,11.5vw,62px);line-height:.99}
+  .hero-lead{font-size:1rem;max-width:430px}
+  .hero-includes{gap:7px 15px}
+  .hero-includes li{font-size:11px}
+  .hero-gift{padding:13px 14px}
+  .hero-cta .button{min-width:0;border-radius:999px}
+  .hero-urgency{margin-top:18px}
+  .event-strip{margin-top:0;padding:20px 0 27px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-video{display:none}
+}
 </style>
 </head>
 <body>
@@ -127,7 +181,14 @@ h1,h2,h3,.brand,.price,.platform-name,.date-stamp{font-family:var(--display)}
 <a class="skip" href="#top">Pular para o conteúdo</a>
 <header class="header"><div class="wrap header-inner"><a class="brand" href="#top" aria-label="Imersão Ecommerce, início">IMERSÃO ECOMMERCE<small>MERCADO LIVRE PRO</small></a><div class="header-actions"><nav class="nav" aria-label="Navegação principal"><a href="#depoimentos-video">Experiências</a><a href="#conteudo">O que você leva</a><a href="#faq">Dúvidas</a></nav><a class="button button-yellow" href="#ingressos">Ver ingressos <span aria-hidden="true">↗</span></a></div></div></header>
 <main>
-<section class="hero" id="top" aria-labelledby="hero-title"><div class="wrap">
+<section class="hero" id="top" aria-labelledby="hero-title">
+<div class="hero-media" aria-hidden="true">
+<video class="hero-video" autoplay muted loop playsinline preload="metadata">
+<source src="videos/video-3-imersao.mp4" type="video/mp4">
+</video>
+<div class="hero-vignette"></div>
+</div>
+<div class="wrap hero-wrap">
 <div class="hero-grid"><div class="hero-copy">
 <p class="eyebrow">26 de setembro de 2026 · Tatuapé, São Paulo</p>
 <h1 id="hero-title">Venda melhor no Mercado Livre.<br><em>Saiba o que corrigir, onde investir e como crescer.</em></h1>
@@ -150,7 +211,7 @@ h1,h2,h3,.brand,.price,.platform-name,.date-stamp{font-family:var(--display)}
 </div>
 <p class="hero-price">A partir de <b>R$ 257 à vista</b> · PIX ou cartão.</p>
 <p class="hero-duo">Com sócio ou equipe: <a href="#ingressos">2 ingressos por R$ 297 no total.</a></p>
-</div><figure class="hero-visual"><img src="images/stage.jpg" width="1365" height="2048" fetchpriority="high" alt="Gui Nonato conduzindo um encontro presencial de ecommerce"><div class="date-stamp" aria-hidden="true"><strong>26</strong><span>SET / 2026</span></div><figcaption class="photo-label"><strong>Gui Nonato</strong><span>Empresário de ecommerce e mentor</span></figcaption></figure></div>
+</div></div>
 <div class="event-strip"><div><b>01 dia presencial</b><span>Recepção a partir das 9h30</span></div><div><b>Tatuapé · São Paulo</b><span>R. Airi, 227 · Vila Gomes Cardim</span></div><div><b>Produto · Margem · Operação</b><span>Análises, perguntas e networking</span></div></div>
 </div></section>
 
@@ -248,7 +309,7 @@ h1,h2,h3,.brand,.price,.platform-name,.date-stamp{font-family:var(--display)}
       content_name:'WhatsApp Imersão Ecommerce',placement:link.dataset.placement || 'footer'
     }));
   });
-  const videos = [...document.querySelectorAll('video')];
+  const videos = [...document.querySelectorAll('.video-card video')];
   videos.forEach((video, index) => {
     let recorded = false;
     video.addEventListener('play', () => {
