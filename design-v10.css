@@ -1,0 +1,150 @@
+/* v10 — bloco do brinde mais limpo e comercial */
+.bonus-band{
+  position:relative!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr)!important;
+  gap:34px!important;
+  align-items:center!important;
+  padding:34px 36px!important;
+  border:1px solid rgba(242,211,76,.42)!important;
+  border-radius:26px!important;
+  background:linear-gradient(135deg,rgba(242,211,76,.12),rgba(242,211,76,.035) 52%,rgba(255,255,255,.025))!important;
+  box-shadow:0 24px 70px rgba(0,0,0,.22)!important;
+  overflow:hidden!important;
+}
+.bonus-band:before{
+  content:'BRINDE'!important;
+  position:absolute!important;
+  right:28px!important;
+  top:18px!important;
+  z-index:0!important;
+  font-size:clamp(44px,7vw,96px)!important;
+  line-height:1!important;
+  letter-spacing:-.08em!important;
+  font-weight:950!important;
+  color:rgba(255,255,255,.035)!important;
+  pointer-events:none!important;
+}
+.bonus-band:after{
+  content:''!important;
+  position:absolute!important;
+  inset:auto 0 0 0!important;
+  height:1px!important;
+  background:linear-gradient(90deg,transparent,rgba(242,211,76,.72),transparent)!important;
+}
+.bonus-copy,
+.bonus-price-box{
+  position:relative!important;
+  z-index:1!important;
+}
+.bonus-copy .eyebrow,
+.bonus-band .eyebrow{
+  display:inline-flex!important;
+  width:max-content!important;
+  align-items:center!important;
+  padding:8px 13px!important;
+  border-radius:999px!important;
+  background:var(--yellow)!important;
+  color:#10130f!important;
+  font-size:10px!important;
+  line-height:1!important;
+  font-weight:950!important;
+  letter-spacing:.12em!important;
+  margin:0 0 18px!important;
+}
+.bonus-copy h3,
+.bonus-band h3{
+  margin:0 0 12px!important;
+  max-width:620px!important;
+  color:#fff!important;
+  font-size:clamp(34px,4vw,52px)!important;
+  line-height:.98!important;
+  letter-spacing:-.055em!important;
+}
+.bonus-copy p,
+.bonus-band .bonus-copy p{
+  margin:0 0 10px!important;
+  max-width:560px!important;
+  color:rgba(255,255,255,.78)!important;
+  font-size:16px!important;
+  line-height:1.6!important;
+}
+.bonus-copy small{
+  display:block!important;
+  color:var(--yellow)!important;
+  font-size:13px!important;
+  font-weight:850!important;
+}
+.bonus-price-box{
+  display:flex!important;
+  min-height:190px!important;
+  flex-direction:column!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  padding:26px!important;
+  border:1px solid rgba(242,211,76,.28)!important;
+  border-radius:20px!important;
+  background:rgba(0,0,0,.28)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05)!important;
+}
+.bonus-from{
+  margin:0 0 8px!important;
+  color:rgba(255,255,255,.72)!important;
+  font-size:15px!important;
+  line-height:1.2!important;
+  font-weight:800!important;
+  letter-spacing:.02em!important;
+}
+.bonus-from del{
+  color:rgba(255,255,255,.62)!important;
+  text-decoration-color:var(--yellow)!important;
+  text-decoration-thickness:2px!important;
+}
+.bonus-to{
+  margin:0 0 8px!important;
+  color:var(--yellow)!important;
+  font-size:clamp(46px,5.3vw,74px)!important;
+  line-height:.95!important;
+  font-weight:950!important;
+  letter-spacing:-.07em!important;
+}
+.bonus-note{
+  color:#fff!important;
+  font-size:14px!important;
+  font-weight:850!important;
+}
+.bonus-band h3:before{display:none!important;content:none!important}
+
+@media(max-width:760px){
+  .bonus-band{
+    grid-template-columns:1fr!important;
+    gap:22px!important;
+    padding:26px 20px!important;
+    border-radius:22px!important;
+  }
+  .bonus-band:before{
+    right:18px!important;
+    top:18px!important;
+    font-size:58px!important;
+    color:rgba(255,255,255,.028)!important;
+  }
+  .bonus-copy h3,
+  .bonus-band h3{
+    font-size:36px!important;
+    line-height:1!important;
+  }
+  .bonus-copy p,
+  .bonus-band .bonus-copy p{
+    font-size:15px!important;
+    line-height:1.55!important;
+  }
+  .bonus-price-box{
+    min-height:auto!important;
+    width:100%!important;
+    padding:22px!important;
+    border-radius:18px!important;
+  }
+  .bonus-to{
+    font-size:52px!important;
+  }
+}
