@@ -15,7 +15,7 @@ const deliverablesSection = `
     <article class="deliverable deliverable-feature"><small>01</small><div><h3>Análise de operação ao vivo</h3><p>Veja contas sendo analisadas com critério: produto, margem, anúncios, reputação, estoque e decisão.</p></div></article>
     <article class="deliverable"><small>02</small><div><h3>Mapa de prioridades</h3><p>Entenda onde mexer primeiro para vender mais sem desperdiçar tempo e dinheiro no que não muda resultado.</p></div></article>
     <article class="deliverable"><small>03</small><div><h3>Escala com lucro</h3><p>Aprenda como vender mais sem deixar sua margem pelo caminho. Veja o que muda quando a operação cresce de verdade, com mais controle, processo e decisões melhores.</p></div></article>
-    <article class="deliverable"><small>04</small><div><h3>Acesso em primeira mão</h3><p>Conheça a Argoplace: a ferramenta que conecta operação, dados e decisão em uma única direção.</p></div></article>
+    <article class="deliverable"><small>04</small><div><h3>Acesso em primeira mão</h3><p>Receba acesso em primeira mão à Argoplace: a ferramenta que conecta operação, dados e decisão em uma única direção.</p></div></article>
   </div>
   <div class="deliverables-cta"><p>Também está incluso o treinamento online Destravando o Mercado Livre, para complementar o presencial e ajudar quem ainda precisa estruturar a base.</p><a class="button" href="#ingressos">Ver ingressos e brinde ↗</a></div>
 </div></section>
@@ -65,7 +65,7 @@ module.exports = async function handler(req, res) {
     );
     html = html.replace(
       '<h3>Conheça em primeira mão a nova plataforma que usamos na operação.</h3><p>A Argoplace conecta a rotina do seller e conta com a <strong>Mira</strong> para analisar dados, identificar oportunidades e apoiar decisões. Os participantes terão <strong>acesso em primeira mão</strong>.</p><ul class="platform-functions"><li>Produtos e estoque</li><li>Anúncios e mercado</li><li>Expedição e atendimento</li><li>Inteligência e automação</li></ul>',
-      '<h3>Marketplace é complexo. Sua operação não precisa ser.</h3><p>A Argoplace organiza dados, anúncios, estoque e próximas decisões em um só lugar. Na imersão, você vê em primeira mão como uma operação ganha clareza quando para de depender de achismo.</p><ul class="platform-functions"><li>Uma operação</li><li>Todos os canais</li><li>Decisão com contexto</li><li>Ação com direção</li></ul>'
+      '<h3>Receba acesso em primeira mão à Argoplace.</h3><p>Na imersão, você vai conhecer e receber acesso em primeira mão à Argoplace, a ferramenta que usamos para organizar dados, anúncios, estoque e próximas decisões em um só lugar.</p><ul class="platform-functions"><li>Acesso em primeira mão</li><li>Uma operação</li><li>Todos os canais</li><li>Decisão com contexto</li><li>Ação com direção</li></ul>'
     );
 
     html = html
@@ -85,7 +85,7 @@ module.exports = async function handler(req, res) {
 
     html = html.replace(
       '</head>',
-      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800;850;900&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v7.css?v=7">\n</head>'
+      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800;850;900&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v7.css?v=7">\n<link rel="stylesheet" href="/design-v8.css?v=8">\n</head>'
     );
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
