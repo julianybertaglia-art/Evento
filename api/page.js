@@ -26,6 +26,8 @@ const argoplaceLockup = `<div class="argoplace-lockup" aria-label="Argoplace Com
 <div><span class="argoplace-word">Argoplace</span><span class="argoplace-tagline">COMMERCE NAVIGATION</span></div>
 </div>`;
 
+const cleanBonusBlock = `<div class="bonus-band" id="brinde"><div class="bonus-copy"><p class="eyebrow">BÔNUS INCLUSO</p><h3>Destravando o Mercado Livre</h3><p>Treinamento online para complementar a imersão e te ajudar a aplicar os fundamentos com mais clareza.</p><small>Incluso no ingresso individual e no duplo.</small></div><div class="bonus-price-box"><span class="bonus-from">DE <del>R$ 197</del></span><strong class="bonus-to">POR R$ 0</strong><span class="bonus-note">Incluso no seu ingresso</span></div></div>`;
+
 module.exports = async function handler(req, res) {
   try {
     const response = await fetch(RAW_INDEX, {
@@ -79,13 +81,13 @@ module.exports = async function handler(req, res) {
       '<li>Acesso em primeira mão da Argoplace</li><li class="ticket-gift"><strong>Brinde: Destravando o Mercado Livre</strong> <del>R$ 197</del></li>'
     );
     html = html.replace(
-      '<h3>Treinamento online<br>Destravando o Mercado Livre.</h3></div><p>Você compra a experiência presencial e recebe o treinamento online sem custo adicional. <b>O acesso é liberado pela equipe após a compra.</b></p>',
-      '<h3>Brinde confirmado:<br>Destravando o Mercado Livre.</h3></div><p>Você garante a experiência presencial e recebe o treinamento online sem pagar a mais. <b>Valor do treinamento: <span class="bonus-value"><del>R$ 197</del><span>incluso no ingresso</span></span></b></p>'
+      '<div class="bonus-band" id="brinde"><div><p class="eyebrow">Incluso nos dois ingressos</p><h3>Treinamento online<br>Destravando o Mercado Livre.</h3></div><p>Você compra a experiência presencial e recebe o treinamento online sem custo adicional. <b>O acesso é liberado pela equipe após a compra.</b></p></div>',
+      cleanBonusBlock
     );
 
     html = html.replace(
       '</head>',
-      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800;850;900&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v7.css?v=7">\n<link rel="stylesheet" href="/design-v8.css?v=8">\n<link rel="stylesheet" href="/design-v9.css?v=9">\n</head>'
+      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800;850;900&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v7.css?v=7">\n<link rel="stylesheet" href="/design-v8.css?v=8">\n<link rel="stylesheet" href="/design-v9.css?v=9">\n<link rel="stylesheet" href="/design-v10.css?v=10">\n</head>'
     );
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
