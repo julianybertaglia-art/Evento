@@ -22,6 +22,40 @@
 .urgency-kicker{color:var(--ink)!important}
 .deliverable-feature{background:linear-gradient(180deg,rgba(242,211,76,.14),transparent)!important}
 
+/* Cronômetro: força contraste dos números e labels */
+.hero-urgency{
+  background:rgba(255,255,255,.96)!important;
+  border:1px solid rgba(242,211,76,.7)!important;
+  box-shadow:0 18px 42px rgba(0,0,0,.28)!important;
+}
+.countdown,
+.countdown *{
+  opacity:1!important;
+  visibility:visible!important;
+}
+.countdown-unit{
+  background:var(--yellow)!important;
+  color:var(--ink)!important;
+  border:1px solid rgba(16,19,15,.18)!important;
+}
+.countdown-unit b,
+.countdown-unit span{
+  display:block!important;
+  color:var(--ink)!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+.countdown-unit b{
+  font-weight:900!important;
+  font-size:24px!important;
+  line-height:1!important;
+}
+.countdown-unit span{
+  font-weight:850!important;
+  font-size:8px!important;
+  letter-spacing:.08em!important;
+}
+
 .audience h3,
 .audience strong,
 .audience b{
@@ -57,6 +91,11 @@
   .wrap,.hero-wrap{width:min(100% - 34px,var(--max))!important}
   .hero h1{font-size:clamp(39px,12vw,58px)!important;line-height:.96!important;letter-spacing:-.065em!important;max-width:100%!important}
   .hero-lead{font-size:15.5px!important;line-height:1.48!important;color:rgba(255,255,255,.9)!important}
+  .hero-urgency{display:block!important;padding:14px!important;border-radius:16px!important}
+  .countdown{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:7px!important;margin-top:12px!important;width:100%!important}
+  .countdown-unit{min-width:0!important;padding:9px 3px 8px!important;border-radius:10px!important}
+  .countdown-unit b{font-size:22px!important}
+  .countdown-unit span{font-size:7px!important}
   .deliverables{padding-top:68px!important}
   .deliverables:before{font-size:46px!important;top:8px!important;right:auto!important;left:17px!important;letter-spacing:-.05em!important;color:rgba(255,255,255,.05)!important}
   .deliverables h2{font-size:38px!important;line-height:1!important;letter-spacing:-.055em!important}
