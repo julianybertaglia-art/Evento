@@ -17,7 +17,7 @@ const deliverablesSection = `
     <article class="deliverable"><small>03</small><div><h3>Escala com lucro</h3><p>Entenda como crescer sem virar refém do volume e sem sacrificar margem.</p></div></article>
     <article class="deliverable"><small>04</small><div><h3>Argoplace</h3><p>Receba acesso em primeira mão à ferramenta que conecta operação, dados e decisão.</p></div></article>
   </div>
-  <div class="deliverables-cta"><p>Também está incluso o treinamento online Destravando o Mercado Livre, para complementar o presencial e reforçar a base.</p><a class="button" href="#ingressos">Garantir minha vaga ↗</a></div>
+  <div class="deliverables-cta"><p>Também está incluso o treinamento online Destravando o Mercado Livre, para complementar o presencial e reforçar a base.</p><a class="button" href="#ingressos">Garantir minha vaga</a></div>
 </div></section>
 `;
 
@@ -26,7 +26,29 @@ const argoplaceLockup = `<div class="argoplace-lockup" aria-label="Argoplace Com
 <div><span class="argoplace-word">Argoplace</span><span class="argoplace-tagline">COMMERCE NAVIGATION</span></div>
 </div>`;
 
-const cleanBonusBlock = `<div class="bonus-band" id="brinde"><div class="bonus-copy"><p class="eyebrow">BÔNUS INCLUSO</p><h3>Destravando o Mercado Livre</h3><p>Treinamento online para complementar a imersão e te ajudar a aplicar os fundamentos com mais clareza.</p><small>Incluso no ingresso individual e no duplo.</small></div><div class="bonus-price-box"><span class="bonus-from">DE <del>R$ 197</del></span><strong class="bonus-to">POR R$ 0</strong><span class="bonus-note">Incluso no seu ingresso</span></div></div>`;
+const cleanBonusBlock = `<div class="bonus-band" id="brinde"><div class="bonus-copy"><p class="eyebrow">Bônus incluso no ingresso</p><h3>Destravando o Mercado Livre</h3><p>Um treinamento online para reforçar a base e ajudar você a aplicar os fundamentos depois da imersão, sem pagar nada a mais por isso.</p></div><div class="bonus-price-box"><span class="bonus-from">Valor do treinamento: <del>R$ 197</del></span><strong class="bonus-to">Incluso</strong><span class="bonus-note">Disponível no ingresso individual e no duplo.</span></div></div>`;
+
+const heroPlayScript = `<script>
+(function(){
+  function playHeroVideo(){
+    var video = document.querySelector('.hero-video');
+    if(!video) return;
+    video.muted = true;
+    video.loop = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.setAttribute('muted','');
+    video.setAttribute('autoplay','');
+    video.setAttribute('loop','');
+    video.setAttribute('playsinline','');
+    var attempt = video.play && video.play();
+    if(attempt && attempt.catch){ attempt.catch(function(){}); }
+  }
+  document.addEventListener('DOMContentLoaded', playHeroVideo);
+  window.addEventListener('load', playHeroVideo);
+  document.addEventListener('touchstart', playHeroVideo, {once:true, passive:true});
+})();
+</script>`;
 
 module.exports = async function handler(req, res) {
   try {
@@ -53,7 +75,7 @@ module.exports = async function handler(req, res) {
 
     html = html.replace(
       '<p class="hero-price">A partir de <b>R$ 257 à vista</b> · PIX ou cartão.</p>\n<p class="hero-duo">Com sócio ou equipe: <a href="#ingressos">2 ingressos por R$ 297 no total.</a></p>',
-      '<div class="hero-event-meta"><span>📍 Tatuapé, São Paulo</span><span>📅 26 de setembro de 2026</span><small>R. Airi, 227 · Vila Gomes Cardim · recepção a partir das 9h30</small></div>'
+      '<div class="hero-event-meta"><span>Tatuapé, São Paulo</span><span>26 de setembro de 2026</span><small>R. Airi, 227 · Vila Gomes Cardim · recepção a partir das 9h30</small></div>'
     );
 
     html = html.replace(
@@ -95,10 +117,17 @@ module.exports = async function handler(req, res) {
       cleanBonusBlock
     );
 
+    html = html
+      .replaceAll(' ↗', '')
+      .replaceAll('<span class="arrow" aria-hidden="true">↗</span>', '')
+      .replaceAll('<span aria-hidden="true">↗</span>', '');
+
     html = html.replace(
       '</head>',
-      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v11.css?v=11">\n</head>'
+      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v11.css?v=12">\n<link rel="stylesheet" href="/design-v12.css?v=12">\n</head>'
     );
+
+    html = html.replace('</body>', `${heroPlayScript}\n</body>`);
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
