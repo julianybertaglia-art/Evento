@@ -1,150 +1,141 @@
-/* v10 — bloco do brinde mais limpo e comercial */
-.bonus-band{
-  position:relative!important;
-  display:grid!important;
-  grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr)!important;
-  gap:34px!important;
-  align-items:center!important;
-  padding:34px 36px!important;
-  border:1px solid rgba(242,211,76,.42)!important;
-  border-radius:26px!important;
-  background:linear-gradient(135deg,rgba(242,211,76,.12),rgba(242,211,76,.035) 52%,rgba(255,255,255,.025))!important;
-  box-shadow:0 24px 70px rgba(0,0,0,.22)!important;
-  overflow:hidden!important;
+/* v10 — aplicado com landing-page-guide-v2: conversão + memorabilidade
+   Direção: editorial premium para evento ecommerce, preto dominante, amarelo como CTA/urgência, tipografia forte, seções escaneáveis. */
+:root{
+  --font-display:'Space Grotesk','Archivo Black','Arial Black',sans-serif;
+  --font-body:'Manrope','Inter',Arial,sans-serif;
+  --yellow:#f2d34c;
+  --ink:#080b08;
+  --paper:#f5f1e4;
 }
-.bonus-band:before{
-  content:'BRINDE'!important;
-  position:absolute!important;
-  right:28px!important;
-  top:18px!important;
-  z-index:0!important;
-  font-size:clamp(44px,7vw,96px)!important;
-  line-height:1!important;
-  letter-spacing:-.08em!important;
-  font-weight:950!important;
-  color:rgba(255,255,255,.035)!important;
-  pointer-events:none!important;
+
+body{font-family:var(--font-body)!important;background:var(--ink)!important}
+h1,h2,h3,.brand,.price,.bonus-to,.argoplace-word{font-family:var(--font-display)!important}
+
+/* 1) Header mais premium e CTA mais direto */
+.header{background:rgba(8,11,8,.84)!important;backdrop-filter:blur(18px)!important;border-bottom:1px solid rgba(242,211,76,.18)!important}
+.header .brand{letter-spacing:-.055em!important}
+.header .button{border-radius:999px!important;min-height:44px!important;padding-inline:20px!important}
+.header .button::before{content:'Garantir vaga';font-size:0}
+
+/* 2) Hero mais memorável, com prova social cedo */
+.hero-copy{position:relative!important}
+.hero h1{font-family:var(--font-display)!important;text-transform:uppercase!important;max-width:1040px!important;text-shadow:0 8px 36px rgba(0,0,0,.45)!important}
+.hero .eyebrow{display:inline-flex!important;padding:8px 12px!important;border:1px solid rgba(242,211,76,.45)!important;border-radius:999px!important;background:rgba(242,211,76,.08)!important;color:var(--yellow)!important;backdrop-filter:blur(10px)!important}
+.hero-lead{font-family:var(--font-body)!important;font-weight:650!important}
+.hero-cta .button{font-size:0!important;min-width:260px!important;position:relative!important;overflow:hidden!important}
+.hero-cta .button::before{content:'Garantir minha vaga';font-size:16px!important;font-weight:900!important;position:relative;z-index:2}
+.hero-cta .button::after{content:'↗';font-size:20px!important;margin-left:14px;position:relative;z-index:2}
+.hero-cta .button:hover{transform:translateY(-3px) scale(1.02)!important;box-shadow:0 24px 60px rgba(242,211,76,.28)!important}
+.hero-includes{margin-top:4px!important}
+.hero-includes li{font-weight:850!important;text-transform:uppercase!important;font-size:11px!important;color:rgba(255,255,255,.78)!important}
+.hero-includes li:before{content:'•'!important;color:var(--yellow)!important;font-size:20px!important;vertical-align:-2px!important}
+
+.hero-gift{border:1px solid rgba(242,211,76,.55)!important;border-left:4px solid var(--yellow)!important;border-radius:20px!important;background:rgba(8,11,8,.62)!important;max-width:690px!important}
+.gift-badge{background:var(--yellow)!important;color:#080b08!important}
+.hero-gift strong{color:#fff!important;font-size:16px!important}.hero-gift small{color:rgba(255,255,255,.72)!important}
+
+.hero-urgency{max-width:710px!important;border-radius:20px!important;padding:16px 18px!important;background:#f6f2e7!important}
+.urgency-copy strong{color:#111!important;font-weight:900!important}.urgency-copy small{color:#67645a!important}.urgency-kicker{color:#9a8200!important;font-weight:900!important}
+.countdown-unit{background:#080b08!important;border-radius:12px!important;padding:12px 10px!important;min-width:58px!important;text-align:center!important}
+.countdown-unit b{display:block!important;color:#fff!important;font-size:28px!important;font-weight:900!important;line-height:1!important;opacity:1!important;visibility:visible!important}
+.countdown-unit span{display:block!important;color:rgba(255,255,255,.75)!important;font-size:8px!important;font-weight:900!important;margin-top:6px!important;text-transform:uppercase!important;opacity:1!important;visibility:visible!important}
+
+.hero-event-meta{display:flex!important;flex-wrap:wrap!important;gap:8px 18px!important;margin-top:18px!important;color:#fff!important;font-weight:900!important}
+.hero-event-meta span{color:#fff!important}.hero-event-meta small{flex-basis:100%;color:rgba(255,255,255,.66)!important;font-weight:700!important}
+
+.hero-copy::after{
+  content:'+R$200M vendidos no ecommerce   ·   +R$3M/mês em operação própria   ·   +30 mil pedidos/mês';
+  display:block;margin-top:28px;padding:16px 0 0;border-top:1px solid rgba(242,211,76,.26);
+  color:var(--yellow);font-size:13px;font-weight:900;letter-spacing:.03em;text-transform:uppercase;
 }
-.bonus-band:after{
-  content:''!important;
-  position:absolute!important;
-  inset:auto 0 0 0!important;
-  height:1px!important;
-  background:linear-gradient(90deg,transparent,rgba(242,211,76,.72),transparent)!important;
-}
-.bonus-copy,
-.bonus-price-box{
-  position:relative!important;
-  z-index:1!important;
-}
-.bonus-copy .eyebrow,
-.bonus-band .eyebrow{
-  display:inline-flex!important;
-  width:max-content!important;
-  align-items:center!important;
-  padding:8px 13px!important;
-  border-radius:999px!important;
-  background:var(--yellow)!important;
-  color:#10130f!important;
-  font-size:10px!important;
-  line-height:1!important;
-  font-weight:950!important;
-  letter-spacing:.12em!important;
-  margin:0 0 18px!important;
-}
-.bonus-copy h3,
-.bonus-band h3{
-  margin:0 0 12px!important;
-  max-width:620px!important;
-  color:#fff!important;
-  font-size:clamp(34px,4vw,52px)!important;
-  line-height:.98!important;
-  letter-spacing:-.055em!important;
-}
-.bonus-copy p,
-.bonus-band .bonus-copy p{
-  margin:0 0 10px!important;
-  max-width:560px!important;
-  color:rgba(255,255,255,.78)!important;
-  font-size:16px!important;
-  line-height:1.6!important;
-}
-.bonus-copy small{
-  display:block!important;
-  color:var(--yellow)!important;
-  font-size:13px!important;
-  font-weight:850!important;
-}
-.bonus-price-box{
-  display:flex!important;
-  min-height:190px!important;
-  flex-direction:column!important;
-  align-items:flex-start!important;
-  justify-content:center!important;
-  padding:26px!important;
-  border:1px solid rgba(242,211,76,.28)!important;
-  border-radius:20px!important;
-  background:rgba(0,0,0,.28)!important;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.05)!important;
-}
-.bonus-from{
-  margin:0 0 8px!important;
-  color:rgba(255,255,255,.72)!important;
-  font-size:15px!important;
-  line-height:1.2!important;
-  font-weight:800!important;
-  letter-spacing:.02em!important;
-}
-.bonus-from del{
-  color:rgba(255,255,255,.62)!important;
-  text-decoration-color:var(--yellow)!important;
-  text-decoration-thickness:2px!important;
-}
-.bonus-to{
-  margin:0 0 8px!important;
-  color:var(--yellow)!important;
-  font-size:clamp(46px,5.3vw,74px)!important;
-  line-height:.95!important;
-  font-weight:950!important;
-  letter-spacing:-.07em!important;
-}
-.bonus-note{
-  color:#fff!important;
-  font-size:14px!important;
-  font-weight:850!important;
-}
-.bonus-band h3:before{display:none!important;content:none!important}
+
+/* 3) O que você leva: mais escaneável e menos cansativo */
+.deliverables{position:relative!important;overflow:hidden!important;background:radial-gradient(circle at 80% 10%,rgba(242,211,76,.13),transparent 34%),#080b08!important}
+.deliverables-head h2{max-width:860px!important}
+.deliverables-head>p{max-width:430px!important}
+.deliverable{border-color:rgba(255,255,255,.13)!important;padding:34px 26px!important;border-radius:0!important}
+.deliverable small{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:38px!important;height:38px!important;border-radius:50%!important;background:var(--yellow)!important;color:#080b08!important;font-weight:950!important;margin-bottom:22px!important}
+.deliverable h3{font-size:clamp(28px,3vw,42px)!important;line-height:1!important;color:#fff!important;text-transform:none!important}
+.deliverable p{font-size:15px!important;line-height:1.56!important;color:rgba(255,255,255,.74)!important}
+.deliverable-feature{box-shadow:inset 0 0 0 1px rgba(242,211,76,.35),0 20px 55px rgba(0,0,0,.22)!important}
+.deliverables-cta p{font-size:16px!important;color:rgba(255,255,255,.78)!important}
+
+/* 4) Depoimentos: prova social mais convincente */
+.social{background:#080b08!important}
+.social .section-head h2::after{content:' Quem vê a operação de perto entende mais rápido onde está perdendo dinheiro.';color:var(--yellow)}
+.video-grid{display:grid!important;grid-auto-flow:column!important;grid-auto-columns:minmax(320px,32%)!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;scrollbar-color:var(--yellow) rgba(255,255,255,.08)!important}
+.video-card{scroll-snap-align:start!important}
+.video-frame{position:relative!important;border-radius:26px!important;overflow:hidden!important;border:1px solid rgba(242,211,76,.28)!important;box-shadow:0 24px 60px rgba(0,0,0,.24)!important}
+.video-frame:after{content:'▶'!important;position:absolute!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;width:64px!important;height:64px!important;border-radius:50%!important;display:flex!important;align-items:center!important;justify-content:center!important;font-size:25px!important;background:var(--yellow)!important;color:#080b08!important;pointer-events:none!important;box-shadow:0 18px 45px rgba(242,211,76,.3)!important}
+.video-card figcaption b{color:#fff!important;font-size:16px!important}.video-card figcaption{color:rgba(255,255,255,.65)!important}.play-label{color:var(--yellow)!important}
+
+/* 5) Programa: promessa de margem reforçada */
+.program-heading .eyebrow{color:var(--yellow)!important}
+.program-heading h2{max-width:920px!important}
+.program-heading p{max-width:790px!important;color:rgba(255,255,255,.78)!important;font-size:17px!important}
+.audience{border-color:rgba(242,211,76,.2)!important}
+.audience>div{border-color:rgba(255,255,255,.14)!important}
+.outcome-number{color:var(--yellow)!important;background:transparent!important;font-weight:950!important}
+.outcome{border-color:rgba(255,255,255,.12)!important}
+.program-bottom{border-top:1px solid rgba(242,211,76,.18)!important;padding-top:26px!important}
+.program-bottom .button{background:var(--yellow)!important;color:#080b08!important;border-radius:999px!important}
+
+/* 6) Gui: só operação, mais autoridade */
+.mentor-media .portrait-image{display:none!important}
+.mentor-media{padding-bottom:0!important}
+.operation-image{width:100%!important;height:520px!important;border-radius:28px!important;border:1px solid rgba(242,211,76,.18)!important;box-shadow:0 30px 75px rgba(0,0,0,.28)!important}
+.mentor-stats>div{background:rgba(242,211,76,.06)!important;border:1px solid rgba(242,211,76,.16)!important;border-radius:18px!important;padding:18px!important}
+
+/* 7) Argoplace mais exclusiva */
+.platform{background:linear-gradient(135deg,#f7f2e5,#efe7d1)!important;border-radius:34px!important;padding:44px!important;position:relative!important;overflow:hidden!important}
+.platform:before{content:'ACESSO EM PRIMEIRA MÃO';position:absolute;right:-.1em;top:.18em;font-family:var(--font-display);font-size:clamp(40px,5.4vw,88px);line-height:.85;color:rgba(16,19,15,.055);font-weight:900;letter-spacing:-.08em;text-transform:uppercase;max-width:560px;text-align:right}
+.platform-copy h3{position:relative;z-index:1}.platform-copy p{position:relative;z-index:1}.platform-functions{position:relative;z-index:1}
+.platform-copy h3::after{content:' Benefício incluso para participantes.';display:block;margin-top:12px;color:#8d7700;font-family:var(--font-body);font-size:14px;line-height:1.3;letter-spacing:0;font-weight:900;text-transform:uppercase}
+
+/* 8) Brinde limpo e claro */
+.bonus-band{display:grid!important;grid-template-columns:1.15fr .85fr!important;gap:32px!important;align-items:center!important;padding:34px!important;border-radius:28px!important;background:linear-gradient(135deg,rgba(242,211,76,.12),rgba(242,211,76,.035))!important;border:1px solid rgba(242,211,76,.45)!important;position:relative!important;overflow:hidden!important}
+.bonus-band:after{content:'BRINDE';position:absolute;right:24px;top:8px;font-family:var(--font-display);font-size:86px;line-height:1;color:rgba(242,211,76,.055);font-weight:900;letter-spacing:-.08em;pointer-events:none!important}
+.bonus-copy{position:relative;z-index:1}.bonus-copy .eyebrow{display:inline-flex!important;width:max-content!important;padding:8px 14px!important;border-radius:999px!important;background:var(--yellow)!important;color:#080b08!important;font-size:10px!important;font-weight:950!important;margin-bottom:20px!important}
+.bonus-copy h3{font-size:clamp(34px,4vw,56px)!important;line-height:.96!important;color:#fff!important;margin-bottom:14px!important}
+.bonus-copy p{font-size:16px!important;line-height:1.58!important;color:rgba(255,255,255,.78)!important;max-width:600px!important;margin-bottom:10px!important}
+.bonus-copy small{display:block!important;color:var(--yellow)!important;font-weight:900!important;font-size:13px!important}
+.bonus-price-box{position:relative;z-index:1!important;display:flex!important;flex-direction:column!important;justify-content:center!important;padding:26px!important;border-radius:22px!important;background:#080b08!important;border:1px solid rgba(242,211,76,.28)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.04)!important}
+.bonus-from{font-size:15px!important;color:rgba(255,255,255,.65)!important;font-weight:850!important}.bonus-from del{text-decoration-color:var(--yellow)!important;text-decoration-thickness:2px!important}
+.bonus-to{font-size:clamp(44px,5.6vw,74px)!important;line-height:.95!important;color:var(--yellow)!important;letter-spacing:-.07em!important;margin:8px 0!important}
+.bonus-note{color:#fff!important;font-size:14px!important;font-weight:850!important}
+.bonus-band h3:before{display:none!important}
+
+/* 9) Ingressos e fechamento */
+.ticket-head h2{max-width:760px!important}
+.ticket{background:#080b08!important;border-color:rgba(242,211,76,.22)!important;border-radius:0!important;box-shadow:none!important}
+.ticket-duo{background:linear-gradient(180deg,rgba(242,211,76,.11),rgba(242,211,76,.035))!important}
+.ticket .button{border-radius:999px!important;font-size:15px!important}
+.ticket-badge{background:var(--yellow)!important;color:#080b08!important}
+.mobile-bar{background:rgba(8,11,8,.92)!important;border-top:1px solid rgba(242,211,76,.2)!important;backdrop-filter:blur(16px)!important}
+.mobile-bar b{color:#fff!important}.mobile-bar small{color:var(--yellow)!important}
+.closing{background:radial-gradient(circle at 88% 20%,rgba(242,211,76,.25),transparent 30%),#080b08!important;border-top:1px solid rgba(242,211,76,.22)!important;padding:96px 0!important}
+.closing h2{font-size:clamp(42px,6vw,86px)!important;line-height:.92!important;text-transform:uppercase!important;color:#fff!important;max-width:900px!important}
+.closing h2:after{content:' Ingresso individual R$257 · Duplo R$297 · Brinde R$197 incluso.';display:block;margin-top:18px;font-family:var(--font-body);font-size:16px;line-height:1.45;color:var(--yellow);letter-spacing:0;text-transform:none}
+.closing .button{background:var(--yellow)!important;color:#080b08!important;border-radius:999px!important;min-height:60px!important;font-size:16px!important}
+
+/* 10) Motion profissional sem pesar */
+@keyframes lpFadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero .eyebrow,.hero h1,.hero-lead,.hero-includes,.hero-gift,.hero-cta,.hero-urgency,.hero-event-meta,.hero-copy::after{animation:lpFadeUp .7s cubic-bezier(.2,.7,.2,1) both}
+.hero h1{animation-delay:.08s}.hero-lead{animation-delay:.16s}.hero-includes{animation-delay:.24s}.hero-gift{animation-delay:.32s}.hero-cta{animation-delay:.4s}.hero-urgency{animation-delay:.48s}.hero-event-meta{animation-delay:.56s}.hero-copy::after{animation-delay:.64s}
 
 @media(max-width:760px){
-  .bonus-band{
-    grid-template-columns:1fr!important;
-    gap:22px!important;
-    padding:26px 20px!important;
-    border-radius:22px!important;
-  }
-  .bonus-band:before{
-    right:18px!important;
-    top:18px!important;
-    font-size:58px!important;
-    color:rgba(255,255,255,.028)!important;
-  }
-  .bonus-copy h3,
-  .bonus-band h3{
-    font-size:36px!important;
-    line-height:1!important;
-  }
-  .bonus-copy p,
-  .bonus-band .bonus-copy p{
-    font-size:15px!important;
-    line-height:1.55!important;
-  }
-  .bonus-price-box{
-    min-height:auto!important;
-    width:100%!important;
-    padding:22px!important;
-    border-radius:18px!important;
-  }
-  .bonus-to{
-    font-size:52px!important;
-  }
+  .header .brand small{font-size:7px!important}.header .button{min-width:126px!important;font-size:0!important}.header .button:after{content:'Vaga ↗';font-size:12px!important}
+  .hero{min-height:auto!important}.hero-copy{padding-top:104px!important}.hero h1{font-size:clamp(36px,9.7vw,48px)!important;line-height:.96!important;letter-spacing:-.06em!important}.hero-lead{font-size:15px!important}.hero-copy::after{font-size:11px!important;line-height:1.45!important}
+  .hero-urgency{padding:15px!important}.countdown{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:8px!important}.countdown-unit{min-width:0!important;padding:10px 4px!important}.countdown-unit b{font-size:21px!important}
+  .hero-event-meta{display:block!important}.hero-event-meta span{display:block!important;margin-bottom:6px!important}.hero-event-meta small{display:block!important;line-height:1.4!important}
+  .deliverable{padding:24px 0!important}.deliverable h3{font-size:26px!important}.deliverable small{margin-bottom:14px!important}
+  .video-grid{grid-auto-columns:84%!important}.video-card video{height:420px!important}
+  .operation-image{height:380px!important;border-radius:22px!important}
+  .platform{padding:30px 22px!important;border-radius:24px!important}.platform:before{font-size:48px!important;right:10px!important;top:10px!important}.platform-copy h3{font-size:31px!important}
+  .bonus-band{grid-template-columns:1fr!important;padding:24px 20px!important;gap:20px!important;border-radius:22px!important}.bonus-band:after{font-size:54px!important;right:14px!important}.bonus-copy h3{font-size:34px!important}.bonus-price-box{padding:22px!important}.bonus-to{font-size:52px!important}
+  .ticket{padding:28px 0!important}.closing{padding:70px 0!important}.closing h2{font-size:40px!important}.closing h2:after{font-size:14px!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
