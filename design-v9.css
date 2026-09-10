@@ -120,11 +120,38 @@
   background:rgba(255,255,255,.96)!important;
   border-color:rgba(242,211,76,.42)!important;
 }
+.countdown,
+.countdown *{
+  opacity:1!important;
+  visibility:visible!important;
+}
 .countdown-unit{
   background:#10130f!important;
   color:#fff!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-height:60px!important;
 }
-.countdown-unit span{color:rgba(255,255,255,.7)!important}
+.countdown-unit b{
+  display:block!important;
+  color:#fff!important;
+  opacity:1!important;
+  visibility:visible!important;
+  font-size:24px!important;
+  font-weight:900!important;
+  line-height:1!important;
+  min-height:24px!important;
+  text-shadow:none!important;
+}
+.countdown-unit span{
+  display:block!important;
+  color:rgba(255,255,255,.78)!important;
+  opacity:1!important;
+  visibility:visible!important;
+  font-weight:850!important;
+}
 
 /* O que você leva */
 .deliverables{padding-top:78px!important}
@@ -336,10 +363,22 @@
     border-radius:14px!important;
   }
   .countdown{
+    display:grid!important;
     grid-template-columns:repeat(4,1fr)!important;
+    gap:7px!important;
     margin-top:12px!important;
   }
-  .countdown-unit b{font-size:20px!important}
+  .countdown-unit{
+    min-width:0!important;
+    min-height:58px!important;
+    padding:8px 2px!important;
+    border-radius:11px!important;
+  }
+  .countdown-unit b{
+    color:#fff!important;
+    font-size:20px!important;
+    min-height:20px!important;
+  }
   .countdown-unit span{font-size:7px!important}
 
   .deliverables{padding:62px 0 58px!important}
