@@ -85,7 +85,7 @@ module.exports = async function handler(req, res) {
 
     html = html.replace(
       '</head>',
-      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800;850;900&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v7.css?v=7">\n<link rel="stylesheet" href="/design-v8.css?v=8">\n</head>'
+      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800;850;900&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v7.css?v=7">\n<link rel="stylesheet" href="/design-v8.css?v=8">\n<link rel="stylesheet" href="/design-v9.css?v=9">\n</head>'
     );
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
