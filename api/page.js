@@ -12,10 +12,10 @@ const deliverablesSection = `
     <p>Você não vem para assistir mais uma aula. Vem para entender as decisões que aumentam venda sem deixar lucro pelo caminho.</p>
   </div>
   <div class="deliverables-grid" aria-label="O que você leva da Imersão Ecommerce">
-    <article class="deliverable deliverable-feature"><small>01</small><div><h3>Análise de operação ao vivo</h3><p>Veja contas sendo analisadas com critério: produto, margem, anúncios, reputação, estoque e decisão.</p></div></article>
-    <article class="deliverable"><small>02</small><div><h3>Mapa de prioridades</h3><p>Entenda onde mexer primeiro para vender mais sem desperdiçar tempo e dinheiro no que não muda resultado.</p></div></article>
+    <article class="deliverable deliverable-feature"><small>01</small><div><h3>Análise real</h3><p>Veja contas sendo analisadas com critério: produto, margem, anúncios, reputação, estoque e decisão.</p></div></article>
+    <article class="deliverable"><small>02</small><div><h3>Prioridade clara</h3><p>Entenda onde mexer primeiro para vender mais sem desperdiçar tempo e dinheiro no que não muda resultado.</p></div></article>
     <article class="deliverable"><small>03</small><div><h3>Escala com lucro</h3><p>Aprenda como vender mais sem deixar sua margem pelo caminho. Veja o que muda quando a operação cresce de verdade, com mais controle, processo e decisões melhores.</p></div></article>
-    <article class="deliverable"><small>04</small><div><h3>Acesso em primeira mão</h3><p>Receba acesso em primeira mão à Argoplace: a ferramenta que conecta operação, dados e decisão em uma única direção.</p></div></article>
+    <article class="deliverable"><small>04</small><div><h3>Argoplace em primeira mão</h3><p>Receba acesso em primeira mão à Argoplace: a ferramenta que conecta operação, dados e decisão em uma única direção.</p></div></article>
   </div>
   <div class="deliverables-cta"><p>Também está incluso o treinamento online Destravando o Mercado Livre, para complementar o presencial e ajudar quem ainda precisa estruturar a base.</p><a class="button" href="#ingressos">Ver ingressos e brinde ↗</a></div>
 </div></section>
@@ -67,13 +67,21 @@ module.exports = async function handler(req, res) {
     );
     html = html.replace(
       '<h3>Conheça em primeira mão a nova plataforma que usamos na operação.</h3><p>A Argoplace conecta a rotina do seller e conta com a <strong>Mira</strong> para analisar dados, identificar oportunidades e apoiar decisões. Os participantes terão <strong>acesso em primeira mão</strong>.</p><ul class="platform-functions"><li>Produtos e estoque</li><li>Anúncios e mercado</li><li>Expedição e atendimento</li><li>Inteligência e automação</li></ul>',
-      '<h3>Receba acesso em primeira mão à Argoplace.</h3><p>Na imersão, você vai conhecer e receber acesso em primeira mão à Argoplace, a ferramenta que usamos para organizar dados, anúncios, estoque e próximas decisões em um só lugar.</p><ul class="platform-functions"><li>Acesso em primeira mão</li><li>Uma operação</li><li>Todos os canais</li><li>Decisão com contexto</li><li>Ação com direção</li></ul>'
+      '<h3>Receba acesso em primeira mão à Argoplace.</h3><p>Além da imersão, você recebe acesso em primeira mão à ferramenta que conecta dados, anúncios, estoque e decisões para enxergar a operação com mais clareza.</p><ul class="platform-functions"><li>Acesso em primeira mão</li><li>Produto</li><li>Anúncios</li><li>Estoque</li><li>Decisão</li><li>Margem</li></ul>'
     );
 
     html = html
+      .replace('Veja como é estar na sala com o Gui.', 'Quem senta na sala entende o que precisa mudar.')
+      .replace('Relatos de quem já participou de encontros e experiências com a operação. Os vídeos são de edições anteriores.', 'Veja relatos de quem já viveu a experiência presencial e percebeu, na prática, a diferença de olhar para a operação com critério.')
+      .replace('Experiência no presencial</b>Relato de quem participou.', 'Saí com mais clareza</b>Relato de quem participou.')
+      .replace('Troca entre sellers</b>Relato de quem participou.', 'A troca presencial faz diferença</b>Relato de quem participou.')
+      .replace('Contato com a operação</b>Relato de quem participou.', 'Ver a operação muda a visão</b>Relato de quem participou.')
+      .replace('Saiba o que analisar, corrigir e priorizar.', 'Venda mais sem deixar margem pelo caminho.')
+      .replace('Produto, anúncios, estoque e caixa se afetam. Na imersão, você vai analisar essas decisões em conjunto.', 'Você vai entender o que olhar antes de aumentar venda: produto, margem, anúncios, estoque, caixa e prioridades para crescer com mais controle.')
       .replace('Prepare a operação para o crescimento.', 'Venda mais sem perder margem.')
       .replace('Conecte compras, estoque, processos e importação. Veja como avaliar fornecedores e oportunidades sem perder de vista o caixa.', 'Veja como estruturar compras, estoque, anúncios e processos para crescer com mais controle, sem virar refém do volume e sem deixar o lucro pelo caminho.')
-      .replace('Estoque · Importação · Processos · Automação', 'Escala · Margem · Processo · Controle');
+      .replace('Estoque · Importação · Processos · Automação', 'Escala · Margem · Processo · Controle')
+      .replace('26 de setembro.<br>Seu próximo passo começa com uma decisão.', '26 de setembro.<br>Saia com mais clareza para vender mais sem perder margem.');
 
     html = html.replaceAll('Apresentação da Argoplace', 'Acesso em primeira mão da Argoplace');
     html = html.replaceAll(
@@ -87,7 +95,7 @@ module.exports = async function handler(req, res) {
 
     html = html.replace(
       '</head>',
-      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;650;700;750;800;850;900&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v7.css?v=7">\n<link rel="stylesheet" href="/design-v8.css?v=8">\n<link rel="stylesheet" href="/design-v9.css?v=9">\n<link rel="stylesheet" href="/design-v10.css?v=10">\n</head>'
+      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v7.css?v=7">\n<link rel="stylesheet" href="/design-v8.css?v=8">\n<link rel="stylesheet" href="/design-v9.css?v=9">\n<link rel="stylesheet" href="/design-v10.css?v=11">\n</head>'
     );
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
