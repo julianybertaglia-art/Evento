@@ -1,0 +1,433 @@
+/* v9 — polimento final de conversão e legibilidade */
+:root{
+  --red:#f2d34c!important;
+  --yellow:#f2d34c;
+  --space:#070b08;
+  --ink:#10130f;
+}
+
+/* segurança: nada escuro em fundo preto nas áreas críticas */
+.deliverables,
+.program,
+.social,
+.mentor,
+.experience,
+.tickets,
+.faq{
+  background:#070b08!important;
+}
+
+.deliverables h1,
+.deliverables h2,
+.deliverables h3,
+.deliverables strong,
+.program h1,
+.program h2,
+.program h3,
+.program strong,
+.social h1,
+.social h2,
+.social h3,
+.social strong,
+.mentor h1,
+.mentor h2,
+.mentor h3,
+.mentor strong,
+.experience h1,
+.experience h2,
+.experience h3,
+.experience strong,
+.tickets h1,
+.tickets h2,
+.tickets h3,
+.tickets strong,
+.faq h1,
+.faq h2,
+.faq h3,
+.faq strong{
+  color:#fff!important;
+  opacity:1!important;
+}
+
+.deliverables p,
+.program p,
+.social p,
+.mentor p,
+.experience p,
+.tickets p,
+.faq p,
+.deliverables li,
+.program li,
+.social li,
+.mentor li,
+.experience li,
+.faq li{
+  color:rgba(255,255,255,.72)!important;
+}
+
+.eyebrow,
+.outcome-number,
+.deliverable small,
+.play-label,
+.ticket-gift strong,
+.bonus-value span,
+.urgency-kicker{
+  color:var(--yellow)!important;
+}
+
+/* HERO mais comercial */
+.hero h1{
+  max-width:980px!important;
+  font-size:clamp(54px,6.9vw,98px)!important;
+  line-height:.91!important;
+  letter-spacing:-.078em!important;
+  text-wrap:balance;
+}
+.hero-lead{
+  max-width:720px!important;
+  font-size:clamp(17px,1.5vw,21px)!important;
+  line-height:1.5!important;
+  color:rgba(255,255,255,.9)!important;
+}
+.hero-lead:after{
+  content:' Crescer não é vender por vender. É vender mais com margem, caixa e direção.';
+  color:#fff;
+  font-weight:750;
+}
+.hero-event-meta{
+  padding:12px 0 0!important;
+  border-top:1px solid rgba(242,211,76,.38)!important;
+  max-width:690px;
+}
+.hero-cta .button,
+.header .button,
+.button-yellow,
+.tickets .ticket .button,
+.tickets .ticket .button-yellow,
+.video-frame:after,
+.marquee-strip{
+  background:var(--yellow)!important;
+  color:#10130f!important;
+  box-shadow:0 18px 38px rgba(242,211,76,.16)!important;
+}
+.header .button:hover,
+.hero-cta .button:hover,
+.button-yellow:hover{
+  background:#ffe56a!important;
+  color:#10130f!important;
+}
+.hero-urgency{
+  background:rgba(255,255,255,.96)!important;
+  border-color:rgba(242,211,76,.42)!important;
+}
+.countdown-unit{
+  background:#10130f!important;
+  color:#fff!important;
+}
+.countdown-unit span{color:rgba(255,255,255,.7)!important}
+
+/* O que você leva */
+.deliverables{padding-top:78px!important}
+.deliverables:before{
+  content:'O QUE VOCÊ LEVA'!important;
+  top:-.13em!important;
+  right:.02em!important;
+  font-size:clamp(56px,10vw,150px)!important;
+  letter-spacing:-.07em!important;
+  color:rgba(255,255,255,.04)!important;
+}
+.deliverables h2{
+  max-width:900px!important;
+  font-size:clamp(42px,5.1vw,68px)!important;
+  line-height:.99!important;
+  text-wrap:balance;
+}
+.deliverables-head p{
+  font-size:18px!important;
+  color:rgba(255,255,255,.78)!important;
+}
+.deliverable{
+  background:transparent!important;
+  transition:transform .18s ease, background .18s ease;
+}
+.deliverable:hover{background:rgba(255,255,255,.035)!important;transform:translateY(-2px)}
+.deliverable-feature{
+  background:linear-gradient(180deg,rgba(242,211,76,.13),rgba(242,211,76,.02))!important;
+}
+.deliverables-cta{
+  padding:18px 0 0!important;
+  border-top:1px solid rgba(242,211,76,.2)!important;
+}
+.deliverables-cta .button{
+  background:var(--yellow)!important;
+  color:#10130f!important;
+}
+
+/* Programa: corrige título invisível e deixa leitura fluida */
+.program-heading h2,
+.program-heading h3,
+.audience h3,
+.outcome h3{
+  color:#fff!important;
+  opacity:1!important;
+}
+.program-heading h2{
+  font-size:clamp(42px,5.6vw,76px)!important;
+  line-height:.96!important;
+  text-wrap:balance;
+}
+.audience>div:first-child h3,
+.audience>div:first-child p{
+  color:#fff!important;
+  opacity:1!important;
+}
+.outcome{
+  grid-template-columns:90px minmax(0,1fr)!important;
+  padding:38px 0!important;
+}
+.outcome h3{
+  font-size:clamp(30px,3.4vw,46px)!important;
+  text-wrap:balance;
+}
+.outcome p{
+  font-size:16px!important;
+  line-height:1.62!important;
+  color:rgba(255,255,255,.76)!important;
+}
+.outcome small{
+  color:var(--yellow)!important;
+  font-weight:800!important;
+}
+
+/* Depoimentos com cara de vídeo clicável */
+.video-grid{
+  grid-auto-columns:minmax(310px,30%)!important;
+  gap:22px!important;
+  padding-bottom:30px!important;
+}
+.video-frame{
+  border-color:rgba(242,211,76,.25)!important;
+  background:#151914!important;
+}
+.video-card video{
+  height:440px!important;
+  object-fit:cover!important;
+}
+.video-frame:before{
+  content:'assista ao depoimento';
+  position:absolute;
+  left:18px;
+  top:18px;
+  z-index:2;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(7,11,8,.68);
+  color:#fff;
+  font-size:10px;
+  font-weight:850;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  backdrop-filter:blur(10px);
+}
+
+/* Argoplace: benefício incluso, mais persuasivo */
+.platform{
+  background:#f4f1e8!important;
+  border:1px solid rgba(242,211,76,.5)!important;
+  box-shadow:0 30px 80px rgba(0,0,0,.24)!important;
+}
+.platform .eyebrow{
+  color:#6a5d14!important;
+  font-weight:900!important;
+}
+.platform-copy h3{
+  color:#10130f!important;
+  font-size:clamp(32px,3.8vw,52px)!important;
+  line-height:.96!important;
+  letter-spacing:-.06em!important;
+}
+.platform-copy p{
+  color:rgba(16,19,15,.76)!important;
+  font-size:17px!important;
+  line-height:1.58!important;
+}
+.argoplace-lockup,
+.argoplace-word,
+.argoplace-tagline{
+  color:#10130f!important;
+}
+.platform-functions li{
+  border-color:rgba(16,19,15,.16)!important;
+  color:#10130f!important;
+  background:rgba(242,211,76,.18)!important;
+}
+.platform-functions li:first-child{
+  background:#10130f!important;
+  color:#fff!important;
+}
+.platform-copy:after{
+  content:'Benefício incluso para participantes da Imersão.';
+  display:inline-flex;
+  margin-top:18px;
+  padding:10px 13px;
+  border-radius:999px;
+  background:#10130f;
+  color:#fff;
+  font-size:12px;
+  font-weight:850;
+  letter-spacing:.02em;
+}
+
+/* Brinde e ingressos */
+.bonus-band{
+  background:rgba(242,211,76,.08)!important;
+  border-top:1px solid rgba(242,211,76,.55)!important;
+  border-bottom:1px solid rgba(242,211,76,.3)!important;
+}
+.bonus-band h3:before{
+  content:'BÔNUS INCLUSO';
+  display:inline-flex;
+  margin:0 0 14px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:var(--yellow);
+  color:#10130f;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.1em;
+}
+.bonus-value del,
+.ticket-gift del{
+  color:rgba(255,255,255,.58)!important;
+  text-decoration-color:var(--yellow)!important;
+  text-decoration-thickness:2px!important;
+}
+.ticket-gift{
+  margin-top:8px!important;
+  padding:12px!important;
+  border:1px solid rgba(242,211,76,.38)!important;
+  border-radius:12px!important;
+  background:rgba(242,211,76,.08)!important;
+}
+.ticket-grid{
+  border-color:rgba(242,211,76,.25)!important;
+}
+.ticket+.ticket{border-color:rgba(242,211,76,.25)!important}
+.price{color:var(--yellow)!important}
+
+/* Mobile final */
+@media(max-width:760px){
+  .wrap,.hero-wrap{width:calc(100% - 34px)!important}
+  .hero{min-height:100svh!important}
+  .hero-copy{padding:118px 0 30px!important}
+  .hero h1{
+    font-size:clamp(39px,10.8vw,52px)!important;
+    line-height:.95!important;
+    letter-spacing:-.065em!important;
+  }
+  .hero-lead{
+    font-size:15.5px!important;
+    line-height:1.48!important;
+  }
+  .hero-lead:after{display:block;margin-top:8px}
+  .hero-urgency{
+    display:block!important;
+    padding:14px!important;
+    border-radius:14px!important;
+  }
+  .countdown{
+    grid-template-columns:repeat(4,1fr)!important;
+    margin-top:12px!important;
+  }
+  .countdown-unit b{font-size:20px!important}
+  .countdown-unit span{font-size:7px!important}
+
+  .deliverables{padding:62px 0 58px!important}
+  .deliverables:before{
+    top:.05em!important;
+    right:auto!important;
+    left:16px!important;
+    font-size:50px!important;
+    max-width:92vw!important;
+    white-space:normal!important;
+    line-height:.9!important;
+  }
+  .deliverables-head{
+    display:block!important;
+    margin-bottom:26px!important;
+  }
+  .deliverables h2,
+  .program-heading h2{
+    font-size:clamp(33px,8.8vw,43px)!important;
+    line-height:1.02!important;
+    letter-spacing:-.052em!important;
+  }
+  .deliverables-head p{
+    margin-top:16px!important;
+    font-size:15px!important;
+    line-height:1.55!important;
+  }
+  .deliverables-grid{
+    grid-template-columns:1fr!important;
+    border-top:1px solid rgba(255,255,255,.16)!important;
+  }
+  .deliverable{
+    min-height:auto!important;
+    padding:23px 0!important;
+    border-right:0!important;
+    border-bottom:1px solid rgba(255,255,255,.14)!important;
+  }
+  .deliverable h3{
+    margin:18px 0 9px!important;
+    font-size:25px!important;
+  }
+  .deliverables-cta{
+    display:block!important;
+  }
+  .deliverables-cta .button{
+    width:100%!important;
+    margin-top:15px!important;
+  }
+
+  .audience{display:block!important}
+  .audience>div{padding:20px 0!important}
+  .audience>div+div{
+    border-left:0!important;
+    padding-left:0!important;
+    border-top:1px solid rgba(255,255,255,.14)!important;
+  }
+  .outcome{
+    grid-template-columns:44px minmax(0,1fr)!important;
+    padding:28px 0!important;
+  }
+  .outcome h3{font-size:clamp(25px,7vw,32px)!important}
+  .outcome p{font-size:14.5px!important}
+
+  .video-grid{
+    grid-auto-columns:82%!important;
+    gap:16px!important;
+  }
+  .video-card video{height:420px!important}
+
+  .platform{
+    grid-template-columns:1fr!important;
+    padding:28px 22px!important;
+    border-radius:22px!important;
+    gap:24px!important;
+  }
+  .argoplace-lockup{gap:14px!important;align-items:center!important}
+  .argoplace-mark{width:60px!important;height:60px!important}
+  .argoplace-word{font-size:40px!important}
+  .argoplace-tagline{font-size:8px!important;letter-spacing:.28em!important;margin-top:7px!important}
+  .platform-copy h3{font-size:31px!important;line-height:1!important}
+  .platform-copy p{font-size:15px!important}
+
+  .bonus-band{display:block!important;padding:22px 0!important}
+  .bonus-band p{margin-top:10px!important}
+}
+
+@media(max-width:380px){
+  .hero h1{font-size:36px!important}
+  .deliverables h2,.program-heading h2{font-size:31px!important}
+  .video-grid{grid-auto-columns:88%!important}
+}
