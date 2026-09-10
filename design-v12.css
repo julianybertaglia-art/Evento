@@ -1,0 +1,191 @@
+/* v12 — ajuste fino: fonte mais elegante, sem emojis/setas, brinde premium e vídeo hero sem aparência travada */
+:root{
+  --lp-body:'Manrope',Arial,sans-serif!important;
+  --lp-display:'Sora','Manrope',Arial,sans-serif!important;
+  --lp-heavy:'Sora','Manrope',Arial,sans-serif!important;
+}
+
+body,
+button,
+a,
+p,
+li,
+small,
+span{font-family:var(--lp-body)!important}
+h1,h2,h3,.brand,.price,.argoplace-word,.platform-name{font-family:var(--lp-display)!important}
+
+.hero h1{
+  font-family:var(--lp-display)!important;
+  font-weight:850!important;
+  letter-spacing:-.075em!important;
+  line-height:.92!important;
+}
+.hero-lead{font-weight:500!important}
+.hero-cta .button,
+.header .button,
+.ticket .button,
+.closing .button,
+.deliverables-cta .button,
+.program-bottom .button{
+  font-family:var(--lp-body)!important;
+  letter-spacing:-.01em!important;
+}
+
+/* Remove a cara de emoji/seta em CTAs */
+.button .arrow,
+.header .button span[aria-hidden="true"],
+.program-bottom .button span[aria-hidden="true"]{display:none!important}
+.play-label{letter-spacing:.12em!important}
+.play-label::after{content:''!important}
+
+/* Hero video: mantém movimento e evita sensação de poster congelado */
+.hero-video{
+  will-change:transform!important;
+  transform:scale(1.035)!important;
+  animation:heroDrift 18s ease-in-out infinite alternate!important;
+}
+@keyframes heroDrift{
+  from{transform:scale(1.035) translate3d(0,0,0)}
+  to{transform:scale(1.07) translate3d(-1.4%,.6%,0)}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-video{animation:none!important;display:block!important}
+}
+
+/* Data/local sem emoji */
+.hero-event-meta span{
+  position:relative!important;
+  padding-left:0!important;
+}
+.hero-event-meta span::before{display:none!important;content:none!important}
+
+/* Brinde: menos cupom, mais benefício premium */
+.bonus-band{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr)!important;
+  align-items:end!important;
+  gap:48px!important;
+  padding:42px 0!important;
+  border:0!important;
+  border-top:1px solid rgba(242,211,76,.48)!important;
+  border-bottom:1px solid rgba(255,255,255,.14)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+.bonus-band:before,
+.bonus-band:after{display:none!important;content:none!important}
+.bonus-copy .eyebrow,
+.bonus-band .eyebrow{
+  margin:0 0 18px!important;
+  padding:0!important;
+  background:transparent!important;
+  border-radius:0!important;
+  color:var(--lp-yellow)!important;
+  font-size:11px!important;
+  letter-spacing:.16em!important;
+  font-weight:900!important;
+}
+.bonus-copy h3,
+.bonus-band h3{
+  max-width:760px!important;
+  margin:0 0 16px!important;
+  color:#fff!important;
+  font-size:clamp(38px,5.4vw,74px)!important;
+  line-height:.96!important;
+  letter-spacing:-.07em!important;
+  font-weight:850!important;
+}
+.bonus-copy p,
+.bonus-band .bonus-copy p{
+  max-width:660px!important;
+  margin:0!important;
+  color:rgba(255,255,255,.72)!important;
+  font-size:17px!important;
+  line-height:1.65!important;
+}
+.bonus-copy small{display:none!important}
+.bonus-price-box{
+  min-height:auto!important;
+  width:100%!important;
+  display:block!important;
+  padding:0 0 0 28px!important;
+  border:0!important;
+  border-left:1px solid rgba(255,255,255,.16)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.bonus-from{
+  display:block!important;
+  margin:0 0 10px!important;
+  color:rgba(255,255,255,.54)!important;
+  font-size:12px!important;
+  letter-spacing:.12em!important;
+  text-transform:uppercase!important;
+  font-weight:900!important;
+}
+.bonus-from del{
+  color:rgba(255,255,255,.62)!important;
+  text-decoration-color:var(--lp-yellow)!important;
+  text-decoration-thickness:2px!important;
+}
+.bonus-to{
+  display:block!important;
+  margin:0 0 10px!important;
+  color:#fff!important;
+  font-size:clamp(32px,3.6vw,48px)!important;
+  line-height:1!important;
+  letter-spacing:-.055em!important;
+  font-weight:850!important;
+}
+.bonus-note{
+  display:block!important;
+  max-width:220px!important;
+  color:var(--lp-yellow)!important;
+  font-size:13px!important;
+  line-height:1.35!important;
+  font-weight:800!important;
+}
+
+/* suaviza a dureza geral sem voltar para template */
+.deliverable,
+.ticket,
+.platform,
+.video-frame{border-radius:0!important}
+.hero-gift{display:none!important}
+.hero-includes li{border-radius:0!important;background:transparent!important;border-color:rgba(255,255,255,.18)!important}
+
+@media(max-width:760px){
+  .hero h1{
+    font-size:clamp(40px,11.2vw,56px)!important;
+    line-height:.96!important;
+    letter-spacing:-.065em!important;
+  }
+  .hero-cta:after{font-size:11px!important;line-height:1.4!important}
+  .hero-event-meta{
+    font-size:14px!important;
+    gap:8px 16px!important;
+  }
+  .bonus-band{
+    display:block!important;
+    padding:34px 0!important;
+  }
+  .bonus-copy h3,
+  .bonus-band h3{
+    font-size:clamp(34px,10vw,46px)!important;
+    line-height:1!important;
+  }
+  .bonus-copy p,
+  .bonus-band .bonus-copy p{
+    font-size:15px!important;
+  }
+  .bonus-price-box{
+    margin-top:26px!important;
+    padding:22px 0 0!important;
+    border-left:0!important;
+    border-top:1px solid rgba(255,255,255,.14)!important;
+  }
+  .bonus-to{font-size:38px!important}
+}
