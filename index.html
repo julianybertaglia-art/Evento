@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#111210">
 <title>Imersão Ecommerce — Mercado Livre Pro | 26/09 em São Paulo</title>
-<meta name="description" content="Um dia com Gui Nonato para conectar vendas, margem e operação no Mercado Livre. Análises ao vivo e prioridades para os próximos 90 dias. 26/09/2026, Tatuapé. Individual R$257; duplo R$297.">
+<meta name="description" content="Imersão presencial com Gui Nonato para organizar produto, margem e operação no Mercado Livre. Análises ao vivo, plano de ação e treinamento online incluso. 26/09/2026, Tatuapé.">
 <link rel="canonical" href="https://imersao.guinonato.com/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Venda mais no Mercado Livre. Faça a margem acompanhar.">
-<meta property="og:description" content="Imersão presencial com Gui Nonato. 26 de setembro no Tatuapé, São Paulo. Individual R$257; dois ingressos por R$297.">
+<meta property="og:description" content="Imersão presencial com Gui Nonato. 26 de setembro no Tatuapé, São Paulo. Ingressos a partir de R$257 e treinamento online incluso.">
 <meta property="og:url" content="https://imersao.guinonato.com/">
 <meta property="og:image" content="https://imersao.guinonato.com/images/stage.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -66,6 +66,14 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom))}.footer{padding-bot
 }
 @media(max-width:380px){.hero h1{font-size:2rem}.hero-lead{font-size:1rem}.hero-includes{font-size:.875rem}.hero-cta .button{font-size:.875rem}.hero-visual{height:230px}}
 
+
+/* Clarity and urgency pass */
+.hero-urgency{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;max-width:580px;padding:14px 16px;margin:20px 0 15px;border:1px solid #4d543b;border-radius:8px;background:#24271f}
+.urgency-copy{min-width:0}.urgency-kicker{margin:0 0 4px;color:var(--yellow);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.urgency-copy strong{display:block;font-size:14px;line-height:1.3;color:var(--paper)}.urgency-copy small{display:block;margin-top:4px;color:#c4c7bb;font-size:11px;line-height:1.4}
+.countdown{display:grid;grid-template-columns:repeat(4,minmax(42px,1fr));gap:5px;flex-shrink:0}.countdown-unit{min-width:42px;padding:7px 4px 6px;border-radius:4px;background:var(--yellow);color:var(--ink);text-align:center}.countdown-unit b{display:block;font-size:20px;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-.06em}.countdown-unit span{display:block;margin-top:4px;font-size:8px;font-weight:800;line-height:1;text-transform:uppercase;letter-spacing:.05em}
+.availability-note{display:flex;align-items:center;gap:8px;margin:-12px 0 20px;font-size:12px;font-weight:700;color:#4e5544}.availability-note span{color:#697b38;font-size:11px}
+@media(max-width:760px){.hero-urgency{grid-template-columns:1fr;gap:12px;padding:13px;margin:18px 0 14px}.urgency-copy strong{font-size:13px}.countdown{width:100%;grid-template-columns:repeat(4,1fr)}.countdown-unit{min-width:0}.countdown-unit b{font-size:19px}.countdown-unit span{font-size:8px}.availability-note{align-items:flex-start;margin:-5px 0 18px;font-size:11px;line-height:1.4}}
+@media(max-width:380px){.hero-urgency{padding:11px}.countdown-unit b{font-size:18px}.countdown-unit span{font-size:7px}}
 </style>
 </head>
 <body>
@@ -76,19 +84,32 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom))}.footer{padding-bot
 <section class="hero" id="top" aria-labelledby="hero-title"><div class="wrap">
 <div class="hero-grid"><div class="hero-copy">
 <p class="eyebrow">26 de setembro de 2026 · Tatuapé, São Paulo</p>
-<h1 id="hero-title">Venda no Mercado Livre com <em>mais clareza sobre produto, margem e operação.</em></h1>
-<p class="hero-lead">Um dia presencial comigo, <b>Gui Nonato</b>, para entender o que corrigir, onde investir e organizar seus próximos passos.</p>
-<ul class="hero-includes"><li>Evento presencial</li><li>Análises de contas ao vivo</li><li>Plano de ação</li></ul>
-<div class="hero-gift"><span class="gift-badge">Brinde</span><div><strong>Destravando o Mercado Livre</strong><small>Treinamento online sem custo adicional.</small></div></div>
+<h1 id="hero-title">Venda melhor no Mercado Livre.<br><em>Saiba o que corrigir, onde investir e como crescer.</em></h1>
+<p class="hero-lead">Um dia presencial comigo, <b>Gui Nonato</b>, para transformar produto, margem e operação em decisões mais claras para o seu negócio.</p>
+<ul class="hero-includes"><li>Evento presencial</li><li>Análises ao vivo</li><li>Prioridades para 90 dias</li></ul>
+<div class="hero-gift"><span class="gift-badge">Brinde</span><div><strong>Treinamento online Destravando o Mercado Livre</strong><small>Incluído na compra do ingresso, sem custo adicional.</small></div></div>
 <div class="hero-cta" id="hero-cta"><a class="button button-yellow" data-placement="hero" href="#ingressos">Quero escolher meu ingresso <span class="arrow" aria-hidden="true">↗</span></a></div>
-<p class="hero-price">A partir de <b>R$ 257 à vista</b> · Treinamento online incluso.</p>
-<p class="hero-duo">Vai com sócio ou equipe? <a href="#ingressos">2 ingressos por R$ 297 no total.</a></p>
+<div class="hero-urgency" id="urgency">
+  <div class="urgency-copy">
+    <p class="urgency-kicker">Inscrições abertas</p>
+    <strong id="countdown-label">Faltam poucos dias para a imersão</strong>
+    <small>Vagas limitadas para manter a troca e as análises ao vivo.</small>
+  </div>
+  <div class="countdown" id="countdown" aria-live="polite" aria-label="Contagem regressiva para a Imersão Ecommerce">
+    <div class="countdown-unit"><b data-countdown="days">00</b><span>dias</span></div>
+    <div class="countdown-unit"><b data-countdown="hours">00</b><span>horas</span></div>
+    <div class="countdown-unit"><b data-countdown="minutes">00</b><span>min</span></div>
+    <div class="countdown-unit"><b data-countdown="seconds">00</b><span>seg</span></div>
+  </div>
+</div>
+<p class="hero-price">A partir de <b>R$ 257 à vista</b> · PIX ou cartão.</p>
+<p class="hero-duo">Com sócio ou equipe: <a href="#ingressos">2 ingressos por R$ 297 no total.</a></p>
 </div><figure class="hero-visual"><img src="images/stage.jpg" width="1365" height="2048" fetchpriority="high" alt="Gui Nonato conduzindo um encontro presencial de ecommerce"><div class="date-stamp" aria-hidden="true"><strong>26</strong><span>SET / 2026</span></div><figcaption class="photo-label"><strong>Gui Nonato</strong><span>Empresário de ecommerce e mentor</span></figcaption></figure></div>
 <div class="event-strip"><div><b>Um dia dedicado à sua operação</b><span>Recepção a partir das 9h30</span></div><div><b>R. Airi, 227 · Tatuapé</b><span>Vila Gomes Cardim · São Paulo</span></div><div><b>Troca com quem também vende</b><span>Perguntas, networking e coffee break</span></div></div>
 </div></section>
 
 <section class="section social" id="depoimentos-video" aria-labelledby="social-title"><div class="wrap">
-<div class="section-head"><div><p class="eyebrow">Quem viveu a experiência</p><h2 id="social-title">A visão de quem já esteve na sala com o Gui.</h2></div><p>Relatos de outros encontros presenciais e experiências com a operação. Os vídeos não são apresentados como resultados desta edição da Imersão.</p></div>
+<div class="section-head"><div><p class="eyebrow">Prova do presencial</p><h2 id="social-title">Veja como é estar na sala com o Gui.</h2></div><p>Relatos de quem já participou de encontros e experiências com a operação. Os vídeos são de edições anteriores.</p></div>
 <div class="video-grid" aria-label="Depoimentos em vídeo">
 <figure class="video-card"><div class="video-frame"><video controls playsinline preload="none" src="videos/video-1-imersao.mp4#t=0.1" aria-label="Assistir ao primeiro depoimento de seller"></video></div><figcaption><div><b>Experiência no presencial</b>Relato de quem participou.</div><span class="play-label">ASSISTIR ↗</span></figcaption></figure>
 <figure class="video-card"><div class="video-frame"><video controls playsinline preload="none" src="videos/video-2-imersao.mp4#t=0.1" aria-label="Assistir ao segundo depoimento de seller"></video></div><figcaption><div><b>Troca entre sellers</b>Relato de quem participou.</div><span class="play-label">ASSISTIR ↗</span></figcaption></figure>
@@ -105,7 +126,7 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom))}.footer{padding-bot
 </div></section>
 
 <section class="section program" id="conteudo" aria-labelledby="program-title"><div class="wrap">
-<div class="program-heading"><p class="eyebrow">O que você leva para a operação</p><h2 id="program-title">Clareza para decidir onde crescer — e o que corrigir primeiro.</h2><p>Produto, anúncios, estoque e caixa se afetam. Na imersão, você vai analisar essas decisões em conjunto.</p></div>
+<div class="program-heading"><p class="eyebrow">O que você vai sair sabendo fazer</p><h2 id="program-title">Saiba o que analisar, corrigir e priorizar.</h2><p>Produto, anúncios, estoque e caixa se afetam. Na imersão, você vai analisar essas decisões em conjunto.</p></div>
 <div class="audience" id="para-quem"><div><h3>Já vende no Mercado Livre?</h3><p>Vou aprofundar decisões sobre margem, anúncios, estoque, importação e crescimento. Traga os desafios da sua operação e organize suas prioridades.</p></div><div><h3>Está começando ou vindo do varejo físico?</h3><p>Entenda os critérios para avaliar produtos, custos e os primeiros passos da operação. O treinamento online <b>Destravando o Mercado Livre</b> complementa seu aprendizado.</p></div></div>
 <div class="outcomes">
 <article class="outcome"><span class="outcome-number">01</span><div><h3>Enxergue o que sobra de cada venda.</h3><p>Coloque custos, taxas, frete, impostos e Ads na conta. Entenda quais produtos sustentam sua margem e onde seu capital fica preso.</p><small>Produto · Margem · Precificação · Caixa</small></div></article>
@@ -128,11 +149,12 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom))}.footer{padding-bot
 </div></section>
 
 <section class="tickets" id="ingressos" aria-labelledby="tickets-title"><div class="wrap">
-<div class="ticket-head"><div><p class="eyebrow">Garanta sua participação · 26/09</p><h2 id="tickets-title">Um dia de imersão.<br>Decisões para levar adiante.</h2></div><p>Escolha seu ingresso. Por <b>R$ 40 a mais</b>, você leva um sócio ou colaborador para aprender e planejar junto.</p></div>
-<div class="bonus-band" id="brinde"><div><p class="eyebrow">Seu ingresso vem com brinde</p><h3>Ganhe o treinamento online<br>Destravando o Mercado Livre.</h3></div><p>Além do encontro presencial, você recebe o treinamento para construir a base das suas vendas na plataforma. <b>Incluído nos ingressos individual e duplo, sem custo adicional.</b><span class="bonus-access">Após a compra, a equipe orienta a liberação do acesso.</span></p></div>
+<div class="ticket-head"><div><p class="eyebrow">Ingressos · 26/09</p><h2 id="tickets-title">Escolha como você vai participar.</h2></div><p>Individual ou duplo. Leve um sócio ou colaborador por apenas <b>R$ 40 a mais</b>.</p></div>
+<p class="availability-note"><span aria-hidden="true">●</span> Inscrições abertas · vagas limitadas para manter a troca e as análises ao vivo.</p>
+<div class="bonus-band" id="brinde"><div><p class="eyebrow">Incluso nos dois ingressos</p><h3>Treinamento online<br>Destravando o Mercado Livre.</h3></div><p>Você compra a experiência presencial e recebe o treinamento online sem custo adicional. <b>O acesso é liberado pela equipe após a compra.</b></p></div>
 <div class="ticket-grid">
-<article class="ticket"><div class="ticket-label"><h3>Individual</h3><span class="subtle" style="font-size:11px">1 participante</span></div><div class="price"><small>R$</small>257</div><p class="price-note">Valor total à vista para 1 pessoa.</p><p class="ticket-desc">Um dia para olhar sua operação com mais clareza e organizar os próximos passos.</p><ul class="ticket-includes"><li>Imersão presencial com Gui Nonato</li><li>Análises de contas ao vivo e perguntas</li><li>Networking e coffee break</li><li>Apresentação da Argoplace</li><li class="ticket-gift"><strong>Brinde: Destravando o Mercado Livre</strong><small>Treinamento online, sem custo adicional.</small></li></ul><a class="button button-dark checkout" data-placement="pricing" data-ticket="individual" href="https://pay.kiwify.com.br/SLCUydd" target="_blank" rel="noopener">Quero 1 ingresso por R$ 257 <span class="arrow" aria-hidden="true">↗</span></a><span class="ticket-fine">PIX ou cartão. Parcelamento disponível no checkout.</span></article>
-<article class="ticket ticket-duo"><div class="ticket-label"><h3>Duplo</h3><span class="ticket-badge">Segundo ingresso por +R$ 40</span></div><div class="price"><small>R$</small>297</div><p class="price-note">Valor total à vista para as 2 pessoas.</p><p class="ticket-desc">Leve quem decide ou executa com você. Voltem com uma visão compartilhada do próximo passo.</p><ul class="ticket-includes"><li>2 acessos à imersão presencial</li><li>Análises de contas ao vivo e perguntas</li><li>Networking e coffee break</li><li>Apresentação da Argoplace</li><li class="ticket-gift"><strong>Brinde: Destravando o Mercado Livre</strong><small>Treinamento online, sem custo adicional.</small></li></ul><p class="duo-instruction" id="duo-instruction"><b>Como comprar o duplo:</b> no checkout, mantenha 1 ingresso e marque “adicionar o segundo ingresso” por R$ 40 antes de pagar.</p><a class="button button-yellow checkout" data-placement="pricing" data-ticket="duplo" aria-describedby="duo-instruction" href="https://pay.kiwify.com.br/SLCUydd" target="_blank" rel="noopener">Quero 2 ingressos por R$ 297 <span class="arrow" aria-hidden="true">↗</span></a><span class="ticket-fine">Confira o adicional selecionado antes de finalizar.</span></article>
+<article class="ticket"><div class="ticket-label"><h3>Individual</h3><span class="subtle" style="font-size:11px">1 participante</span></div><div class="price"><small>R$</small>257</div><p class="price-note">Valor total à vista para 1 pessoa.</p><p class="ticket-desc">Um dia para olhar sua operação com mais clareza e organizar os próximos passos.</p><ul class="ticket-includes"><li>Imersão presencial com Gui Nonato</li><li>Análises de contas ao vivo e perguntas</li><li>Networking e coffee break</li><li>Apresentação da Argoplace</li></ul><a class="button button-dark checkout" data-placement="pricing" data-ticket="individual" href="https://pay.kiwify.com.br/SLCUydd" target="_blank" rel="noopener">Quero o individual · R$ 257 <span class="arrow" aria-hidden="true">↗</span></a><span class="ticket-fine">PIX ou cartão. Parcelamento disponível no checkout.</span></article>
+<article class="ticket ticket-duo"><div class="ticket-label"><h3>Duplo</h3><span class="ticket-badge">Segundo ingresso por +R$ 40</span></div><div class="price"><small>R$</small>297</div><p class="price-note">Valor total à vista para as 2 pessoas.</p><p class="ticket-desc">Leve quem decide ou executa com você e saiam com as mesmas prioridades.</p><ul class="ticket-includes"><li>2 acessos à imersão presencial</li><li>Análises de contas ao vivo e perguntas</li><li>Networking e coffee break</li><li>Apresentação da Argoplace</li></ul><p class="duo-instruction" id="duo-instruction"><b>Como comprar:</b> no checkout, selecione o adicional de R$ 40 antes de pagar.</p><a class="button button-yellow checkout" data-placement="pricing" data-ticket="duplo" aria-describedby="duo-instruction" href="https://pay.kiwify.com.br/SLCUydd" target="_blank" rel="noopener">Quero o duplo · R$ 297 <span class="arrow" aria-hidden="true">↗</span></a><span class="ticket-fine">Confira o adicional selecionado antes de finalizar.</span></article>
 </div>
 <div class="payment-help"><p>Pagamento processado pela Kiwify. PIX ou cartão, com parcelamento em até 12x. Confira parcelas e valor total no checkout.</p><a class="text-link" data-placement="pricing" href="https://wa.me/5511923990244?text=Ol%C3%A1!%20Quero%20ajuda%20para%20escolher%20meu%20ingresso%20da%20Imers%C3%A3o%20Ecommerce." target="_blank" rel="noopener">Tenho uma dúvida sobre a Imersão ↗</a></div>
 </div></section>
@@ -187,6 +209,36 @@ body{padding-bottom:calc(88px + env(safe-area-inset-bottom))}.footer{padding-bot
       }
     });
   });
+  const countdown = document.getElementById('countdown');
+  const countdownLabel = document.getElementById('countdown-label');
+  const countdownTarget = new Date('2026-09-26T09:30:00-03:00').getTime();
+  const countdownUnits = {
+    days: countdown.querySelector('[data-countdown="days"]'),
+    hours: countdown.querySelector('[data-countdown="hours"]'),
+    minutes: countdown.querySelector('[data-countdown="minutes"]'),
+    seconds: countdown.querySelector('[data-countdown="seconds"]')
+  };
+  const updateCountdown = () => {
+    const remaining = countdownTarget - Date.now();
+    if (remaining <= 0) {
+      Object.values(countdownUnits).forEach(unit => { unit.textContent = '00'; });
+      countdownLabel.textContent = 'A imersão está acontecendo agora';
+      return;
+    }
+    const totalSeconds = Math.floor(remaining / 1000);
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    countdownUnits.days.textContent = String(days).padStart(2,'0');
+    countdownUnits.hours.textContent = String(hours).padStart(2,'0');
+    countdownUnits.minutes.textContent = String(minutes).padStart(2,'0');
+    countdownUnits.seconds.textContent = String(seconds).padStart(2,'0');
+    countdownLabel.textContent = days > 0 ? `Faltam ${days} ${days === 1 ? 'dia' : 'dias'} para a imersão` : 'A imersão começa hoje';
+  };
+  updateCountdown();
+  window.setInterval(updateCountdown,1000);
+
   const bar = document.getElementById('sticky');
   const cta = document.getElementById('hero-cta');
   const pricing = document.getElementById('ingressos');
