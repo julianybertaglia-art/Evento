@@ -90,7 +90,7 @@ module.exports = async function handler(req, res) {
     );
 
     html = html
-      .replace('Veja como é estar na sala com o Gui.', 'Quem senta na sala entende o que precisa mudar.')
+      .replace('Veja como é estar na sala com o Gui.', 'Uma sala. Operações reais. Decisões melhores.')
       .replace('Relatos de quem já participou de encontros e experiências com a operação. Os vídeos são de edições anteriores.', 'Relatos de quem já viveu experiências presenciais com a operação e saiu com mais clareza sobre o que fazer.')
       .replace('Experiência no presencial</b>Relato de quem participou.', 'Clareza para agir</b>Relato de quem participou.')
       .replace('Troca entre sellers</b>Relato de quem participou.', 'Troca entre sellers</b>Relato de quem participou.')
@@ -118,7 +118,7 @@ module.exports = async function handler(req, res) {
 
     html = html.replace(
       '</head>',
-      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v13.css?v=13">\n</head>'
+      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v13.css?v=13">\n<link rel="stylesheet" href="/design-v14.css?v=14">\n</head>'
     );
 
     html = html.replace('</body>', `${enhancementScript}\n</body>`);
