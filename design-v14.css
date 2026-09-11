@@ -1,0 +1,70 @@
+/* v14 — revisão de legibilidade e contraste */
+:root{
+  --muted-dark:#4f514a!important;
+  --muted-light:rgba(255,255,255,.78)!important;
+}
+
+/* Hero: textos secundários mais legíveis */
+.hero-lead{color:rgba(255,255,255,.84)!important}
+.hero-includes{color:rgba(255,255,255,.82)!important}
+.hero-proof span{color:rgba(255,255,255,.68)!important}
+.urgency-copy small{color:rgba(255,255,255,.68)!important}
+.countdown-unit span{color:rgba(255,255,255,.62)!important}
+.hero-event-meta small{color:rgba(255,255,255,.68)!important}
+.hero-secondary{color:#fff!important;opacity:.92!important}
+
+/* Off-white: cinzas mais escuros */
+.deliverables .eyebrow,
+.program-heading .eyebrow,
+.experience-copy .eyebrow,
+.platform .eyebrow{color:#55574f!important}
+.deliverables-head>p,
+.deliverable p,
+.deliverables-cta p,
+.program-heading>p:last-child,
+.audience p,
+.outcome p,
+.program-bottom p,
+.experience-copy p,
+.platform-copy p{color:#4f514a!important}
+.deliverable small,
+.outcome-number,
+.outcome small,
+.experience-photo figcaption,
+.argoplace-tagline,
+.bonus-from,
+.bonus-note{color:#5c5e56!important}
+.platform-functions{color:#4e5049!important}
+
+/* Seções escuras: evitar cinza lavado */
+.section-head>p{color:rgba(255,255,255,.74)!important}
+.video-card figcaption,
+.proof-intro,
+.proof-note,
+.proof-card figcaption{color:rgba(255,255,255,.72)!important}
+.mentor-copy>p{color:rgba(255,255,255,.78)!important}
+.mentor-stats span{color:rgba(255,255,255,.68)!important}
+
+/* FAQ/footer e microcopy */
+.faq p,
+.faq-item p{color:#4f514a!important}
+.footer,
+.footer p,
+.footer small{color:rgba(255,255,255,.72)!important}
+
+/* Amarelo: texto sempre com contraste */
+.tickets,
+.tickets p,
+.tickets small,
+.tickets li{color:#1a1b18!important}
+.ticket-duo,
+.ticket-duo p,
+.ticket-duo small,
+.ticket-duo li{color:#f7f5ec!important}
+
+/* Mobile: textos pequenos ganham um pouco mais de corpo */
+@media(max-width:760px){
+  .hero-proof span,.hero-event-meta small,.urgency-copy small{font-size:11px!important;line-height:1.45!important}
+  .deliverable p,.audience p,.program-bottom p,.platform-copy p,.mentor-copy>p,.experience-copy p{font-size:14px!important}
+  .video-card figcaption{font-size:12px!important}
+}
