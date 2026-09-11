@@ -2,7 +2,7 @@ const RAW_INDEX = 'https://raw.githubusercontent.com/julianybertaglia-art/Evento
 
 const heroVideoSource = '<source src="videos/WhatsApp Video 2026-09-10 at 10.48.57.mp4" type="video/mp4">';
 
-const heroTitle = 'DE R$ 100 MIL A +R$ 3 MILHÕES/MÊS.<br><em>O QUE REALMENTE FEZ A OPERAÇÃO ESCALAR.</em>';
+const heroTitle = 'GUI NONATO REVELA AS ESTRATÉGIAS<br><em>POR TRÁS DE OPERAÇÕES MILIONÁRIAS.</em>';
 const heroLead = 'Em um dia presencial, eu vou abrir os critérios, decisões e processos que fizeram a operação crescer — e mostrar como aplicar esse raciocínio em produto, margem, anúncios, estoque e caixa no seu negócio.';
 
 const heroProofBlock = `<div class="hero-proof" aria-label="Números da operação de Gui Nonato">
