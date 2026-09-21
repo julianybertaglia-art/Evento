@@ -34,6 +34,13 @@ const argoplaceLockup = `<div class="argoplace-lockup" aria-label="Argoplace Com
 
 const cleanBonusBlock = `<div class="bonus-band" id="brinde"><div class="bonus-copy"><p class="eyebrow">Você não sai só com o evento</p><h3>Ganhe o treinamento completo Destravando o Mercado Livre</h3><p>Use o treinamento como material de apoio para revisar os fundamentos no seu ritmo, consultar quando surgir uma dúvida e continuar aplicando o conteúdo depois da imersão.</p></div><div class="bonus-price-box"><span class="bonus-from">Valor do treinamento <del>R$ 197</del></span><strong class="bonus-to">Incluso</strong><span class="bonus-note">Sem custo adicional no ingresso individual ou duplo.</span></div></div>`;
 
+const duoCheckoutGuide = `<aside class="duo-checkout-guide" aria-labelledby="duo-guide-title">
+  <div class="duo-guide-heading"><span>Ingresso duplo sem erro</span><strong id="duo-guide-title">Como pagar R$ 297 pelas 2 pessoas</strong></div>
+  <div class="duo-guide-step"><b>01</b><span>Escolha o ingresso e mantenha a quantidade em <strong>1 unidade</strong>.</span></div>
+  <div class="duo-guide-step"><b>02</b><span>No checkout, marque <strong>“Adicionar 2º ingresso por R$ 40”</strong>.</span></div>
+  <p><strong>Importante:</strong> não coloque 2 unidades no carrinho, porque isso dobra o valor.</p>
+</aside>`;
+
 const enhancementScript = `<script>
 (function(){
   function playHeroVideo(){
@@ -143,13 +150,20 @@ module.exports = async function handler(req, res) {
     );
 
     html = html
+      .replace('<div class="ticket-grid">', `${duoCheckoutGuide}\n<div class="ticket-grid">`)
+      .replace(
+        '<p class="duo-instruction" id="duo-instruction"><b>Como comprar:</b> no checkout, selecione o adicional de R$ 40 antes de pagar.</p>',
+        '<p class="duo-instruction" id="duo-instruction"><b>No checkout:</b> mantenha 1 unidade e marque “Adicionar 2º ingresso por R$ 40”.</p>'
+      );
+
+    html = html
       .replaceAll(' ↗','')
       .replaceAll('<span class="arrow" aria-hidden="true">↗</span>','')
       .replaceAll('<span aria-hidden="true">↗</span>','');
 
     html = html.replace(
       '</head>',
-      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v13.css?v=13">\n<link rel="stylesheet" href="/design-v14.css?v=14">\n</head>'
+      '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">\n<link rel="stylesheet" href="/design-v13.css?v=13">\n<link rel="stylesheet" href="/design-v14.css?v=14">\n<link rel="stylesheet" href="/design-v15.css?v=15">\n</head>'
     );
 
     html = html.replace('</body>', `${enhancementScript}\n</body>`);
