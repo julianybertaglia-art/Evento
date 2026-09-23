@@ -1,4 +1,4 @@
-const CACHE = 'imersao-ecommerce-apresentacao-v3-1920-offline';
+const CACHE = 'imersao-ecommerce-apresentacao-v4-1920-offline';
 const ASSETS = [
   './',
   './index.html',
@@ -49,7 +49,7 @@ self.addEventListener('fetch', event => {
   if (request.method !== 'GET') return;
 
   event.respondWith(
-    caches.match(request).then(cached => {
+    caches.match(request, { ignoreSearch: true }).then(cached => {
       if (cached) return cached;
 
       return fetch(request).then(response => {
@@ -60,7 +60,7 @@ self.addEventListener('fetch', event => {
         return response;
       }).catch(() => {
         if (request.mode === 'navigate') return caches.match('./index.html');
-        return caches.match(request);
+        return caches.match(request, { ignoreSearch: true });
       });
     })
   );
