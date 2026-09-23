@@ -3,59 +3,58 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Imersão Ecommerce — FINAL</title>
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Imersão Ecommerce — Apresentação Final</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif}body{cursor:none}.ui{cursor:default}#viewport{position:fixed;inset:0;background:#000;overflow:hidden}#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;background:#000;overflow:hidden}#slides,.slide{position:absolute;inset:0}.slide{opacity:0;pointer-events:none;background:#000;transition:opacity .28s ease}.slide.active{opacity:1;pointer-events:auto}.photo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000}.photo img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;background:#000}.photo.cover img{object-fit:cover}.slideName{position:absolute;left:42px;bottom:36px;z-index:10;font-size:13px;font-weight:900;letter-spacing:.18em;color:rgba(255,216,61,.85);text-transform:uppercase;text-shadow:0 0 12px #000}.slideNo{position:absolute;right:42px;bottom:36px;z-index:10;font-size:16px;font-weight:800;letter-spacing:.18em;color:#ffffff88;text-shadow:0 0 12px #000}.progress{position:absolute;left:0;bottom:0;height:6px;background:#ffd83d;z-index:20;box-shadow:0 0 18px rgba(255,216,61,.65);transition:width .2s}.dots{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);z-index:10;display:flex;gap:7px}.dot{width:6px;height:6px;border-radius:999px;background:rgba(255,255,255,.25)}.dot.on{width:26px;background:#ffd83d}#controls{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:100;display:flex;gap:10px;opacity:0;transition:.2s}.ui #controls{opacity:1}button{border:1px solid #ffffff26;background:#111c;color:#fff;border-radius:999px;padding:10px 16px;font:700 12px Arial;backdrop-filter:blur(10px)}button.primary{background:#ffd83d!important;color:#000!important}.hint{position:fixed;right:18px;bottom:22px;z-index:100;color:#ffffff80;font-size:11px;opacity:0}.ui .hint{opacity:1}.loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#ffd83d;font-weight:900;letter-spacing:.18em;text-transform:uppercase;background:#000;z-index:1}.ok+.loading{display:none}.error{position:absolute;inset:0;display:none;align-items:center;justify-content:center;text-align:center;color:#ffd83d;font-size:34px;font-weight:900;background:#000;z-index:3}.photo.fail .error{display:flex}.photo.fail img{display:none}.lunchSlide{position:absolute;inset:0;background:radial-gradient(circle at 50% 18%,rgba(255,216,61,.13),transparent 30%),linear-gradient(180deg,#030303 0%,#090805 50%,#020202 100%);display:flex;align-items:center;justify-content:center;text-align:center}.lunchTitle{font-size:86px;font-weight:900;letter-spacing:-.045em;text-transform:uppercase}.lunchTitle span{color:#ffd83d}.timerBox{margin:48px auto 0;min-width:900px;padding:34px 66px 39px;border-radius:34px;border:2px solid rgba(255,216,61,.38);background:linear-gradient(180deg,rgba(0,0,0,.78),rgba(18,14,8,.92));box-shadow:0 0 40px rgba(255,216,61,.18),inset 0 0 45px rgba(255,216,61,.06)}#lunchTimer{font-size:150px;line-height:1;font-weight:900;color:#ffd83d;font-variant-numeric:tabular-nums}#lunchSub{margin-top:38px;font-size:42px;letter-spacing:.04em}.slide[data-kind='lunch'] .slideName,.slide[data-kind='lunch'] .slideNo{display:none}#dust{position:absolute;inset:0;width:1920px;height:1080px;z-index:5;pointer-events:none}.beam{position:absolute;top:-10px;width:8px;height:1130px;border-radius:999px;z-index:4;opacity:0;background:linear-gradient(180deg,rgba(255,235,150,0),rgba(255,221,95,1),rgba(255,214,58,0));box-shadow:0 0 22px rgba(255,216,61,.85),0 0 90px rgba(255,178,0,.35);mix-blend-mode:screen}.beam.left{left:585px;transform:rotate(15deg)}.beam.right{left:1440px;transform:rotate(17deg)}.slide.active .beam{animation:beamIn 1s ease forwards,pulse 2.4s ease-in-out 1s infinite}@keyframes beamIn{from{opacity:0;transform:scaleY(.05) rotate(15deg)}to{opacity:.75}}@keyframes pulse{50%{opacity:.45}}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;color:#fff;font-family:Arial,Helvetica,sans-serif}body{cursor:none}.ui{cursor:default}#viewport{position:fixed;inset:0;background:#000;overflow:hidden}#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;background:#000;overflow:hidden}#slides{position:absolute;inset:0}.slide{position:absolute;inset:0;opacity:0;pointer-events:none;background:#000;transition:opacity .25s ease}.slide.active{opacity:1;pointer-events:auto}.photo{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#000}.photo img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}.slideName{position:absolute;left:28px;bottom:22px;z-index:20;font-size:13px;font-weight:800;letter-spacing:.16em;color:#ffd83d;text-transform:uppercase;text-shadow:0 2px 10px #000}.slideNo{position:absolute;right:28px;bottom:22px;z-index:20;font-size:14px;font-weight:800;color:#ffffff9e;text-shadow:0 2px 10px #000}.progress{position:absolute;left:0;bottom:0;height:7px;background:#ffd83d;z-index:40;transition:width .25s ease}.dots{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);z-index:21;display:flex;gap:7px;max-width:1320px;flex-wrap:wrap;justify-content:center}.dot{width:6px;height:6px;border-radius:99px;background:#ffffff3a}.dot.on{width:26px;background:#ffd83d}#controls{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:100;display:flex;gap:10px;opacity:0;transition:.2s}.ui #controls{opacity:1}button,a.btn{border:1px solid #ffffff30;background:#111c;color:#fff;border-radius:999px;padding:11px 17px;font:700 13px Arial;text-decoration:none;backdrop-filter:blur(10px)}button.primary,a.primary{background:#ffd83d!important;color:#000!important}.hint{position:fixed;right:18px;top:18px;z-index:101;color:#ffffffb0;font-size:12px;opacity:0;background:#0009;padding:8px 12px;border-radius:999px}.ui .hint{opacity:1}.lunchSlide{position:absolute;inset:0;background:radial-gradient(circle at 50% 22%,rgba(255,216,61,.16),transparent 32%),linear-gradient(180deg,#050505,#0a0804,#020202);display:flex;align-items:center;justify-content:center;text-align:center}.lunchWrap{position:relative;z-index:2}.lunchTitle{font-size:92px;font-weight:900;letter-spacing:-.045em;text-transform:uppercase}.lunchTitle span{color:#ffd83d}.timerBox{margin:52px auto 0;min-width:900px;padding:34px 66px 39px;border-radius:34px;border:2px solid rgba(255,216,61,.42);background:linear-gradient(180deg,rgba(0,0,0,.82),rgba(18,14,8,.94));box-shadow:0 0 42px rgba(255,216,61,.18),inset 0 0 45px rgba(255,216,61,.07)}#lunchTimer{font-size:152px;line-height:1;font-weight:900;color:#ffd83d;font-variant-numeric:tabular-nums}#lunchSub{margin-top:38px;font-size:42px;letter-spacing:.04em}.lunchReturn{margin-top:18px;font-size:24px;color:rgba(255,216,61,.9);font-weight:800;letter-spacing:.10em;text-transform:uppercase}.slide[data-kind='lunch'] .slideName,.slide[data-kind='lunch'] .slideNo{display:none}
 </style>
 </head>
 <body>
-<div id="viewport"><div id="stage"><canvas id="dust" width="1920" height="1080"></canvas><div id="slides"></div><div class="progress" id="progress"></div><div class="dots" id="dots"></div></div></div>
-<div id="controls"><button id="prev">◀ Voltar</button><button class="primary" id="full">Tela cheia</button><button id="next">Avançar ▶</button></div><div class="hint">← → / espaço • F tela cheia • L reinicia almoço</div>
+<div id="viewport"><div id="stage"><div id="slides"></div><div class="progress" id="progress"></div><div class="dots" id="dots"></div></div></div>
+<div id="controls"><button id="prev">◀ Voltar</button><button class="primary" id="full">Tela cheia</button><button id="next">Avançar ▶</button><a class="btn" href="organizar/" target="_blank">Organizar</a></div><div class="hint">← → / espaço • F tela cheia • L reinicia almoço • O organizar</div>
 <script>
-const VERSION='final-carrega-imagens-1320';
-const BASE='https://raw.githubusercontent.com/julianybertaglia-art/Evento/main/apresentacao/assets/';
-const slidesData=[
-{src:'1.jpg',label:'abertura',kind:'opening'},
-{src:'2.jpg',label:'imersão'},
-{src:'3.jpg',label:'imersão'},
-{src:'4.jpg',label:'imersão'},
-{src:'5.jpg',label:'imersão'},
-{src:'6.jpg',label:'formas de vender online'},
-{src:'16.jpg',label:'mercado livre estratégias'},
-{src:'9.jpg',label:'análise de mercado'},
-{src:'10.jpg',label:'análise de mercado'},
-{src:'11.jpg',label:'desenvolvimento de produto'},
-{src:'12.jpg',label:'desenvolvimento de produto'},
-{kind:'lunch',label:'almoço'},
-{src:'14.jpg',label:'patrocinador'},
-{src:'7.jpg',label:'importação'},
-{src:'8.jpg',label:'importação'},
-{src:'15.jpg',label:'argo'},
-{src:'62c967bd-f9ee-431b-8196-d00fcce24538.png',label:'formulário'},
-{src:'18.jpg',label:'imersão'},
-{src:'Apresentação A - Gui Nonato (16).jpg',label:'mentoria'},
-{src:'Apresentação A - Gui Nonato (17).jpg',label:'inscrição'}
+const VERSION='ordem-visual-20260923-1318';
+const BASE='../apresentacao/assets/';
+const STORAGE_KEY='imersao_final_slide_order_v2';
+const SLIDES=[
+{id:'abertura',src:'1.jpg',label:'Abertura',kind:'opening'},
+{id:'s2',src:'2.jpg',label:'Imersão'},
+{id:'s3',src:'3.jpg',label:'Imersão'},
+{id:'s4',src:'4.jpg',label:'Imersão'},
+{id:'s5',src:'5.jpg',label:'Imersão'},
+{id:'formas',src:'6.jpg',label:'Formas de vender online'},
+{id:'ml',src:'16.jpg',label:'Mercado Livre — Estratégias'},
+{id:'analise1',src:'9.jpg',label:'Análise de Mercado'},
+{id:'analise2',src:'10.jpg',label:'Análise de Mercado'},
+{id:'produto',src:'11.jpg',label:'Desenvolvimento de Produto'},
+{id:'tvx',src:'12.jpg',label:'TVX'},
+{id:'almoco',kind:'lunch',label:'Almoço'},
+{id:'patrocinador',src:'14.jpg',label:'Patrocinador'},
+{id:'import1',src:'7.jpg',label:'Importação'},
+{id:'import2',src:'8.jpg',label:'Importação'},
+{id:'argo',src:'15.jpg',label:'Argo'},
+{id:'formulario',src:'62c967bd-f9ee-431b-8196-d00fcce24538.png',label:'Formulário'},
+{id:'imersao18',src:'18.jpg',label:'Imersão'},
+{id:'mentoria',src:'Apresentação A - Gui Nonato (16).jpg',label:'Mentoria'},
+{id:'qr',src:'Apresentação A - Gui Nonato (17).jpg',label:'QR Code'}
 ];
+const DEFAULT_ORDER=SLIDES.map(s=>s.id);
+function getOrderedSlides(){let ids;try{ids=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null')}catch(e){}if(!Array.isArray(ids))ids=DEFAULT_ORDER;const map=new Map(SLIDES.map(s=>[s.id,s]));const used=new Set();const ordered=[];ids.forEach(id=>{if(map.has(id)&&!used.has(id)){ordered.push(map.get(id));used.add(id)}});SLIDES.forEach(s=>{if(!used.has(s.id))ordered.push(s)});return ordered}
+const ordered=getOrderedSlides();
 const LUNCH_DURATION=60*60;let lunchEndAt=null,lunchTimerInterval=null;
-const lunchHTML=`<div class="lunchSlide"><div><div class="lunchTitle">PAUSA PARA O <span>ALMOÇO</span></div><div class="timerBox"><div id="lunchTimer">01:00:00</div></div><div id="lunchSub">Retornamos em 1 hora</div></div></div>`;
-function srcUrl(s){return BASE+encodeURIComponent(s).replace(/%2F/g,'/')+'?v='+VERSION}
-function slideContent(s,i){if(s.kind==='lunch')return lunchHTML;const u=srcUrl(s.src);return `<div class="photo"><img src="${u}" alt="Slide ${i+1}" decoding="sync" loading="${i<4?'eager':'lazy'}" onload="this.classList.add('ok')" onerror="this.parentElement.classList.add('fail')"><div class="loading">carregando slide</div><div class="error">Imagem não carregou<br><small>${s.src}</small></div></div>${i===0?'<div class="beam left"></div><div class="beam right"></div>':''}`}
-const wrap=document.getElementById('slides'),dots=document.getElementById('dots');
-wrap.innerHTML=slidesData.map((s,i)=>`<section class="slide ${i===0?'active':''}" data-kind="${s.kind||'image'}">${slideContent(s,i)}<div class="slideName">${s.label}</div><div class="slideNo">${String(i+1).padStart(2,'0')}</div></section>`).join('');
-dots.innerHTML=slidesData.map((_,i)=>`<span class="dot ${i===0?'on':''}"></span>`).join('');
-const slides=[...document.querySelectorAll('.slide')],dotEls=[...document.querySelectorAll('.dot')],stage=document.getElementById('stage'),progress=document.getElementById('progress');let idx=0,uiTimer;
-function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`}addEventListener('resize',fit);fit();
-function showUI(){document.body.classList.add('ui');clearTimeout(uiTimer);uiTimer=setTimeout(()=>document.body.classList.remove('ui'),1800)}addEventListener('mousemove',showUI);showUI();
-function updateProgress(){progress.style.width=((idx+1)/slides.length*100)+'%'}
-function go(n){n=Math.max(0,Math.min(slides.length-1,n));if(n===idx)return;slides[idx].classList.remove('active');dotEls[idx].classList.remove('on');idx=n;slides[idx].classList.add('active');dotEls[idx].classList.add('on');updateProgress();if(slidesData[idx].kind==='lunch')startLunchTimer(false)}
 function formatTime(t){const h=String(Math.floor(t/3600)).padStart(2,'0'),m=String(Math.floor((t%3600)/60)).padStart(2,'0'),s=String(t%60).padStart(2,'0');return `${h}:${m}:${s}`}
 function human(t){const h=Math.floor(t/3600),m=Math.floor((t%3600)/60);if(h>0&&m>0)return `Retornamos em ${h} hora e ${m} minutos`;if(h>0)return `Retornamos em ${h} hora`;if(m>0)return `Retornamos em ${m} minutos`;return 'Estamos voltando'}
-function updateLunchTimer(){if(!lunchEndAt)return;const left=Math.max(0,Math.ceil((lunchEndAt-Date.now())/1000));const timer=document.getElementById('lunchTimer'),sub=document.getElementById('lunchSub');if(timer)timer.textContent=formatTime(left);if(sub)sub.textContent=left>0?human(left):'Estamos voltando';if(left<=0&&lunchTimerInterval){clearInterval(lunchTimerInterval);lunchTimerInterval=null}}
+function updateLunchTimer(){if(!lunchEndAt)return;const left=Math.max(0,Math.ceil((lunchEndAt-Date.now())/1000));const timer=document.getElementById('lunchTimer'),sub=document.getElementById('lunchSub'),ret=document.getElementById('lunchReturn');if(timer)timer.textContent=formatTime(left);if(sub)sub.textContent=left>0?human(left):'Estamos voltando';if(ret){const d=new Date(lunchEndAt);ret.textContent=left>0?'RETORNO PREVISTO: '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'}):'RETORNO AGORA'}if(left<=0&&lunchTimerInterval){clearInterval(lunchTimerInterval);lunchTimerInterval=null}}
 function startLunchTimer(reset=false){if(reset||!lunchEndAt)lunchEndAt=Date.now()+LUNCH_DURATION*1000;updateLunchTimer();if(lunchTimerInterval)clearInterval(lunchTimerInterval);lunchTimerInterval=setInterval(updateLunchTimer,1000)}
-updateProgress();document.getElementById('next').onclick=()=>go(idx+1);document.getElementById('prev').onclick=()=>go(idx-1);document.getElementById('full').onclick=()=>document.documentElement.requestFullscreen?.();
-addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();go(idx+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(idx-1)}if(e.key==='Home')go(0);if(e.key==='End')go(slides.length-1);if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.();if(e.key.toLowerCase()==='l')startLunchTimer(true)});
-const canvas=document.getElementById('dust'),ctx=canvas.getContext('2d');const pts=Array.from({length:160},()=>({x:Math.random()*1920,y:Math.random()*1080,r:.5+Math.random()*2.4,v:.18+Math.random()*.5,dx:(Math.random()-.5)*.22,a:.04+Math.random()*.22}));
-(function dustLoop(){ctx.clearRect(0,0,1920,1080);if(idx===0){for(const p of pts){p.y+=p.v;p.x+=p.dx;if(p.y>1092){p.y=-16;p.x=Math.random()*1920}ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,220,115,${p.a})`;ctx.fill()}}requestAnimationFrame(dustLoop)})();
+function slideHTML(s,i){if(s.kind==='lunch')return `<section class="slide ${i===0?'active':''}" data-kind="lunch"><div class="lunchSlide"><div class="lunchWrap"><div class="lunchTitle">PAUSA PARA O <span>ALMOÇO</span></div><div class="timerBox"><div id="lunchTimer">01:00:00</div></div><div id="lunchSub">Retornamos em 1 hora</div><div class="lunchReturn" id="lunchReturn"></div></div></div><div class="slideName">${s.label}</div><div class="slideNo">${String(i+1).padStart(2,'0')}</div></section>`;const url=BASE+encodeURIComponent(s.src).replace(/%2F/g,'/')+'?v='+VERSION;return `<section class="slide ${i===0?'active':''}" data-kind="${s.kind||'image'}"><div class="photo"><img src="${url}" alt="${s.label}" loading="${i<4?'eager':'lazy'}"></div><div class="slideName">${s.label}</div><div class="slideNo">${String(i+1).padStart(2,'0')}</div></section>`}
+const wrap=document.getElementById('slides'),dots=document.getElementById('dots');wrap.innerHTML=ordered.map(slideHTML).join('');dots.innerHTML=ordered.map((_,i)=>`<span class="dot ${i===0?'on':''}"></span>`).join('');
+const slides=[...document.querySelectorAll('.slide')],dotEls=[...document.querySelectorAll('.dot')],stage=document.getElementById('stage'),progress=document.getElementById('progress');let idx=0,uiTimer;
+function fit(){const s=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`translate(-50%,-50%) scale(${s})`}addEventListener('resize',fit);fit();
+function showUI(){document.body.classList.add('ui');clearTimeout(uiTimer);uiTimer=setTimeout(()=>document.body.classList.remove('ui'),1600)}addEventListener('mousemove',showUI);showUI();
+function afterSlide(){progress.style.width=((idx+1)/slides.length*100)+'%';if(ordered[idx].kind==='lunch')startLunchTimer(false)}
+function go(n){n=Math.max(0,Math.min(slides.length-1,n));if(n===idx)return;slides[idx].classList.remove('active');dotEls[idx].classList.remove('on');idx=n;slides[idx].classList.add('active');dotEls[idx].classList.add('on');afterSlide()}
+progress.style.width=(1/slides.length*100)+'%';document.getElementById('next').onclick=()=>go(idx+1);document.getElementById('prev').onclick=()=>go(idx-1);document.getElementById('full').onclick=()=>document.documentElement.requestFullscreen?.();
+addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();go(idx+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(idx-1)}if(e.key==='Home')go(0);if(e.key==='End')go(slides.length-1);if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.();if(e.key.toLowerCase()==='l')startLunchTimer(true);if(e.key.toLowerCase()==='o')open('organizar/','_blank')});
 </script>
 </body>
 </html>
