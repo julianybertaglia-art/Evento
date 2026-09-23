@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Organizar slides — Imersão Ecommerce</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#090909;color:#fff;font-family:Arial,Helvetica,sans-serif;padding:22px}.top{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,#090909 0%,#090909ee 80%,transparent);padding:0 0 18px}.bar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.title h1{margin:0;font-size:30px}.title p{margin:6px 0 0;color:#bbb;font-size:15px}.actions{display:flex;gap:10px;flex-wrap:wrap}button,a{border:1px solid #ffffff2d;background:#161616;color:#fff;border-radius:999px;padding:12px 16px;font:800 14px Arial;text-decoration:none;cursor:pointer}.primary{background:#ffd83d!important;color:#000!important;border-color:#ffd83d!important}.danger{background:#301313;color:#ffbaba}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-top:16px}.card{background:#141414;border:1px solid #ffffff18;border-radius:18px;overflow:hidden;cursor:grab;box-shadow:0 10px 24px #0005}.card.dragging{opacity:.35}.thumb{height:146px;background:#000;display:flex;align-items:center;justify-content:center;position:relative}.thumb img{max-width:100%;max-height:100%;object-fit:contain}.lunch{height:146px;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 20%,rgba(255,216,61,.18),transparent 35%),linear-gradient(180deg,#050505,#100d04,#030303);font-weight:900;color:#ffd83d;font-size:26px}.meta{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center;padding:12px}.num{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#ffd83d;color:#000;font-weight:900}.name{font-weight:900;font-size:15px;line-height:1.2}.id{font-size:11px;color:#999;margin-top:3px}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#ffd83d;color:#000;padding:13px 18px;border-radius:999px;font-weight:900;opacity:0;pointer-events:none;transition:.2s;z-index:50}.toast.show{opacity:1}.note{margin-top:12px;color:#d7d7d7;background:#151515;border:1px solid #ffffff14;padding:13px 16px;border-radius:16px;font-size:14px;line-height:1.35}
+</style>
+</head>
+<body>
+<div class="top"><div class="bar"><div class="title"><h1>Organizar slides</h1><p>Arraste os blocos para mudar a ordem. Depois clique em salvar.</p></div><div class="actions"><button class="primary" id="save">Salvar ordem</button><a class="primary" href="../" target="_blank">Abrir apresentação</a><button id="correct">Aplicar ordem correta</button><button class="danger" id="reset">Resetar</button></div></div><div class="note">Essa ordem fica salva neste navegador. Use este painel no notebook que vai abrir a apresentação no evento.</div></div>
+<div id="grid" class="grid"></div><div id="toast" class="toast">Ordem salva</div>
+<script>
+const VERSION='organizador-20260923-1320';
+const BASE='../../apresentacao/assets/';
+const STORAGE_KEY='imersao_final_slide_order_v2';
+const SLIDES=[
+{id:'abertura',src:'1.jpg',label:'Abertura'},
+{id:'s2',src:'2.jpg',label:'Imersão'},
+{id:'s3',src:'3.jpg',label:'Imersão'},
+{id:'s4',src:'4.jpg',label:'Imersão'},
+{id:'s5',src:'5.jpg',label:'Imersão'},
+{id:'formas',src:'6.jpg',label:'Formas de vender online'},
+{id:'ml',src:'16.jpg',label:'Mercado Livre — Estratégias'},
+{id:'analise1',src:'9.jpg',label:'Análise de Mercado'},
+{id:'analise2',src:'10.jpg',label:'Análise de Mercado'},
+{id:'produto',src:'11.jpg',label:'Desenvolvimento de Produto'},
+{id:'tvx',src:'12.jpg',label:'TVX'},
+{id:'almoco',kind:'lunch',label:'Almoço / cronômetro 1h'},
+{id:'patrocinador',src:'14.jpg',label:'Patrocinador'},
+{id:'import1',src:'7.jpg',label:'Importação'},
+{id:'import2',src:'8.jpg',label:'Importação'},
+{id:'argo',src:'15.jpg',label:'Argo'},
+{id:'formulario',src:'62c967bd-f9ee-431b-8196-d00fcce24538.png',label:'Formulário'},
+{id:'imersao18',src:'18.jpg',label:'Imersão'},
+{id:'mentoria',src:'Apresentação A - Gui Nonato (16).jpg',label:'Mentoria'},
+{id:'qr',src:'Apresentação A - Gui Nonato (17).jpg',label:'QR Code'}
+];
+const CORRECT=['abertura','s2','s3','s4','s5','formas','ml','analise1','analise2','produto','tvx','almoco','patrocinador','import1','import2','argo','formulario','imersao18','mentoria','qr'];
+function loadOrder(){let ids;try{ids=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null')}catch(e){}if(!Array.isArray(ids))ids=CORRECT;const map=new Map(SLIDES.map(s=>[s.id,s]));const out=[];const used=new Set();ids.forEach(id=>{if(map.has(id)&&!used.has(id)){out.push(map.get(id));used.add(id)}});SLIDES.forEach(s=>{if(!used.has(s.id))out.push(s)});return out}
+let current=loadOrder();
+const grid=document.getElementById('grid'),toast=document.getElementById('toast');
+function imgUrl(src){return BASE+encodeURIComponent(src).replace(/%2F/g,'/')+'?v='+VERSION}
+function render(){grid.innerHTML=current.map((s,i)=>`<div class="card" draggable="true" data-id="${s.id}"><div class="thumb">${s.kind==='lunch'?'<div class="lunch">ALMOÇO<br>01:00:00</div>':`<img src="${imgUrl(s.src)}" alt="${s.label}">`}</div><div class="meta"><div class="num">${i+1}</div><div><div class="name">${s.label}</div><div class="id">${s.id}</div></div></div></div>`).join('');bindDrag()}
+function bindDrag(){let dragged=null;document.querySelectorAll('.card').forEach(card=>{card.addEventListener('dragstart',()=>{dragged=card;card.classList.add('dragging')});card.addEventListener('dragend',()=>{card.classList.remove('dragging');syncFromDom();render()});card.addEventListener('dragover',e=>{e.preventDefault();const after=getAfterElement(grid,e.clientY);if(after==null)grid.appendChild(dragged);else grid.insertBefore(dragged,after)})})}
+function getAfterElement(container,y){const els=[...container.querySelectorAll('.card:not(.dragging)')];return els.reduce((closest,child)=>{const box=child.getBoundingClientRect();const offset=y-box.top-box.height/2;if(offset<0&&offset>closest.offset)return{offset,element:child};return closest},{offset:Number.NEGATIVE_INFINITY}).element}
+function syncFromDom(){const ids=[...document.querySelectorAll('.card')].map(el=>el.dataset.id);const map=new Map(SLIDES.map(s=>[s.id,s]));current=ids.map(id=>map.get(id)).filter(Boolean)}
+function save(){syncFromDom();localStorage.setItem(STORAGE_KEY,JSON.stringify(current.map(s=>s.id)));toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1600)}
+document.getElementById('save').onclick=save;document.getElementById('reset').onclick=()=>{localStorage.removeItem(STORAGE_KEY);current=SLIDES.slice();render();save()};document.getElementById('correct').onclick=()=>{const map=new Map(SLIDES.map(s=>[s.id,s]));current=CORRECT.map(id=>map.get(id));render();save()};
+render();
+</script>
+</body>
+</html>
