@@ -12,7 +12,7 @@
 <div id="viewport"><div id="stage"><canvas id="dust" width="1920" height="1080"></canvas><div id="slides"></div><div class="grain"></div><div class="wipe" id="wipe"></div><div class="progress" id="progress"></div><div class="dots" id="dots"></div></div></div>
 <div id="controls"><button id="prev">◀ Voltar</button><button class="primary" id="full">Tela cheia</button><button id="next">Avançar ▶</button></div><div id="hint">← → / espaço • F tela cheia • R efeito • L reinicia almoço</div><div id="ready" class="ready">v7 • offline pronto</div>
 <script>
-const VERSION='v7-final-ordem-almoco-1h';
+const VERSION='v8-final-qr-pix';
 const SLIDES=[
 {src:'assets/1.jpg',kind:'opening',label:'abertura'},
 {src:'assets/2.jpg',kind:'image',label:'imersão'},
@@ -34,7 +34,7 @@ const SLIDES=[
 {src:'assets/62c967bd-f9ee-431b-8196-d00fcce24538.png',kind:'image',label:'formulário'},
 {src:'assets/18.jpg',kind:'image',label:'imersão'},
 {src:'assets/Apresentação A - Gui Nonato (16).jpg',kind:'closing',label:'mentoria'},
-{src:'assets/Apresentação A - Gui Nonato (17).jpg',kind:'image',label:'inscrição'}
+{src:'assets/Apresentação A - Gui Nonato (19).jpg',kind:'image',label:'inscrição'}
 ];
 const marketHTML=`<div class='marketSlide'><div class='marketInner'><div class='marketKicker'>Principais marketplaces do Brasil</div><div class='marketTitle'>Comparativo de faturamento geral</div><div class='bars'><div class='bar'><div class='name'><span class='logoWrap'>ML</span><span>Mercado Livre</span></div><div class='track'><div class='fill' style='width:100%'></div></div><div class='val'>Referência</div></div><div class='bar'><div class='name'><span class='logoWrap'>S</span><span>Shopee</span></div><div class='track'><div class='fill' style='width:72%'></div></div><div class='val'>Alto volume</div></div><div class='bar'><div class='name'><span class='logoWrap'>A</span><span>Amazon</span></div><div class='track'><div class='fill' style='width:58%'></div></div><div class='val'>Crescimento</div></div><div class='bar'><div class='name'><span class='logoWrap'>M</span><span>Magalu</span></div><div class='track'><div class='fill' style='width:42%'></div></div><div class='val'>Varejo + marketplace</div></div><div class='bar'><div class='name'><span class='logoWrap'>TT</span><span>TikTok Shop</span></div><div class='track'><div class='fill' style='width:30%'></div></div><div class='val'>Forte crescimento</div></div></div></div></div>`;
 const LUNCH_DURATION=60*60;let lunchEndAt=null,lunchTimerInterval=null;
