@@ -1,4 +1,4 @@
-const CACHE = 'imersao-ecommerce-apresentacao-v7-final-ordem';
+const CACHE = 'imersao-ecommerce-apresentacao-v8-final-qr-pix';
 const ASSETS = [
   './',
   './index.html',
@@ -20,7 +20,7 @@ const ASSETS = [
   './assets/18.jpg',
   './assets/62c967bd-f9ee-431b-8196-d00fcce24538.png',
   './assets/Apresentação A - Gui Nonato (16).jpg',
-  './assets/Apresentação A - Gui Nonato (17).jpg'
+  './assets/Apresentação A - Gui Nonato (19).jpg'
 ];
 
 self.addEventListener('install', event => {
