@@ -36,7 +36,61 @@ button,a{border:1px solid #34343a;background:#1a1a1e;color:#fff;border-radius:10
 body.full .top, body.full .legend{display:none}
 body.full .viewport{padding:10px}
 body.full .floor{border:0;border-radius:0;min-height:100vh}
-@media print{.top,.legend{display:none!important}.viewport{padding:0}.floor{border:0;border-radius:0;background:#fff;color:#000;transform:scale(.62);transform-origin:top left}.table-card,.seat,.person{background:#fff;color:#000;box-shadow:none}.stage{color:#111;box-shadow:none}@page{size:A4 landscape;margin:0}}
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  html,body{background:#fff!important;color:#111!important}
+  .top,.legend{display:none!important}
+  .viewport{padding:0!important;background:#fff!important;overflow:visible!important}
+  .canvas-wrap{width:auto!important;height:auto!important}
+  .floor{
+    border:0!important;
+    border-radius:0!important;
+    background:
+      linear-gradient(#ececf0 1px,transparent 1px),
+      linear-gradient(90deg,#ececf0 1px,transparent 1px),
+      #fff!important;
+    background-size:34px 34px!important;
+    color:#111!important;
+    transform:scale(.62)!important;
+    transform-origin:top left!important;
+  }
+  .stage{
+    background:#f5dd91!important;
+    border-color:#a88628!important;
+    color:#3b2b00!important;
+    box-shadow:none!important
+  }
+  .table-card{
+    background:#f8f8fa!important;
+    border-color:#b9bbc4!important;
+    box-shadow:none!important
+  }
+  .table-surface{
+    background:#fff2c8!important;
+    border-color:#a88628!important;
+    color:#6b520f!important
+  }
+  .seat{
+    background:#fff!important;
+    border-color:#bfc1c8!important;
+    color:#111!important
+  }
+  .seat.empty{
+    background:#f3f3f5!important
+  }
+  .person{
+    background:#fff!important;
+    color:#111!important;
+    box-shadow:none!important
+  }
+  .person.seller{border-left-color:#d4a400!important}
+  .person.iniciante{border-left-color:#2d8fd5!important}
+  .person.convidado{border-left-color:#9b55cf!important}
+  .person.acompanhante{border-left-color:#3ba86f!important}
+  .nm{color:#111!important}
+  .meta,.seat-no,.stage small{color:#555!important}
+  @page{size:A4 landscape;margin:0}
+}
 </style>
 </head>
 <body>
