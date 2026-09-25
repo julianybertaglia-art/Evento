@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mapa de Lugares — Imersão Ecommerce</title>
+<style>
+:root{
+  --bg:#0b0b0c;--panel:#141416;--panel2:#1a1a1d;--line:#2a2a2f;--text:#f5f5f6;--muted:#a9a9b2;
+  --seller:#f4c542;--iniciante:#5db7ff;--convidado:#c77dff;--acomp:#62d394;--empty:#2a2a2f;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,Helvetica,sans-serif}
+body{min-height:100vh}
+button,input{font:inherit}
+.app{display:grid;grid-template-columns:360px minmax(0,1fr);min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;overflow:auto;background:#101012;border-right:1px solid var(--line);padding:18px}
+.brand{display:flex;gap:12px;align-items:center;margin-bottom:16px}
+.logo{width:42px;height:42px;border-radius:12px;background:var(--seller);color:#111;display:grid;place-items:center;font-weight:1000}
+h1{font-size:20px;margin:0}.sub{color:var(--muted);font-size:12px;margin-top:4px;line-height:1.35}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+button{border:1px solid var(--line);background:#1b1b1f;color:#fff;border-radius:10px;padding:10px 12px;font-weight:800;cursor:pointer}
+button:hover{background:#232328}.danger{color:#ff9a9a}
+.search{width:100%;border:1px solid var(--line);background:#0c0c0e;color:#fff;border-radius:10px;padding:11px 12px;outline:none;margin-bottom:12px}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.legend span{font-size:11px;font-weight:900;border-radius:999px;padding:6px 8px;color:#111}
+.legend .seller{background:var(--seller)}.legend .iniciante{background:var(--iniciante)}.legend .convidado{background:var(--convidado)}.legend .acompanhante{background:var(--acomp)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:12px}
+.stat{background:#17171a;border:1px solid var(--line);border-radius:10px;padding:9px}.stat b{display:block;font-size:18px}.stat span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.waiting-title{display:flex;justify-content:space-between;align-items:center;margin:14px 0 8px}.waiting-title b{font-size:13px}.waiting-title small{color:var(--muted)}
+#waiting{min-height:90px;border:1px dashed #3a3a40;border-radius:12px;padding:8px;display:grid;gap:7px}
+.person{border-radius:10px;padding:9px 10px;border-left:5px solid var(--empty);background:#1a1a1e;cursor:grab;box-shadow:0 2px 8px #0004}
+.person.selected{outline:2px solid #fff;outline-offset:2px}
+.person .nm{font-weight:950;font-size:14px;line-height:1.12}.person .meta{font-size:10px;color:var(--muted);margin-top:4px;display:flex;gap:6px;flex-wrap:wrap}
+.person.seller{border-left-color:var(--seller)}.person.iniciante{border-left-color:var(--iniciante)}.person.convidado{border-left-color:var(--convidado)}.person.acompanhante{border-left-color:var(--acomp)}
+.tag{padding:2px 6px;border:1px solid #ffffff18;border-radius:999px}
+.main{min-width:0;overflow:auto;padding:18px 22px 40px}
+.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px;position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg) 75%,transparent);padding-bottom:12px}
+.toolbar h2{font-size:19px;margin:0}.toolbar p{margin:3px 0 0;color:var(--muted);font-size:12px}
+.floor-wrap{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#09090a;padding:18px}
+.floor{position:relative;min-width:1740px;min-height:1410px;padding:18px 30px 40px;background:
+linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1px,transparent 1px),#0c0c0e;background-size:34px 34px}
+.stage{position:relative;margin:0 auto 34px;width:1040px;height:110px;border:2px solid #e9b93a;background:linear-gradient(180deg,#33280d,#181305);border-radius:18px;display:grid;place-items:center;font-size:30px;font-weight:1000;letter-spacing:.12em;color:#ffd85d;box-shadow:0 0 28px #f4c54220}
+.stage small{position:absolute;bottom:8px;font-size:10px;letter-spacing:.16em;color:#fff7}
+.loose{position:absolute;right:35px;top:25px;width:310px}.loose h3{font-size:12px;text-align:center;color:#bbb;margin:0 0 7px;text-transform:uppercase;letter-spacing:.08em}.loose-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.blocks{display:grid;grid-template-columns:1fr 360px 1fr;gap:42px;align-items:start}
+.block{display:grid;gap:54px}.middle{padding-top:235px;display:grid;gap:150px}
+.table-card{background:#0f0f11;border:1px solid #2e2e34;border-radius:18px;padding:12px;box-shadow:0 12px 30px #0005}
+.table-surface{height:76px;border:2px solid #6a5520;background:linear-gradient(180deg,#352a11,#211a0b);border-radius:12px;display:grid;place-items:center;color:#ffd970;font-weight:950;font-size:17px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.seat-row{display:grid;grid-template-columns:repeat(8,minmax(72px,1fr));gap:6px}
+.small-table .seat-row{grid-template-columns:repeat(2,1fr)}
+.small-table .table-surface{height:70px}
+.seat{min-height:88px;border:1px dashed #494951;background:#161619;border-radius:11px;padding:7px;display:flex;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:.15s;position:relative}
+.seat:hover{border-color:#777;background:#1b1b1f}.seat.empty:after{content:"+";font-size:24px;color:#555}.seat.dragover{outline:3px solid #fff;outline-offset:2px}
+.seat .person{width:100%;height:100%;min-height:72px;display:flex;flex-direction:column;justify-content:center;cursor:grab;padding:7px 6px}
+.seat .person .nm{font-size:13px}.seat .person .meta{justify-content:center;font-size:9px}
+.seat-no{position:absolute;right:5px;top:4px;font-size:8px;color:#666;font-weight:900}
+.linked{box-shadow:0 0 0 2px #ffffff33 inset}
+.tip{margin-top:10px;font-size:11px;color:#aaa;line-height:1.4}
+.group-list{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+.group-list summary{cursor:pointer;color:#ddd;font-size:12px;font-weight:900}.group-list div{font-size:11px;color:#aaa;line-height:1.5;margin-top:7px}
+@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.main{padding:12px}.toolbar{position:relative}.floor-wrap{border-radius:12px}}
+@media print{
+  body{background:#fff;color:#000}.app{display:block}.sidebar,.toolbar{display:none!important}.main{padding:0}.floor-wrap{border:0;padding:0;overflow:visible}.floor{transform:scale(.62);transform-origin:top left;background:#fff;min-width:1740px;min-height:1410px}.table-card{background:#fff;color:#000;box-shadow:none}.seat{background:#fff}.person{color:#000;background:#fff}.stage{color:#111;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">IE</div><div><h1>Mapa de lugares</h1><div class="sub">Imersão Ecommerce · lista atualizada da planilha Juliany1</div></div></div>
+    <input id="search" class="search" placeholder="Buscar participante...">
+    <div class="legend">
+      <span class="seller">SELLER</span><span class="iniciante">INICIANTE</span><span class="convidado">CONVIDADO</span><span class="acompanhante">ACOMPANHANTE</span>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="total">58</b><span>participantes</span></div>
+      <div class="stat"><b id="placed">0</b><span>posicionados</span></div>
+      <div class="stat"><b id="free">58</b><span>lugares livres</span></div>
+      <div class="stat"><b id="waitingCount">58</b><span>aguardando</span></div>
+    </div>
+    <div class="actions"><button onclick="window.print()">Imprimir / PDF</button><button id="clear" class="danger">Limpar lugares</button></div>
+    <div class="waiting-title"><b>Participantes para posicionar</b><small>arraste ou clique</small></div>
+    <div id="waiting"></div>
+    <details class="group-list"><summary>Vínculos mantidos</summary><div id="groupsText"></div></details>
+    <div class="tip">Dica: clique em um nome e depois em um lugar vazio. Você também pode arrastar nomes entre lugares. Tudo fica salvo automaticamente neste navegador.</div>
+  </aside>
+
+  <main class="main">
+    <div class="toolbar"><div><h2>Distribuição da sala</h2><p>Palco centralizado · mesas pequenas no meio · cadeiras de cada mesa voltadas para o palco.</p></div><div><button id="unselect">Cancelar seleção</button></div></div>
+    <div class="floor-wrap"><div class="floor">
+      <div class="stage">PALCO <small>FRENTE DA SALA</small></div>
+      <div class="loose"><h3>6 cadeiras laterais</h3><div id="loose" class="loose-grid"></div></div>
+      <div class="blocks">
+        <div id="leftBlock" class="block"></div>
+        <div id="middleBlock" class="middle"></div>
+        <div id="rightBlock" class="block"></div>
+      </div>
+    </div></div>
+  </main>
+</div>
+<script>
+const PARTICIPANTS = [{"id":"alex-navarra","name":"Alex Navarra","category":"iniciante","group":"Alex Navarra"},{"id":"daniel-maestrelo","name":"Daniel Maestrelo Acomp.","category":"acompanhante","group":"Alex Navarra"},{"id":"alexander-miura","name":"Alexander Miura","category":"seller"},{"id":"beatriz-campos","name":"Beatriz Campos","category":"seller","group":"Beatriz Campos"},{"id":"camila-palko","name":"Camila Palko","category":"acompanhante","group":"Beatriz Campos"},{"id":"arnaldo-nakamura","name":"Arnaldo Nakamura","category":"seller","group":"Arnaldo Nakamura"},{"id":"william-prundencio","name":"William Prundencio","category":"acompanhante","group":"Arnaldo Nakamura"},{"id":"bruno-fernandes","name":"Bruno Fernandes","category":"seller"},{"id":"carlos-alberto","name":"Carlos Alberto","category":"convidado","group":"Carlos Alberto"},{"id":"lidiane-cavoli","name":"Lidiane Cavoli acom.","category":"acompanhante","group":"Carlos Alberto"},{"id":"cecilia-nkuansambu","name":"Cecília Nkuansambu","category":"seller"},{"id":"claudia-furlan","name":"Claudia Furlan","category":"iniciante","group":"Claudia Furlan"},{"id":"richard-di-cillo","name":"Richard Di Cillo","category":"acompanhante","group":"Claudia Furlan"},{"id":"daiane-silva","name":"Daiane Silva","category":"convidado","group":"Daiane Silva"},{"id":"marcos-silva","name":"Marcos Silva acom.","category":"acompanhante","group":"Daiane Silva"},{"id":"rejane-conceicao","name":"Rejane Conceição acom.","category":"acompanhante","group":"Daiane Silva"},{"id":"diogo-bernado","name":"Diogo Bernado","category":"seller"},{"id":"eduardo-dias","name":"Eduardo Dias (acomp)","category":"acompanhante"},{"id":"edson-buzi","name":"Edson Buzi","category":"seller"},{"id":"eduardo-nunes","name":"Eduardo Nunes","category":"seller","group":"Eduardo Nunes"},{"id":"thiago-de-jesus","name":"Thiago de Jesus","category":"acompanhante","group":"Eduardo Nunes"},{"id":"gabriel-cavalcantti","name":"Gabriel Cavalcantti","category":"convidado","group":"Gabriel Cavalcantti"},{"id":"bruno-acomp","name":"Bruno","category":"acompanhante","group":"Gabriel Cavalcantti"},{"id":"guilherme-sarmento","name":"Guilherme Sarmento","category":"seller"},{"id":"gustavo-palacios","name":"Gustavo Palacios","category":"seller"},{"id":"gustavo-guimaraes","name":"Gustavo Guimarães","category":"iniciante","group":"Gustavo Guimarães"},{"id":"daniela-sousa","name":"Daniela Sousa","category":"acompanhante","group":"Gustavo Guimarães"},{"id":"gustavo-nonato","name":"Gustavo Nonato","category":"convidado","group":"Gustavo Nonato"},{"id":"nicolas-acom","name":"Nicolas Acom.","category":"acompanhante","group":"Gustavo Nonato"},{"id":"pedro-henrique-acom","name":"Pedro Henrique Acom.","category":"acompanhante","group":"Gustavo Nonato"},{"id":"heitor-bastos","name":"Heitor Bastos","category":"iniciante"},{"id":"jacqueline-nascimento","name":"Jacqueline Nascimento","category":"iniciante"},{"id":"luciana-beltrame","name":"Luciana Beltrame","category":"iniciante"},{"id":"carlos-daniel","name":"Carlos Daniel","category":"iniciante"},{"id":"marcos-vinicius","name":"Marcos Vinícius","category":"iniciante"},{"id":"mary-vercosa","name":"Mary Verçosa","category":"iniciante","group":"Mary Verçosa"},{"id":"yasmin-vercosa","name":"Yasmin Verçosa","category":"acompanhante","group":"Mary Verçosa"},{"id":"matheus-moura","name":"Matheus Moura","category":"seller","group":"Matheus Moura"},{"id":"gabrielle-vitoria","name":"Gabrielle Vitória Acom","category":"acompanhante","group":"Matheus Moura"},{"id":"otavio-fukuda","name":"Otavio Augusto Fukuda","category":"convidado"},{"id":"rafael-morais","name":"Rafael Morais","category":"convidado"},{"id":"rafael-quinalha","name":"Rafael Quinalha","category":"seller","group":"Rafael Quinalha"},{"id":"bruno-quinalha","name":"Bruno Quinalha","category":"acompanhante","group":"Rafael Quinalha"},{"id":"renata-dilys","name":"Renata Dilys","category":"seller"},{"id":"robert-vagner","name":"Robert Vagner","category":"convidado","group":"Robert Vagner"},{"id":"bia-robert","name":"Bia (acomp. Robert)","category":"acompanhante","group":"Robert Vagner"},{"id":"rodolfo-sousa","name":"Rodolfo Sousa","category":"iniciante","group":"Rodolfo Sousa"},{"id":"edlayne","name":"Edlayne Acom.","category":"acompanhante","group":"Rodolfo Sousa"},{"id":"rodrigo-oliveira","name":"Rodrigo Oliveira","category":"seller"},{"id":"sebastiao-goncalvez","name":"Sebastião Gonçalvez","category":"seller"},{"id":"thais-macedo","name":"Thais Macedo","category":"seller","group":"Thais Macedo"},{"id":"beatriz-mariano","name":"Beatriz Mariano","category":"acompanhante","group":"Thais Macedo"},{"id":"vitoria-moura","name":"Vitoria Moura","category":"iniciante","group":"Vitoria Moura"},{"id":"francisca-costa","name":"Francisca Costa Fonseca","category":"acompanhante","group":"Vitoria Moura"},{"id":"wennedy-nogueira","name":"Wennedy Nogueira","category":"seller","group":"Wennedy Nogueira"},{"id":"rafael-leony","name":"Rafael Leony Acomp.","category":"acompanhante","group":"Wennedy Nogueira"},{"id":"william-de-jesus","name":"William de Jesus","category":"seller","group":"William de Jesus"},{"id":"getulio-de-jesus","name":"Getúlio de Jesus Acom.","category":"acompanhante","group":"William de Jesus"}];
+
+const TABLES=[
+{id:"T1",label:"Mesa 1",size:8,block:"left"},{id:"T2",label:"Mesa 2",size:8,block:"left"},{id:"T3",label:"Mesa 3",size:8,block:"left"},
+{id:"T7",label:"Mesa pequena 1",size:2,block:"middle"},{id:"T8",label:"Mesa pequena 2",size:2,block:"middle"},
+{id:"T4",label:"Mesa 4",size:8,block:"right"},{id:"T5",label:"Mesa 5",size:8,block:"right"},{id:"T6",label:"Mesa 6",size:8,block:"right"}
+];
+const STORAGE_KEY="imersao_ecommerce_lugares_20260925_v1";
+let assignments={}; let selected=null;
+try{assignments=JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}")||{}}catch(e){assignments={}}
+const byId=new Map(PARTICIPANTS.map(p=>[p.id,p]));
+
+function seatIds(){
+  const ids=[];
+  TABLES.forEach(t=>{for(let i=1;i<=t.size;i++)ids.push(t.id+"S"+i)});
+  for(let i=1;i<=6;i++)ids.push("C"+i);
+  return ids;
+}
+function cleanState(){
+  const validSeats=new Set(seatIds()), validPeople=new Set(PARTICIPANTS.map(p=>p.id)), used=new Set();
+  const next={};
+  for(const [seat,pid] of Object.entries(assignments)){
+    if(validSeats.has(seat)&&validPeople.has(pid)&&!used.has(pid)){next[seat]=pid;used.add(pid)}
+  }
+  assignments=next;
+}
+cleanState();
+
+function catLabel(c){return c==="seller"?"Seller":c==="iniciante"?"Iniciante":c==="convidado"?"Convidado":"Acompanhante"}
+function personCard(p,inSeat=false){
+  const el=document.createElement("div");
+  el.className="person "+p.category+(selected===p.id?" selected":"");
+  el.draggable=true;el.dataset.pid=p.id;
+  const group=p.group?'<span class="tag">🔗 '+p.group+'</span>':"";
+  el.innerHTML='<div class="nm">'+p.name+'</div><div class="meta"><span class="tag">'+catLabel(p.category)+'</span>'+group+'</div>';
+  el.addEventListener("dragstart",e=>{e.dataTransfer.setData("text/plain",p.id);selected=p.id;});
+  el.addEventListener("click",e=>{e.stopPropagation();selected=(selected===p.id?null:p.id);renderAll();});
+  return el;
+}
+function occupantSeat(pid){
+  return Object.keys(assignments).find(s=>assignments[s]===pid)||null;
+}
+function place(pid,seat){
+  if(!byId.has(pid))return;
+  const old=occupantSeat(pid);
+  const targetPid=assignments[seat]||null;
+  if(old===seat)return;
+  if(old)delete assignments[old];
+  if(targetPid && old) assignments[old]=targetPid;
+  else if(targetPid && !old){ delete assignments[seat]; }
+  assignments[seat]=pid;
+  selected=null;save();renderAll();
+}
+function unseat(pid){
+  const old=occupantSeat(pid);if(old)delete assignments[old];
+  selected=null;save();renderAll();
+}
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(assignments))}
+function makeSeat(id,label){
+  const el=document.createElement("div");el.className="seat";el.dataset.seat=id;
+  const no=document.createElement("span");no.className="seat-no";no.textContent=label;el.appendChild(no);
+  const pid=assignments[id];
+  if(pid&&byId.has(pid)){el.appendChild(personCard(byId.get(pid),true));}
+  else{el.classList.add("empty")}
+  el.addEventListener("dragover",e=>{e.preventDefault();el.classList.add("dragover")});
+  el.addEventListener("dragleave",()=>el.classList.remove("dragover"));
+  el.addEventListener("drop",e=>{e.preventDefault();el.classList.remove("dragover");const pid=e.dataTransfer.getData("text/plain");if(pid)place(pid,id)});
+  el.addEventListener("click",()=>{if(selected)place(selected,id);});
+  return el;
+}
+function renderTables(){
+  const left=document.getElementById("leftBlock"),middle=document.getElementById("middleBlock"),right=document.getElementById("rightBlock");
+  left.innerHTML=middle.innerHTML=right.innerHTML="";
+  TABLES.forEach(t=>{
+    const card=document.createElement("section");card.className="table-card"+(t.size===2?" small-table":"");
+    card.innerHTML='<div class="table-surface">'+t.label+'</div>';
+    const row=document.createElement("div");row.className="seat-row";
+    for(let i=1;i<=t.size;i++)row.appendChild(makeSeat(t.id+"S"+i,t.label.replace("Mesa ","M")+" · "+i));
+    card.appendChild(row);
+    (t.block==="left"?left:t.block==="right"?right:middle).appendChild(card);
+  });
+  const loose=document.getElementById("loose");loose.innerHTML="";
+  for(let i=1;i<=6;i++)loose.appendChild(makeSeat("C"+i,"Lateral "+i));
+}
+function renderWaiting(){
+  const q=document.getElementById("search").value.trim().toLowerCase();
+  const waiting=document.getElementById("waiting");waiting.innerHTML="";
+  const placed=new Set(Object.values(assignments));
+  const list=PARTICIPANTS.filter(p=>!placed.has(p.id)&&(!q||p.name.toLowerCase().includes(q)||catLabel(p.category).toLowerCase().includes(q)||(p.group||"").toLowerCase().includes(q)));
+  list.sort((a,b)=>(a.group||a.name).localeCompare(b.group||b.name,"pt-BR")||a.name.localeCompare(b.name,"pt-BR"));
+  list.forEach(p=>waiting.appendChild(personCard(p)));
+  waiting.ondragover=e=>e.preventDefault();
+  waiting.ondrop=e=>{e.preventDefault();const pid=e.dataTransfer.getData("text/plain");if(pid)unseat(pid)};
+  const placedN=placed.size;
+  document.getElementById("placed").textContent=placedN;
+  document.getElementById("free").textContent=58-placedN;
+  document.getElementById("waitingCount").textContent=58-placedN;
+}
+function renderGroups(){
+  const groups={};
+  PARTICIPANTS.filter(p=>p.group).forEach(p=>(groups[p.group]??=[]).push(p.name));
+  document.getElementById("groupsText").innerHTML=Object.entries(groups).map(([g,n])=>'<b>'+g+':</b> '+n.join(" + ")).join("<br>");
+}
+function renderAll(){renderTables();renderWaiting();renderGroups()}
+document.getElementById("search").addEventListener("input",renderWaiting);
+document.getElementById("unselect").onclick=()=>{selected=null;renderAll()};
+document.getElementById("clear").onclick=()=>{if(confirm("Limpar todos os lugares?")){assignments={};selected=null;save();renderAll()}};
+renderAll();
+</script>
+</body>
+</html>
