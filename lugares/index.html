@@ -101,7 +101,7 @@ linear-gradient(#ffffff07 1px,transparent 1px),linear-gradient(90deg,#ffffff07 1
   </aside>
 
   <main class="main">
-    <div class="toolbar"><div><h2>Distribuição da sala</h2><p>Palco centralizado · mesas pequenas no meio · cadeiras de cada mesa voltadas para o palco.</p></div><div><button id="unselect">Cancelar seleção</button></div></div>
+    <div class="toolbar"><div><h2>Distribuição da sala</h2><p>Palco centralizado · mesas pequenas no meio · cadeiras de cada mesa voltadas para o palco.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button id="fullscreen">⛶ Tela cheia</button><button id="unselect">Cancelar seleção</button></div></div>
     <div class="floor-wrap"><div class="floor">
       <div class="stage">PALCO <small>FRENTE DA SALA</small></div>
       <div class="loose"><h3>6 cadeiras laterais</h3><div id="loose" class="loose-grid"></div></div>
@@ -307,7 +307,22 @@ function renderWaiting(){
 }
 function renderAll(){renderTables();renderWaiting()}
 document.getElementById("search").addEventListener("input",renderWaiting);
-document.getElementById("unselect").onclick=()=>{selected=null;renderAll()};
+document.getElementById("fullscreen").onclick=async()=>{
+    try{
+      if(!document.fullscreenElement){
+        await document.documentElement.requestFullscreen();
+      }else{
+        await document.exitFullscreen();
+      }
+    }catch(e){
+      alert("Não foi possível abrir em tela cheia automaticamente. Tente pressionar F11.");
+    }
+  };
+  document.addEventListener("fullscreenchange",()=>{
+    const b=document.getElementById("fullscreen");
+    if(b) b.textContent=document.fullscreenElement?"⛶ Sair da tela cheia":"⛶ Tela cheia";
+  });
+  document.getElementById("unselect").onclick=()=>{selected=null;renderAll()};
 document.getElementById("clear").onclick=()=>{if(confirm("Limpar todos os lugares?")){assignments={};selected=null;save();renderAll()}};
 renderAll();
 </script>
