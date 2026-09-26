@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Cache-Control" content="no-store">
+<title>Sorteio ao vivo</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#050505;color:#fff;font-family:Arial,Helvetica,sans-serif}.wrap{height:100%;display:flex;align-items:center;justify-content:center;text-align:center;padding:55px;background:radial-gradient(circle at 50% 0%,rgba(255,216,61,.18),transparent 36%),#050505}.box{width:min(1480px,94vw);border:1px solid rgba(255,216,61,.35);border-radius:30px;padding:54px 66px;background:linear-gradient(135deg,#050505,#0b0b08 60%,#020202)}.k{color:#ffd83d;font-weight:900;letter-spacing:.20em;font-size:19px}h1{font-size:82px;line-height:.95;margin:18px 0 10px;text-transform:uppercase}.info{font-size:27px;color:#bbb;margin:0 0 24px}.btn{border:0;border-radius:999px;background:#ffd83d;color:#000;font-size:26px;font-weight:900;padding:20px 44px;cursor:pointer;box-shadow:0 0 45px rgba(255,216,61,.25)}.winners{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:34px}.winner{min-height:250px;border:1px solid rgba(255,216,61,.28);border-radius:26px;background:rgba(255,255,255,.035);padding:30px;display:flex;flex-direction:column;align-items:center;justify-content:center}.prize{color:#ffd83d;font-weight:900;letter-spacing:.14em;font-size:21px}.name{font-size:58px;line-height:1;font-weight:900;margin-top:18px}.sub{font-size:20px;color:#aaa;margin-top:12px}.err{color:#ffb4b4;font-size:24px;margin-top:20px}.spin{animation:pulse .25s linear infinite}@keyframes pulse{50%{opacity:.35}}iframe{position:absolute;width:1px;height:1px;left:-9999px;top:-9999px;opacity:0}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="box"><div class="k">IMERSÃO ECOMMERCE</div><h1>Sorteio ao vivo</h1><div class="info" id="info">Clique em OK para revelar os dois ganhadores</div><button class="btn" id="go">OK · SORTEAR GANHADORES</button><div class="winners"><div class="winner"><div class="prize">ARGO</div><div class="name" id="argo">—</div><div class="sub" id="subArgo"></div></div><div class="winner"><div class="prize">MESA FECHADA</div><div class="name" id="mesa">—</div><div class="sub" id="subMesa"></div></div></div><div class="err" id="err"></div></div></div><iframe id="panel" src="../"></iframe>
+<script>
+const PIN='GUI260926'; const wait=ms=>new Promise(r=>setTimeout(r,ms));
+function esc(s){return String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function setName(id,name){document.getElementById(id).innerHTML=esc(name||'—');document.getElementById(id==='argo'?'subArgo':'subMesa').textContent=name?'PARABÉNS!':''}
+async function ready(){const f=panel.contentWindow;let tries=0;while(tries++<80){try{if(f.document&&f.document.getElementById('enter'))break}catch(e){} await wait(100)}try{f.document.getElementById('pin').value=PIN;f.document.getElementById('enter').click()}catch(e){}tries=0;while(tries++<100){try{if(f.app&&f.app.style.display!=='none'&&typeof f.load==='function')break}catch(e){} await wait(100)}return f}
+function existing(f,prize){return (f.draws||[]).find(x=>x.prize===prize)}
+async function ensure(f,prize,target){let old=existing(f,prize);if(old){setName(target,old.nome);return old.nome}document.getElementById(target).classList.add('spin');await f.drawWinner(prize);await wait(700);if(f.close)f.close.click();await f.load();let d=existing(f,prize);document.getElementById(target).classList.remove('spin');setName(target,d?.nome||'');return d?.nome}
+go.onclick=async()=>{go.disabled=true;err.textContent='';info.textContent='Carregando participantes...';go.textContent='SORTEANDO...';try{const f=await ready();await f.load();info.textContent=(f.entries?.length||0)+' participantes cadastrados';await ensure(f,'ARGO','argo');await wait(600);await ensure(f,'MESA FECHADA','mesa');info.textContent='Ganhadores revelados';go.textContent='SORTEIO CONCLUÍDO'}catch(e){err.textContent='Deu erro no sorteio. Abre /sorteio/ como plano B.';go.disabled=false;go.textContent='TENTAR NOVAMENTE'}};
+</script>
+</body></html>
