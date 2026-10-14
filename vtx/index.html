@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-color="amarela">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -9,7 +9,7 @@
 <meta name="description" content="Bike Spinning VTX Fitness com roda de inércia de 15 kg e 30 níveis de resistência. Cores azul, vermelha e amarela com estrutura preta. R$ 999,00.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap">
-<link rel="preload" as="image" href="bike-azul.webp">
+<link rel="preload" as="image" href="bike-amarela.webp">
 
 <style>
 /* Layout: "pista" — seções pretas e brancas alternadas, faixa tricolor (azul/vermelho/amarelo) como assinatura, tipografia condensada itálica. */
@@ -18,15 +18,16 @@
   --paper:#FFFFFF;--mist:#F1F2F4;--line:#E2E4E8;--line-d:#2A2C33;
   --muted:#5D626B;--muted-d:#A2A7B0;
   --blue:#1E5BFF;--red:#E8222C;--yellow:#FFCF1A;
-  --acc:var(--blue);--acc-ink:#FFFFFF;
+  --acc:var(--yellow);--acc-ink:#0B0C0E;--hero-bg:url('bike-amarela.webp');
   --f-display:'Barlow Condensed','Arial Narrow',Impact,sans-serif;
   --f-body:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
   --r:14px;--ease:cubic-bezier(.2,.8,.2,1);
   --header:64px;
   color-scheme:light;
 }
-:root[data-color="vermelha"]{--acc:var(--red);--acc-ink:#FFFFFF}
-:root[data-color="amarela"]{--acc:var(--yellow);--acc-ink:#0B0C0E}
+:root[data-color="azul"]{--acc:var(--blue);--acc-ink:#FFFFFF;--hero-bg:url('bike-azul.webp')}
+:root[data-color="vermelha"]{--acc:var(--red);--acc-ink:#FFFFFF;--hero-bg:url('bike-vermelha.webp')}
+:root[data-color="amarela"]{--acc:var(--yellow);--acc-ink:#0B0C0E;--hero-bg:url('bike-amarela.webp')}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header) + 8px);-webkit-text-size-adjust:100%}
 html,body{max-width:100%;overflow-x:hidden}
@@ -74,15 +75,15 @@ p{margin:0}
 .mobile-menu a:last-child{border:0}
 
 /* Hero */
-.hero{background:radial-gradient(ellipse 70% 46% at 50% 50%,#1A1B1F 0%,var(--ink) 75%);color:var(--paper);position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;left:50%;top:44%;width:120vw;max-width:1300px;aspect-ratio:2/1;transform:translate(-50%,-50%);background:radial-gradient(closest-side,color-mix(in srgb,var(--acc) 22%,transparent),transparent);pointer-events:none;transition:background .4s}
+.hero{background:linear-gradient(180deg,#0B0C0E 0%,#0B0C0E 100%);color:var(--paper);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-5% -8% -2%;background:linear-gradient(90deg,rgba(11,12,14,.98) 0%,rgba(11,12,14,.72) 14%,rgba(11,12,14,.16) 28%,rgba(11,12,14,.16) 72%,rgba(11,12,14,.72) 86%,rgba(11,12,14,.98) 100%),linear-gradient(180deg,rgba(11,12,14,.92) 0%,rgba(11,12,14,.10) 18%,rgba(11,12,14,0) 38%,rgba(11,12,14,.08) 68%,rgba(11,12,14,.82) 100%),var(--hero-bg) center 60%/min(1480px,112vw) auto no-repeat;filter:blur(22px) saturate(1.04);transform:scale(1.08);pointer-events:none}
 .hero-inner{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding-block:28px 0}
 .hero .eyebrow{color:var(--muted-d)}
 .hero h1{font-size:clamp(56px,16.5vw,140px);font-style:italic;line-height:.84;margin-top:16px}
 .hero h1 em{font-style:inherit;color:var(--acc);transition:color .3s;display:block}
 .hero-main{display:flex;flex-direction:column;align-items:center;width:100%}.hero-stage{position:relative;width:calc(100% + 40px);max-width:680px;margin-top:2px;aspect-ratio:1/1;mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 17%,#000 91%,transparent 100%);mask-composite:intersect;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 17%,#000 91%,transparent 100%);-webkit-mask-composite:source-in}
 .hero-stage img{width:100%;height:100%;object-fit:cover}
-.hero-stage::after{content:"";position:absolute;inset:-1px;pointer-events:none;background:linear-gradient(90deg,var(--ink) 0,transparent 9%,transparent 91%,var(--ink) 100%),linear-gradient(180deg,var(--ink) 0,transparent 14%,transparent 86%,var(--ink) 100%)}
+.hero-stage::after{content:"";position:absolute;inset:-1px;pointer-events:none;background:linear-gradient(90deg,rgba(11,12,14,1) 0%,rgba(11,12,14,0) 16%,rgba(11,12,14,0) 84%,rgba(11,12,14,1) 100%),linear-gradient(180deg,rgba(11,12,14,1) 0%,rgba(11,12,14,0) 12%,rgba(11,12,14,0) 88%,rgba(11,12,14,1) 100%)}
 .hero-side-right{display:flex;flex-direction:column;align-items:center;width:100%}.hero-colors{position:relative;z-index:1;display:flex;align-items:center;gap:12px;margin-top:-18px}
 .hero-colors span{font:600 13px/1 var(--f-body);color:var(--muted-d);letter-spacing:.06em;text-transform:uppercase;margin-right:4px}
 .cdot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:2px solid transparent;transition:border-color .2s}
@@ -391,13 +392,13 @@ p{margin:0}
         <div class="stat"><b>30</b><span>níveis de resistência</span></div>
         <div class="stat"><b>150<small>kg</small></b><span>suporta até</span></div>
       </div>
-      <div class="hero-stage"><img id="heroBike" src="bike-azul.webp" alt="Bike Spinning VTX Fitness preta com detalhes azuis" width="1100" height="1100" fetchpriority="high"></div>
+      <div class="hero-stage"><img id="heroBike" src="bike-amarela.webp" alt="Bike Spinning VTX Fitness preta com detalhes amarelos" width="1100" height="1100" fetchpriority="high"></div>
       <div class="hero-side-right">
         <div class="hero-colors" role="group" aria-label="Escolher cor">
           <span>Cores</span>
-          <button class="cdot" data-color="azul" aria-label="Preto / Azul"><i style="background:var(--blue)"></i></button>
-          <button class="cdot" data-color="vermelha" aria-label="Preto / Vermelho"><i style="background:var(--red)"></i></button>
-          <button class="cdot" data-color="amarela" aria-label="Preto / Amarelo"><i style="background:var(--yellow)"></i></button>
+          <button class="cdot" data-color="azul" aria-label="Preto / Azul" aria-pressed="false"><i style="background:var(--blue)"></i></button>
+          <button class="cdot" data-color="vermelha" aria-label="Preto / Vermelho" aria-pressed="false"><i style="background:var(--red)"></i></button>
+          <button class="cdot active" data-color="amarela" aria-label="Preto / Amarelo" aria-pressed="true"><i style="background:var(--yellow)"></i></button>
         </div>
         <div class="hero-buy">
           <a class="btn btn-ghost hero-video-btn" href="#video">
@@ -427,11 +428,11 @@ p{margin:0}
     </div>
     <div class="product" id="produto">
       <div class="gallery">
-        <div class="gal-main"><span class="gal-chip" id="galleryChip">Preto / Azul</span><img id="productMain" src="bike-azul.webp" alt="Bike Spinning VTX Fitness na cor Preto / Azul" width="1100" height="1100"></div>
+        <div class="gal-main"><span class="gal-chip" id="galleryChip">Preto / Amarelo</span><img id="productMain" src="bike-amarela.webp" alt="Bike Spinning VTX Fitness na cor Preto / Amarelo" width="1100" height="1100"></div>
         <div class="thumbs">
-          <button class="thumb active" data-color="azul" aria-label="Ver bike azul"><img src="bike-azul-thumb.webp" alt="" width="360" height="360" loading="lazy"></button>
+          <button class="thumb" data-color="azul" aria-label="Ver bike azul"><img src="bike-azul-thumb.webp" alt="" width="360" height="360" loading="lazy"></button>
           <button class="thumb" data-color="vermelha" aria-label="Ver bike vermelha"><img src="bike-vermelha-thumb.webp" alt="" width="360" height="360" loading="lazy"></button>
-          <button class="thumb" data-color="amarela" aria-label="Ver bike amarela"><img src="bike-amarela-thumb.webp" alt="" width="360" height="360" loading="lazy"></button>
+          <button class="thumb active" data-color="amarela" aria-label="Ver bike amarela"><img src="bike-amarela-thumb.webp" alt="" width="360" height="360" loading="lazy"></button>
           <button class="thumb video-thumb" id="seeVideo" aria-label="Ver vídeo da bike"><img src="vtx-video-poster.webp" alt="" loading="lazy"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></button>
         </div>
       </div>
@@ -445,11 +446,11 @@ p{margin:0}
           <span class="price-note">Frete e pagamento combinados no WhatsApp</span>
         </div>
 
-        <div class="field-label">Cor <span id="selectedLabel">Preto / Azul</span></div>
+        <div class="field-label">Cor <span id="selectedLabel">Preto / Amarelo</span></div>
         <div class="swatches" role="group" aria-label="Cor da bike">
-          <button class="swatch active" data-color="azul" aria-pressed="true" style="--sw:var(--blue)"><span class="sw-img"><img src="bike-azul-thumb.webp" alt="" width="360" height="360" loading="lazy"></span><b>Azul</b><small>Estrutura preta</small></button>
+          <button class="swatch" data-color="azul" aria-pressed="false" style="--sw:var(--blue)"><span class="sw-img"><img src="bike-azul-thumb.webp" alt="" width="360" height="360" loading="lazy"></span><b>Azul</b><small>Estrutura preta</small></button>
           <button class="swatch" data-color="vermelha" aria-pressed="false" style="--sw:var(--red)"><span class="sw-img"><img src="bike-vermelha-thumb.webp" alt="" width="360" height="360" loading="lazy"></span><b>Vermelha</b><small>Estrutura preta</small></button>
-          <button class="swatch" data-color="amarela" aria-pressed="false" style="--sw:var(--yellow)"><span class="sw-img"><img src="bike-amarela-thumb.webp" alt="" width="360" height="360" loading="lazy"></span><b>Amarela</b><small>Estrutura preta</small></button>
+          <button class="swatch active" data-color="amarela" aria-pressed="true" style="--sw:var(--yellow)"><span class="sw-img"><img src="bike-amarela-thumb.webp" alt="" width="360" height="360" loading="lazy"></span><b>Amarela</b><small>Estrutura preta</small></button>
         </div>
 
         <div class="qtyline">
@@ -515,7 +516,7 @@ p{margin:0}
     </div>
     <div class="spec-grid">
       <figure class="diagram" style="margin:0">
-        <img id="specImg" src="bike-azul.webp" alt="Bike VTX com os principais componentes numerados" width="1100" height="1100" loading="lazy">
+        <img id="specImg" src="bike-amarela.webp" alt="Bike VTX com os principais componentes numerados" width="1100" height="1100" loading="lazy">
         <span class="hs" style="--x:80%;--y:9%">1</span>
         <span class="hs" style="--x:81%;--y:32%">2</span>
         <span class="hs" style="--x:31%;--y:29%">3</span>
@@ -643,7 +644,7 @@ p{margin:0}
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-3.7A8.5 8.5 0 1 1 20 11.5z"/></svg>Atendimento</a>
 
 <div class="buybar" id="buyBar" aria-hidden="true">
-  <div class="bb-info"><small id="bbColor">Preto / Azul</small><b>R$ 999,00</b></div>
+  <div class="bb-info"><small id="bbColor">Preto / Amarelo</small><b>R$ 999,00</b></div>
   <button class="wa" onclick="consultar()" aria-label="Falar no WhatsApp" tabindex="-1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-3.7A8.5 8.5 0 1 1 20 11.5z"/></svg></button>
   <a class="btn btn-acc" href="#comprar" tabindex="-1">Comprar</a>
 </div>
@@ -667,7 +668,7 @@ const WHATSAPP_NUMBER = '5511965765247';
 const pics={azul:'bike-azul.webp',vermelha:'bike-vermelha.webp',amarela:'bike-amarela.webp'};
 const thumbs={azul:'bike-azul-thumb.webp',vermelha:'bike-vermelha-thumb.webp',amarela:'bike-amarela-thumb.webp'};
 const labels={azul:'Preto / Azul',vermelha:'Preto / Vermelho',amarela:'Preto / Amarelo'};
-let selected='azul',qty=1,cart={};
+let selected='amarela',qty=1,cart={};
 const $=x=>document.getElementById(x);const $all=s=>Array.from(document.querySelectorAll(s));
 const UNIT_PRICE=999;
 const money=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
