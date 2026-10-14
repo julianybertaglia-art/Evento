@@ -9,7 +9,7 @@
 <meta name="description" content="Bike Spinning VTX Fitness com roda de inércia de 15 kg e 30 níveis de resistência. Cores azul, vermelha e amarela com estrutura preta. R$ 999,00.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap">
-<link rel="preload" as="image" href="bike-amarela.webp">
+<link rel="preload" as="image" href="hero-amarela.webp">
 
 <style>
 /* Layout: "pista" — seções pretas e brancas alternadas, faixa tricolor (azul/vermelho/amarelo) como assinatura, tipografia condensada itálica. */
@@ -81,7 +81,7 @@ p{margin:0}
 .hero .eyebrow{color:var(--muted-d)}
 .hero h1{font-size:clamp(56px,16.5vw,140px);font-style:italic;line-height:.84;margin-top:16px}
 .hero h1 em{font-style:inherit;color:var(--acc);transition:color .3s;display:block}
-.hero-main{display:flex;flex-direction:column;align-items:center;width:100%}.hero-stage{position:relative;width:calc(100% + 40px);max-width:680px;margin-top:2px;aspect-ratio:1/1;mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 17%,#000 91%,transparent 100%);mask-composite:intersect;-webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 17%,#000 91%,transparent 100%);-webkit-mask-composite:source-in}
+.hero-main{display:flex;flex-direction:column;align-items:center;width:100%}.hero-stage{position:relative;width:calc(100% + 40px);max-width:680px;margin-top:2px;aspect-ratio:1/1}
 .hero-stage img{width:100%;height:100%;object-fit:cover}
 .hero-stage::after{content:"";position:absolute;inset:-1px;pointer-events:none;background:linear-gradient(90deg,rgba(11,12,14,1) 0%,rgba(11,12,14,0) 16%,rgba(11,12,14,0) 84%,rgba(11,12,14,1) 100%),linear-gradient(180deg,rgba(11,12,14,1) 0%,rgba(11,12,14,0) 12%,rgba(11,12,14,0) 88%,rgba(11,12,14,1) 100%)}
 .hero-side-right{display:flex;flex-direction:column;align-items:center;width:100%}.hero-colors{position:relative;z-index:1;display:flex;align-items:center;gap:12px;margin-top:-18px}
@@ -321,7 +321,7 @@ p{margin:0}
   .hero h1{font-size:clamp(88px,8.4vw,128px);margin-bottom:10px}
   .hero h1 em{display:inline}
   .hero-main{display:grid;grid-template-columns:220px minmax(0,1fr) 240px;align-items:center;gap:24px;max-width:1160px;margin-inline:auto}
-  .hero-stage{width:min(100%,calc(100svh - 275px));max-width:620px;margin-top:0}
+  .hero-stage{max-width:620px;margin-top:0}
   .hero-stage::after{background:linear-gradient(90deg,var(--ink) 0,transparent 18%,transparent 82%,var(--ink) 100%),linear-gradient(180deg,var(--ink) 0,transparent 8%,transparent 89%,var(--ink) 100%)}
   .hero-side-left{display:flex;flex-direction:column;align-self:center;max-width:220px;width:100%;margin-top:0;border-top:0;gap:0}
   .hero-side-left .stat{padding:18px 12px;text-align:left}
@@ -356,6 +356,23 @@ p{margin:0}
   html{scroll-behavior:auto}
   *,*::before,*::after{transition:none!important;animation:none!important}
 }
+
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.hero.hero-art{padding:0;background:#0B0C0E;overflow:hidden}
+.hero.hero-art::before{display:none}
+.hero-banner-wrap{position:relative;width:100%;max-width:none}
+.hero-banner{display:block;width:100%;height:auto;min-height:320px;object-fit:cover;object-position:center center}
+.hero-switch{position:absolute;left:80.3%;top:31.5%;display:flex;align-items:center;gap:1.9vw;z-index:3}
+.hswatch{width:clamp(20px,1.9vw,36px);height:clamp(20px,1.9vw,36px);border-radius:999px;border:2px solid transparent;display:grid;place-items:center;background:transparent;padding:0;cursor:pointer;transition:transform .18s ease, box-shadow .2s ease, border-color .2s ease}
+.hswatch i{display:block;width:12px;height:12px;border-radius:999px;visibility:hidden}
+.hswatch.active{border-color:rgba(255,255,255,.75);box-shadow:0 0 0 4px rgba(255,255,255,.13)}
+.hswatch:hover{transform:scale(1.06)}
+.hero-art-link{position:absolute;z-index:2;display:block;background:transparent;border-radius:12px}
+.hero-art-video{left:77.4%;top:39.6%;width:19%;height:10%}
+.hero-art-buy{left:77.4%;top:64.5%;width:19%;height:10%}
+.hero-art-link:focus-visible{outline:3px solid white;outline-offset:3px}
+@media (max-width: 900px){.hero-banner{min-height:260px;object-position:center center}.hero-switch{left:auto;top:auto;right:12px;bottom:12px;gap:12px;padding:8px 12px;border-radius:999px;background:rgba(8,10,14,.75);backdrop-filter:blur(8px)}.hswatch{width:24px;height:24px}.hswatch i{width:14px;height:14px;visibility:visible}.hswatch.active{border-color:#fff}.hero-art-link{display:none}}
+
 </style>
 </head>
 <body>
@@ -382,33 +399,16 @@ p{margin:0}
 </header>
 
 <main>
-<section class="hero" id="inicio">
-  <div class="wrap hero-inner">
-    <span class="eyebrow"><span class="tri" aria-hidden="true"><i></i><i></i><i></i></span>Bike Spinning VTX Fitness</span>
-    <h1>Sua academia <em>em casa</em></h1>
-    <div class="hero-main">
-      <div class="hero-stats hero-side-left">
-        <div class="stat"><b>15<small>kg</small></b><span>de inércia</span></div>
-        <div class="stat"><b>30</b><span>níveis de resistência</span></div>
-        <div class="stat"><b>150<small>kg</small></b><span>suporta até</span></div>
-      </div>
-      <div class="hero-stage"><img id="heroBike" src="bike-amarela.webp" alt="Bike Spinning VTX Fitness preta com detalhes amarelos" width="1100" height="1100" fetchpriority="high"></div>
-      <div class="hero-side-right">
-        <div class="hero-colors" role="group" aria-label="Escolher cor">
-          <span>Cores</span>
-          <button class="cdot" data-color="azul" aria-label="Preto / Azul" aria-pressed="false"><i style="background:var(--blue)"></i></button>
-          <button class="cdot" data-color="vermelha" aria-label="Preto / Vermelho" aria-pressed="false"><i style="background:var(--red)"></i></button>
-          <button class="cdot active" data-color="amarela" aria-label="Preto / Amarelo" aria-pressed="true"><i style="background:var(--yellow)"></i></button>
-        </div>
-        <div class="hero-buy">
-          <a class="btn btn-ghost hero-video-btn" href="#video">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Ver vídeo</a>
-          <div class="hero-price"><small>Valor</small>R$ 999,00</div>
-          <div class="hero-ctas">
-            <a class="btn btn-acc" href="#comprar">Comprar agora</a>
-          </div>
-        </div>
-      </div>
+<section class="hero hero-art" id="inicio">
+  <div class="hero-banner-wrap">
+    <h1 class="sr-only">Sua academia em casa — Bike Spinning VTX Fitness</h1>
+    <img id="heroBike" class="hero-banner" src="hero-amarela.webp" alt="Banner da Bike Spinning VTX Fitness na cor preto com amarelo, com informações laterais e chamada sua academia em casa" width="1916" height="821" fetchpriority="high">
+    <a class="hero-art-link hero-art-video" href="#video" aria-label="Ver vídeo da bicicleta VTX"></a>
+    <a class="hero-art-link hero-art-buy" href="#comprar" aria-label="Comprar bike VTX por R$ 999,00"></a>
+    <div class="hero-switch" role="group" aria-label="Escolher cor da bike na hero">
+      <button class="hswatch" data-color="azul" aria-label="Mostrar hero azul" aria-pressed="false"><i style="background:var(--blue)"></i></button>
+      <button class="hswatch" data-color="vermelha" aria-label="Mostrar hero vermelha" aria-pressed="false"><i style="background:var(--red)"></i></button>
+      <button class="hswatch active" data-color="amarela" aria-label="Mostrar hero amarela" aria-pressed="true"><i style="background:var(--yellow)"></i></button>
     </div>
   </div>
 </section>
@@ -666,6 +666,7 @@ p{margin:0}
 // INSIRA AQUI O NÚMERO COM DDI E DDD (ex: '5511999999999').
 const WHATSAPP_NUMBER = '5511965765247';
 const pics={azul:'bike-azul.webp',vermelha:'bike-vermelha.webp',amarela:'bike-amarela.webp'};
+const heroPics={azul:'hero-azul.webp',vermelha:'hero-vermelha.webp',amarela:'hero-amarela.webp'};
 const thumbs={azul:'bike-azul-thumb.webp',vermelha:'bike-vermelha-thumb.webp',amarela:'bike-amarela-thumb.webp'};
 const labels={azul:'Preto / Azul',vermelha:'Preto / Vermelho',amarela:'Preto / Amarelo'};
 let selected='amarela',qty=1,cart={};
@@ -676,10 +677,12 @@ function toast(t){$('toast').textContent=t;$('toast').classList.add('show');clea
 function choose(color){
   selected=color;
   document.documentElement.dataset.color=color;
-  const alt='Bike Spinning VTX Fitness na cor '+labels[color];
-  ['productMain','heroBike','specImg'].forEach(id=>{const el=$(id);if(el){el.src=pics[color];el.alt=alt}});
+  const productAlt='Bike Spinning VTX Fitness na cor '+labels[color];
+  const heroAlt='Banner da Bike Spinning VTX Fitness na cor '+labels[color]+', com informações laterais e chamada sua academia em casa';
+  ['productMain','specImg'].forEach(id=>{const el=$(id);if(el){el.src=pics[color];el.alt=productAlt}});
+  const hero=$('heroBike'); if(hero){hero.src=heroPics[color];hero.alt=heroAlt}
   $('galleryChip').textContent=labels[color];$('selectedLabel').textContent=labels[color];$('bbColor').textContent='Bike VTX · '+labels[color];
-  $all('[data-color]').forEach(b=>{const active=b.dataset.color===color;b.classList.toggle('active',active);if(b.classList.contains('swatch')||b.classList.contains('cdot'))b.setAttribute('aria-pressed',String(active))});
+  $all('[data-color]').forEach(b=>{const active=b.dataset.color===color;b.classList.toggle('active',active);if(b.classList.contains('swatch')||b.classList.contains('cdot')||b.classList.contains('hswatch'))b.setAttribute('aria-pressed',String(active))});
 }
 $all('[data-color]').forEach(b=>b.addEventListener('click',()=>choose(b.dataset.color)));
 function setQty(n){qty=Math.max(1,n);$('qtyText').textContent=qty;$('qtySubtotal').textContent=money(qty*UNIT_PRICE)}
