@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap">
 <link rel="preload" as="image" href="bike-azul.webp">
+<link rel="preload" as="image" href="bike-vermelha.webp"><link rel="preload" as="image" href="bike-amarela.webp">
 <style>
 /* Layout: "pista" — seções pretas e brancas alternadas, faixa tricolor (azul/vermelho/amarelo) como assinatura, tipografia condensada itálica. */
 :root{
@@ -79,10 +80,14 @@ p{margin:0}
 .hero .eyebrow{color:var(--muted-d)}
 .hero h1{font-size:clamp(56px,16.5vw,140px);font-style:italic;line-height:.84;margin-top:16px}
 .hero h1 em{font-style:inherit;color:var(--acc);transition:color .3s;display:block}
-.hero-stage{position:relative;width:calc(100% + 40px);max-width:680px;margin-top:18px;aspect-ratio:1/1}
+.hero-stage{position:relative;width:calc(100% + 40px);max-width:680px;margin-top:6px;aspect-ratio:1/1;
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 17%,#000 91%,transparent 100%);
+  mask-image:linear-gradient(to right,transparent 0%,#000 8%,#000 92%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 17%,#000 91%,transparent 100%);
+  -webkit-mask-composite:source-in;mask-composite:intersect;
+}
 .hero-stage img{width:100%;height:100%;object-fit:cover}
 .hero-stage::after{content:"";position:absolute;inset:-1px;pointer-events:none;background:linear-gradient(90deg,var(--ink) 0,transparent 9%,transparent 91%,var(--ink) 100%),linear-gradient(180deg,var(--ink) 0,transparent 14%,transparent 86%,var(--ink) 100%)}
-.hero-colors{position:relative;z-index:1;display:flex;align-items:center;gap:12px;margin-top:-34px}
+.hero-colors{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:12px;margin-top:18px;padding:9px 18px;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(20,21,25,.76);backdrop-filter:blur(5px)}
 .hero-colors span{font:600 13px/1 var(--f-body);color:var(--muted-d);letter-spacing:.06em;text-transform:uppercase;margin-right:4px}
 .cdot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:2px solid transparent;transition:border-color .2s}
 .cdot i{width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 5px var(--ink)}
@@ -318,7 +323,7 @@ p{margin:0}
   .mobile-menu,.mobile-menu.open{display:none}
   .hero h1{font-size:clamp(100px,10.4vw,150px)}
   .hero h1 em{display:inline}
-  .hero-stage{max-width:600px;margin-top:28px}
+  .hero-stage{max-width:600px;margin-top:-4px}
   .hero-stage::after{background:linear-gradient(90deg,var(--ink) 0,transparent 20%,transparent 82%,var(--ink) 100%),linear-gradient(180deg,var(--ink) 0,transparent 10%,transparent 86%,var(--ink) 100%)}
   .sec-head{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:40px}
   .sec-head p{max-width:40ch}
@@ -370,13 +375,13 @@ p{margin:0}
   <div class="wrap hero-inner">
     <span class="eyebrow"><span class="tri" aria-hidden="true"><i></i><i></i><i></i></span>Bike Spinning VTX Fitness</span>
     <h1>Sua academia <em>em casa</em></h1>
-    <div class="hero-stage"><img id="heroBike" src="bike-azul.webp" alt="Bike Spinning VTX Fitness preta com detalhes azuis" width="1100" height="1100" fetchpriority="high"></div>
     <div class="hero-colors" role="group" aria-label="Escolher cor">
       <span>Cores</span>
       <button class="cdot" data-color="azul" aria-label="Preto / Azul"><i style="background:var(--blue)"></i></button>
       <button class="cdot" data-color="vermelha" aria-label="Preto / Vermelho"><i style="background:var(--red)"></i></button>
       <button class="cdot" data-color="amarela" aria-label="Preto / Amarelo"><i style="background:var(--yellow)"></i></button>
     </div>
+    <div class="hero-stage"><img id="heroBike" src="bike-azul.webp" alt="Bike Spinning VTX Fitness preta com detalhes azuis" width="1100" height="1100" fetchpriority="high"></div>
     <div class="hero-buy">
       <div class="hero-price"><small>Bike Spinning VTX Fitness</small>R$ 999,00</div>
       <div class="hero-ctas">
