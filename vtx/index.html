@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>VTX Fitness | Sua academia em casa</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="theme-color" content="#0B0C0E">
+<meta name="description" content="Bike Spinning VTX Fitness com roda de inércia de 15 kg e 30 níveis de resistência. Cores azul, vermelha e amarela com estrutura preta. R$ 999,00.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Barlow:wght@400;500;600;700&display=swap">
+<link rel="preload" as="image" href="bike-azul.webp">
+<style>
+/* Layout: "pista" — seções pretas e brancas alternadas, faixa tricolor (azul/vermelho/amarelo) como assinatura, tipografia condensada itálica. */
+:root{
+  --ink:#0B0C0E;--ink-2:#141519;--ink-3:#1F2127;
+  --paper:#FFFFFF;--mist:#F1F2F4;--line:#E2E4E8;--line-d:#2A2C33;
+  --muted:#5D626B;--muted-d:#A2A7B0;
+  --blue:#1E5BFF;--red:#E8222C;--yellow:#FFCF1A;
+  --acc:var(--blue);--acc-ink:#FFFFFF;
+  --f-display:'Barlow Condensed','Arial Narrow',Impact,sans-serif;
+  --f-body:'Barlow',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --r:14px;--ease:cubic-bezier(.2,.8,.2,1);
+  --header:64px;
+  color-scheme:light;
+}
+:root[data-color="vermelha"]{--acc:var(--red);--acc-ink:#FFFFFF}
+:root[data-color="amarela"]{--acc:var(--yellow);--acc-ink:#0B0C0E}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header) + 8px);-webkit-text-size-adjust:100%}
+html,body{max-width:100%;overflow-x:hidden}
+@supports(overflow:clip){html,body{overflow-x:clip}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;padding:0}
+h1,h2,h3{font-family:var(--f-display);font-weight:800;text-transform:uppercase;line-height:.9;margin:0;text-wrap:balance;letter-spacing:-.005em}
+p{margin:0}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.wrap{width:100%;max-width:1240px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:700 12px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase}
+.tri{display:inline-flex;gap:3px}.tri i{width:14px;height:4px;transform:skewX(-20deg)}
+.tri i:nth-child(1){background:var(--blue)}.tri i:nth-child(2){background:var(--red)}.tri i:nth-child(3){background:var(--yellow)}
+.stripe{display:grid;grid-template-columns:repeat(3,1fr);height:6px}
+.stripe i:nth-child(1){background:var(--blue)}.stripe i:nth-child(2){background:var(--red)}.stripe i:nth-child(3){background:var(--yellow)}
+
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 24px;border-radius:10px;font:700 15px/1 var(--f-body);letter-spacing:.02em;border:2px solid transparent;transition:transform .2s var(--ease),background-color .2s,color .2s,border-color .2s;white-space:nowrap}
+.btn:active{transform:scale(.98)}
+.btn svg{flex:none}
+.btn-ink{background:var(--ink);color:var(--paper)}.btn-ink:hover{background:var(--ink-3)}
+.btn-white{background:var(--paper);color:var(--ink)}.btn-white:hover{background:var(--mist)}
+.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{background:#1449DB}
+.btn-acc{background:var(--acc);color:var(--acc-ink)}
+.btn-ghost{border-color:currentColor;color:inherit}.btn-ghost:hover{background:rgba(127,127,127,.12)}
+.btn-link{font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:8px;min-height:44px;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:2px}
+
+/* Header */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--ink);color:var(--paper);border-bottom:1px solid var(--line-d)}
+.nav{height:var(--header);display:flex;align-items:center;gap:24px}
+.brand{display:flex;align-items:center;flex:none}
+.brand img{height:30px;width:auto;object-fit:contain}
+.navlinks{display:none;gap:30px;margin-left:auto;font:600 14px/1 var(--f-body);letter-spacing:.04em;text-transform:uppercase}
+.navlinks a{color:var(--muted-d);transition:color .2s}.navlinks a:hover{color:var(--paper)}
+.navright{display:flex;align-items:center;gap:6px;margin-left:auto}
+.icon-btn{width:44px;height:44px;display:inline-grid;place-items:center;position:relative;border-radius:10px}
+.icon-btn:hover{background:var(--ink-3)}
+.cartcount{position:absolute;top:4px;right:2px;min-width:19px;height:19px;padding:0 5px;border-radius:10px;background:var(--acc);color:var(--acc-ink);font:700 11px/19px var(--f-body);text-align:center}
+.nav-cta{display:none;min-height:42px;padding:0 18px;font-size:14px}
+.mobile-menu{display:none;flex-direction:column;background:var(--ink);border-top:1px solid var(--line-d);padding-block:8px 18px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{padding:14px 0;font:800 26px/1 var(--f-display);font-style:italic;text-transform:uppercase;border-bottom:1px solid var(--line-d)}
+.mobile-menu a:last-child{border:0}
+
+/* Hero */
+.hero{background:radial-gradient(ellipse 70% 46% at 50% 50%,#1A1B1F 0%,var(--ink) 75%);color:var(--paper);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;left:50%;top:44%;width:120vw;max-width:1300px;aspect-ratio:2/1;transform:translate(-50%,-50%);background:radial-gradient(closest-side,color-mix(in srgb,var(--acc) 22%,transparent),transparent);pointer-events:none;transition:background .4s}
+.hero-inner{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding-block:34px 0}
+.hero .eyebrow{color:var(--muted-d)}
+.hero h1{font-size:clamp(56px,16.5vw,140px);font-style:italic;line-height:.84;margin-top:16px}
+.hero h1 em{font-style:inherit;color:var(--acc);transition:color .3s;display:block}
+.hero-stage{position:relative;width:calc(100% + 40px);max-width:680px;margin-top:-2px;aspect-ratio:1/1}
+.hero-stage img{width:100%;height:100%;object-fit:cover}
+.hero-stage::after{content:"";position:absolute;inset:-1px;pointer-events:none;background:linear-gradient(90deg,var(--ink) 0,transparent 9%,transparent 91%,var(--ink) 100%),linear-gradient(180deg,var(--ink) 0,transparent 14%,transparent 86%,var(--ink) 100%)}
+.hero-colors{position:relative;z-index:1;display:flex;align-items:center;gap:12px;margin-top:-34px}
+.hero-colors span{font:600 13px/1 var(--f-body);color:var(--muted-d);letter-spacing:.06em;text-transform:uppercase;margin-right:4px}
+.cdot{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:2px solid transparent;transition:border-color .2s}
+.cdot i{width:22px;height:22px;border-radius:50%;box-shadow:inset 0 0 0 5px var(--ink)}
+.cdot.active{border-color:var(--paper)}
+.hero-buy{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:26px;width:100%}
+.hero-price{font:800 34px/1 var(--f-display);font-style:italic;letter-spacing:.01em}
+.hero-price small{display:block;font:500 13px/1.3 var(--f-body);font-style:normal;color:var(--muted-d);letter-spacing:.02em;margin-bottom:6px}
+.hero-ctas{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:420px}
+.hero-ctas .btn{width:100%;padding:0 14px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);width:100%;max-width:820px;margin-top:40px;border-top:1px solid var(--line-d)}
+.stat{padding:18px 6px 22px;text-align:center}
+.stat+.stat{border-left:1px solid var(--line-d)}
+.stat b{display:block;font:800 clamp(34px,9vw,56px)/1 var(--f-display);font-style:italic}
+.stat b small{font-size:.5em;margin-left:2px}
+.stat span{display:block;margin-top:6px;font:600 11px/1.3 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted-d)}
+
+/* Faixa de destaques */
+.ticker{background:var(--ink-2);color:var(--paper);overflow:hidden;border-block:1px solid var(--line-d)}
+.ticker-track{display:flex;width:max-content;animation:tick 32s linear infinite}
+.ticker-track span{display:flex;align-items:center;gap:18px;padding:14px 18px;font:700 16px/1 var(--f-display);font-style:italic;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.ticker-track span::after{content:"";width:10px;height:10px;background:var(--acc);transform:skewX(-20deg);transition:background .3s}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* Seções */
+.section{padding-block:72px}
+.sec-head{display:flex;flex-direction:column;gap:14px;margin-bottom:34px}
+.sec-head h2{font-size:clamp(46px,11vw,92px);font-style:italic}
+.sec-head p{color:var(--muted);max-width:52ch;font-size:16px}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .sec-head p,.dark .eyebrow{color:var(--muted-d)}
+
+/* Compra */
+.shop{background:var(--mist)}
+.product{display:grid;gap:22px}
+.gallery{min-width:0}
+.gal-main{position:relative;border-radius:var(--r);overflow:hidden;background:var(--ink);aspect-ratio:1/1;max-width:100%}
+.gal-main img{width:100%;height:100%;object-fit:cover;transition:opacity .25s}
+.gal-chip{position:absolute;left:14px;top:14px;display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(11,12,14,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font:700 12px/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase}
+.gal-chip::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--acc)}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.thumb{position:relative;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--ink);border:2px solid transparent;transition:border-color .2s}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb.active{border-color:var(--ink)}
+.thumb.video-thumb img{opacity:.55}
+.thumb .play{position:absolute;inset:0;display:grid;place-items:center;color:#fff}
+.thumb .play svg{width:30px;height:30px;padding:8px;border-radius:50%;background:rgba(255,255,255,.18);box-sizing:content-box}
+.buybox{background:var(--paper);border-radius:var(--r);padding:26px 20px;min-width:0}
+.buybox .kicker{font:700 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.buybox h3{font-size:clamp(40px,10vw,60px);font-style:italic;margin-top:10px}
+.buybox .lede{color:var(--muted);margin-top:12px;max-width:44ch}
+.price-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:22px;padding-block:18px;border-block:1px solid var(--line)}
+.price-value{font:800 clamp(42px,11vw,64px)/.9 var(--f-display);font-style:italic;letter-spacing:.005em;white-space:nowrap}
+.price-note{font-size:13px;color:var(--muted);text-align:right;max-width:20ch;line-height:1.35}
+.field-label{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:22px 0 10px;font:700 13px/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase}
+.field-label span{font-weight:500;letter-spacing:.02em;text-transform:none;color:var(--muted);font-size:14px}
+.swatches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.swatch{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:10px 10px 12px;border-radius:12px;border:2px solid var(--line);background:var(--paper);text-align:left;transition:border-color .2s}
+.swatch .sw-img{width:100%;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:var(--ink)}
+.swatch .sw-img img{width:100%;height:100%;object-fit:cover}
+.swatch b{display:flex;align-items:center;gap:7px;font:700 15px/1 var(--f-body)}
+.swatch b::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--sw);box-shadow:0 0 0 2px var(--paper),0 0 0 3px var(--ink)}
+.swatch small{font-size:11px;color:var(--muted);line-height:1.2}
+.swatch.active{border-color:var(--ink)}
+.swatch.active::after{content:"";position:absolute;top:16px;right:16px;width:22px;height:22px;border-radius:50%;background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230B0C0E' stroke-width='3'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/14px no-repeat}
+.qtyline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px}
+.qty{display:inline-flex;align-items:center;border:2px solid var(--line);border-radius:12px;overflow:hidden}
+.qty button{width:48px;height:48px;font-size:22px;font-weight:500}
+.qty button:hover{background:var(--mist)}
+.qty span{min-width:40px;text-align:center;font:700 18px/1 var(--f-body);font-variant-numeric:tabular-nums}
+.subtotal{text-align:right;font-size:13px;color:var(--muted);line-height:1.2}
+.subtotal b{display:block;color:var(--ink);font:800 26px/1.1 var(--f-display);font-style:italic;font-variant-numeric:tabular-nums}
+.buybtns{display:grid;gap:10px;margin-top:20px}
+.buybtns .btn{width:100%;min-height:58px;font-size:16px}
+.buy-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 16px;margin-top:10px}
+.fine{font-size:13px;color:var(--muted);line-height:1.5;margin-top:6px}
+
+/* Diferenciais */
+.diff-grid{display:grid;gap:12px}
+.diff-photo{position:relative;border-radius:var(--r);overflow:hidden;background:var(--ink-3);aspect-ratio:4/5;max-width:100%}
+.diff-photo img{width:100%;height:100%;object-fit:cover}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:var(--ink-2);border:1px solid var(--line-d);border-radius:var(--r);padding:20px 16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.card .ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--c);color:var(--ci,#fff)}
+.card h3{font-size:clamp(24px,6vw,32px);font-style:italic;line-height:.95}
+.card p{color:var(--muted-d);font-size:14px;line-height:1.45}
+
+/* Ficha técnica */
+.spec-grid{display:grid;gap:28px}
+.diagram{position:relative;border-radius:var(--r);overflow:hidden;background:var(--ink);aspect-ratio:1/1;max-width:100%;min-width:0}
+.diagram img{width:100%;height:100%;object-fit:cover}
+.hs{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;background:var(--paper);color:var(--ink);font:800 14px/28px var(--f-body);text-align:center;box-shadow:0 0 0 4px color-mix(in srgb,var(--acc) 55%,transparent),0 4px 12px rgba(0,0,0,.5);transition:box-shadow .3s}
+.diagram-cap{position:absolute;left:14px;bottom:12px;font:600 11px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted-d)}
+.spec-groups{display:grid;gap:26px;min-width:0}
+.sg h3{font-size:24px;font-style:italic;display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:2px solid var(--ink)}
+.sg h3::before{content:"";width:12px;height:12px;background:var(--c);transform:skewX(-20deg)}
+.sg dl{margin:0}
+.sg .row{display:grid;grid-template-columns:28px minmax(0,1fr);grid-template-rows:auto auto;gap:4px 10px;padding:13px 0;border-bottom:1px solid var(--line)}
+.sg dt{grid-column:2;grid-row:1;font-weight:700;font-size:15px}
+.sg dd{grid-column:2;grid-row:2;margin:0;color:var(--muted);font-size:14px;line-height:1.45}
+.sg .n{grid-column:1;grid-row:1;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font:700 11px/22px var(--f-body);text-align:center;margin-top:1px}
+.sg .n.empty{background:transparent}
+.monitor{margin-top:32px;background:var(--ink);color:var(--paper);border-radius:var(--r);padding:22px 18px;display:grid;gap:18px}
+.monitor-head{display:flex;flex-direction:column;gap:6px}
+.monitor-head h3{font-size:30px;font-style:italic}
+.monitor-head p{color:var(--muted-d);font-size:14px}
+.lcd{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.metric{background:var(--ink-2);border:1px solid var(--line-d);border-radius:12px;padding:14px 12px;display:flex;align-items:center;gap:12px;min-width:0}
+.metric svg{flex:none;color:var(--acc);transition:color .3s}
+.metric b{font:700 14px/1.2 var(--f-body)}
+.metric:last-child{grid-column:1/-1}
+
+/* Vídeo */
+.video-grid{display:grid;gap:34px;align-items:center}
+.video-copy{display:flex;flex-direction:column;gap:16px;min-width:0}
+.video-copy h2{font-size:clamp(46px,11vw,92px);font-style:italic}
+.video-copy p{color:var(--muted-d);max-width:40ch}
+.video-frame{position:relative;width:100%;max-width:360px;margin-inline:auto;border-radius:22px;overflow:hidden;background:var(--ink-2);border:1px solid var(--line-d);aspect-ratio:9/16}
+.video-frame video{width:100%;height:100%;object-fit:cover}
+.video-frame .stripe{position:absolute;left:0;right:0;bottom:0;height:5px;pointer-events:none}
+
+/* Em breve */
+.soon{background:var(--ink-2);color:var(--paper);position:relative;overflow:hidden}
+.soon h2{font-size:clamp(52px,13vw,120px);font-style:italic}
+.soon h2 span{-webkit-text-stroke:2px var(--paper);color:transparent}
+.lineup{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:10px;margin-top:8px}
+.slot{position:relative;border-radius:var(--r);aspect-ratio:3/4;overflow:hidden;border:1px solid var(--line-d);display:flex;flex-direction:column;justify-content:flex-end;padding:12px;min-width:0}
+.slot.now{background:var(--ink)}
+.slot.now img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slot.now::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(11,12,14,.92))}
+.slot.locked{background:repeating-linear-gradient(-55deg,var(--ink-2) 0 12px,var(--ink-3) 12px 13px);align-items:flex-start}
+.slot.locked .lock{position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-d);background:var(--ink);color:var(--muted-d)}
+.slot .tag{position:relative;font:700 10px/1.2 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted-d)}
+.slot .tag.live{color:var(--paper);display:inline-flex;align-items:center;gap:6px}
+.slot .tag.live::before{content:"";width:7px;height:7px;border-radius:50%;background:#22C55E}
+.slot strong{position:relative;display:block;margin-top:6px;overflow-wrap:anywhere;font:800 clamp(18px,5vw,30px)/.95 var(--f-display);font-style:italic;text-transform:uppercase}
+.soon-foot{display:flex;flex-direction:column;gap:18px;margin-top:28px}
+.soon-foot p{color:var(--muted-d);max-width:48ch}
+
+/* Consultor */
+.consult{background:var(--blue);color:#fff}
+.consult-grid{display:grid;gap:28px}
+.consult h2{font-size:clamp(48px,12vw,96px);font-style:italic}
+.consult .lead{margin-top:14px;max-width:42ch;color:rgba(255,255,255,.88)}
+.phone{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font:700 20px/1 var(--f-body);font-variant-numeric:tabular-nums;user-select:all}
+.topics{display:grid;gap:10px}
+.topic{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;padding:0 18px;border-radius:12px;border:2px solid rgba(255,255,255,.4);font:700 16px/1.2 var(--f-body);text-align:left;transition:background .2s,border-color .2s}
+.topic:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.topics .btn{width:100%;min-height:60px;margin-top:4px}
+
+/* Rodapé */
+.footer{background:var(--ink);color:var(--paper);padding-block:48px 24px}
+.footer-top{display:flex;flex-direction:column;gap:26px}
+.footer .brand img{height:40px}
+.footer p{color:var(--muted-d);font-size:14px;max-width:38ch;margin-top:14px}
+.footer-nav{display:flex;flex-wrap:wrap;gap:12px 24px;font-weight:600;font-size:15px}
+.footer-nav a:hover{color:var(--acc)}
+.footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line-d);font-size:12px;color:var(--muted-d)}
+
+/* Barra fixa de compra (celular) */
+.buybar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(11,12,14,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;border-top:1px solid var(--line-d);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:10px;transform:translateY(110%);transition:transform .3s var(--ease)}
+.buybar.show{transform:none}
+.buybar .bb-info{flex:1;min-width:0;line-height:1.15}
+.buybar .bb-info small{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted-d);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.buybar .bb-info small::before{content:"";flex:none;width:9px;height:9px;border-radius:50%;background:var(--acc)}
+.buybar .bb-info b{font:800 24px/1 var(--f-display);font-style:italic}
+.buybar .btn{min-height:48px;padding:0 18px;font-size:15px}
+.buybar .wa{width:48px;min-height:48px;padding:0;border-radius:10px;border:2px solid var(--line-d);display:grid;place-items:center}
+.support{position:fixed;z-index:29;right:max(24px,calc(env(safe-area-inset-right,0px) + 16px));bottom:calc(24px + env(safe-area-inset-bottom,0px));display:none;align-items:center;gap:10px;padding:14px 20px;border-radius:999px;background:var(--blue);color:#fff;font:700 14px/1 var(--f-body);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+
+/* Carrinho */
+.scrim{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:opacity .25s}
+.scrim.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;z-index:51;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--paper);display:flex;flex-direction:column;transform:translateX(102%);transition:transform .3s var(--ease);box-shadow:-12px 0 40px rgba(0,0,0,.25);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);overscroll-behavior:contain}
+.drawer.show{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:18px 20px;border-bottom:1px solid var(--line)}
+.drawer-head h3{font-size:34px;font-style:italic}
+.drawer-head .icon-btn:hover{background:var(--mist)}
+.drawer-body{flex:1;overflow:auto;padding:20px;overscroll-behavior:contain}
+.cart-item{display:grid;grid-template-columns:84px minmax(0,1fr) auto;gap:14px;align-items:start;padding-bottom:18px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.cart-item img{width:84px;height:84px;border-radius:10px;object-fit:cover;background:var(--ink)}
+.cart-item strong{display:block;font-size:15px;line-height:1.25}
+.cart-item small{display:block;color:var(--muted);font-size:13px;line-height:1.5;margin-top:4px}
+.mini-qty{display:inline-flex;align-items:center;gap:4px;margin-top:10px;border:1px solid var(--line);border-radius:8px}
+.mini-qty button{width:34px;height:34px;font-size:18px}
+.mini-qty span{min-width:22px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.remove{width:36px;height:36px;border-radius:8px;font-size:22px;color:var(--muted)}
+.remove:hover{background:var(--mist)}
+.cart-total{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:6px;font-weight:600}
+.cart-total strong{font:800 30px/1 var(--f-display);font-style:italic;font-variant-numeric:tabular-nums}
+.frete-tip{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.45}
+.empty{text-align:center;color:var(--muted);padding:70px 10px;line-height:1.6}
+.drawer-foot{padding:18px 20px;border-top:1px solid var(--line);display:grid;gap:10px}
+.drawer-foot .btn{width:100%}
+.drawer-foot p{font-size:12px;color:var(--muted);line-height:1.5}
+.btn-outline{border-color:var(--line);color:var(--ink);background:var(--paper)}
+.notice{display:none;background:var(--mist);border-radius:8px;padding:12px;font-size:13px;line-height:1.5}
+.notice.show{display:block}
+.toast{position:fixed;z-index:60;left:50%;top:calc(16px + env(safe-area-inset-top,0px));transform:translate(-50%,-20px);max-width:calc(100% - 32px);background:var(--ink);color:#fff;padding:14px 18px;border-radius:10px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:.3s var(--ease);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ≥ 720px */
+@media (min-width:720px){
+  .section{padding-block:104px}
+  .hero-inner{padding-block:52px 0}
+  .hero-stage{width:100%}
+  .hero-buy{flex-direction:row;justify-content:center;gap:28px}
+  .hero-price{text-align:left}
+  .hero-ctas{width:auto;grid-template-columns:auto auto}
+  .hero-ctas .btn{padding:0 26px}
+  .stat{padding:24px 10px 30px}
+  .lcd{grid-template-columns:repeat(5,1fr)}
+  .metric{flex-direction:column;align-items:flex-start}
+  .metric:last-child{grid-column:auto}
+  .cards{gap:14px}
+  .card{padding:26px 22px}
+  .buybox{padding:34px 32px}
+  .buybtns{grid-template-columns:1fr 1fr}
+  .topics{grid-template-columns:1fr 1fr}
+  .topics .btn{grid-column:1/-1}
+  .soon-foot{flex-direction:row;align-items:center;justify-content:space-between}
+  .footer-top{flex-direction:row;justify-content:space-between;align-items:flex-start}
+  .slot{padding:18px}
+  .monitor{padding:28px}
+}
+/* ≥ 1000px */
+@media (min-width:1000px){
+  :root{--header:76px}
+  .brand img{height:36px}
+  .navlinks{display:flex}
+  .navright{margin-left:8px}
+  .nav-cta{display:inline-flex}
+  .menu-btn{display:none}
+  .mobile-menu,.mobile-menu.open{display:none}
+  .hero h1{font-size:clamp(100px,10.4vw,150px)}
+  .hero h1 em{display:inline}
+  .hero-stage{max-width:640px;margin-top:-10px}
+  .hero-stage::after{background:linear-gradient(90deg,var(--ink) 0,transparent 20%,transparent 82%,var(--ink) 100%),linear-gradient(180deg,var(--ink) 0,transparent 10%,transparent 86%,var(--ink) 100%)}
+  .sec-head{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:40px}
+  .sec-head p{max-width:40ch}
+  .product{grid-template-columns:1.08fr 1fr;gap:28px;align-items:start}
+  .gallery{position:sticky;top:calc(var(--header) + 20px)}
+  .buybox{padding:40px}
+  .buybtns{grid-template-columns:1fr}
+  .diff-grid{grid-template-columns:.9fr 1.1fr;gap:14px}
+  .diff-photo{aspect-ratio:auto;height:100%;min-height:560px}
+  .spec-grid{grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .diagram{position:sticky;top:calc(var(--header) + 20px)}
+  .video-grid{grid-template-columns:1fr 1fr}
+  .video-frame{max-width:380px}
+  .consult-grid{grid-template-columns:1.1fr .9fr;align-items:center;gap:60px}
+  .buybar{display:none}
+  .support{display:inline-flex}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="VTX Fitness, início"><img src="logo-vtx.webp" alt="VTX Fitness" width="480" height="213"></a>
+    <nav class="navlinks" aria-label="Navegação principal">
+      <a href="#comprar">Comprar</a><a href="#diferenciais">Diferenciais</a><a href="#ficha">Ficha técnica</a><a href="#video">Vídeo</a><a href="#atendimento">Atendimento</a>
+    </nav>
+    <div class="navright">
+      <a class="btn btn-white nav-cta" href="#comprar">Comprar</a>
+      <button class="icon-btn" id="cartTop" aria-label="Abrir carrinho" title="Carrinho">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2.2l2.2 10.6h11.2L20.8 7H6.1"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17.5" cy="19.5" r="1.3"/></svg>
+        <span class="cartcount" id="cartCount" style="display:none">0</span>
+      </button>
+      <button class="icon-btn menu-btn" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-menu wrap" id="mobileMenu" aria-label="Menu">
+    <a href="#comprar">Comprar</a><a href="#diferenciais">Diferenciais</a><a href="#ficha">Ficha técnica</a><a href="#video">Vídeo</a><a href="#novidades">Novidades</a><a href="#atendimento">Atendimento</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="wrap hero-inner">
+    <span class="eyebrow"><span class="tri" aria-hidden="true"><i></i><i></i><i></i></span>Bike Spinning VTX Fitness</span>
+    <h1>Sua academia <em>em casa</em></h1>
+    <div class="hero-stage"><img id="heroBike" src="bike-azul.webp" alt="Bike Spinning VTX Fitness preta com detalhes azuis" width="1100" height="1100" fetchpriority="high"></div>
+    <div class="hero-colors" role="group" aria-label="Escolher cor">
+      <span>Cores</span>
+      <button class="cdot" data-color="azul" aria-label="Preto / Azul"><i style="background:var(--blue)"></i></button>
+      <button class="cdot" data-color="vermelha" aria-label="Preto / Vermelho"><i style="background:var(--red)"></i></button>
+      <button class="cdot" data-color="amarela" aria-label="Preto / Amarelo"><i style="background:var(--yellow)"></i></button>
+    </div>
+    <div class="hero-buy">
+      <div class="hero-price"><small>Bike Spinning VTX Fitness</small>R$ 999,00</div>
+      <div class="hero-ctas">
+        <a class="btn btn-acc" href="#comprar">Comprar agora</a>
+        <a class="btn btn-ghost" href="#video">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>Ver vídeo</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><b>15<small>kg</small></b><span>Roda de inércia</span></div>
+      <div class="stat"><b>30</b><span>Níveis de resistência</span></div>
+      <div class="stat"><b>150<small>kg</small></b><span>Suporta até</span></div>
+    </div>
+  </div>
+</section>
+<div class="stripe" aria-hidden="true"><i></i><i></i><i></i></div>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track">
+  <span>Transmissão por correia</span><span>Estrutura em aço</span><span>Banco e guidão ajustáveis</span><span>Monitor multifunções</span><span>Rodinhas para transporte</span>
+  <span>Transmissão por correia</span><span>Estrutura em aço</span><span>Banco e guidão ajustáveis</span><span>Monitor multifunções</span><span>Rodinhas para transporte</span>
+</div></div>
+
+<section class="section shop" id="comprar">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow"><span class="tri" aria-hidden="true"><i></i><i></i><i></i></span>Disponível agora</span>
+      <h2 style="margin-top:14px">Escolha a sua VTX</h2></div>
+      <p>Selecione a cor e a quantidade. Você finaliza o pedido com nossa equipe pelo WhatsApp.</p>
+    </div>
+    <div class="product" id="produto">
+      <div class="gallery">
+        <div class="gal-main"><span class="gal-chip" id="galleryChip">Preto / Azul</span><img id="productMain" src="bike-azul.webp" alt="Bike Spinning VTX Fitness na cor Preto / Azul" width="1100" height="1100"></div>
+        <div class="thumbs">
+          <button class="thumb active" data-color="azul" aria-label="Ver bike azul"><img src="bike-azul-thumb.webp" alt="" width="360" height="360" loading="lazy"></button>
+          <button class="thumb" data-color="vermelha" aria-label="Ver bike vermelha"><img src="bike-vermelha-thumb.webp" alt="" width="360" height="360" loading="lazy"></button>
+          <button class="thumb" data-color="amarela" aria-label="Ver bike amarela"><img src="bike-amarela-thumb.webp" alt="" width="360" height="360" loading="lazy"></button>
+          <button class="thumb video-thumb" id="seeVideo" aria-label="Ver vídeo da bike"><img src="vtx-video-poster.webp" alt="" loading="lazy"><span class="play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></button>
+        </div>
+      </div>
+
+      <div class="buybox">
+        <span class="kicker">VTX Fitness</span>
+        <h3>Bike Spinning VTX</h3>
+        <p class="lede">Roda de inércia de 15 kg, 30 níveis de resistência e estrutura em aço.</p>
+        <div class="price-row" aria-label="Preço: 999 reais por bike">
+          <span class="price-value">R$ 999,00</span>
+          <span class="price-note">Frete e pagamento combinados no WhatsApp</span>
+        </div>
+
+        <div class="field-label">Cor <span id="selectedLabel">Preto / Azul</span></div>
+        <div class="swatches" role="group" aria-label="Cor da bike">
+          <button class="swatch active" data-color="azul" aria-pressed="true" style="--sw:var(--blue)"><span class="sw-img"><img src="bike-azul-thumb.webp" alt="" width="360" height="360" loading="lazy"></span><b>Azul</b><small>Estrutura preta</small></button>
+          <button class="swatch" data-color="vermelha" aria-pressed="false" style="--sw:var(--red)"><span class="sw-img"><img src="bike-vermelha-thumb.webp" alt="" width="360" height="360" loading="lazy"></span><b>Vermelha</b><small>Estrutura preta</small></button>
+          <button class="swatch" data-color="amarela" aria-pressed="false" style="--sw:var(--yellow)"><span class="sw-img"><img src="bike-amarela-thumb.webp" alt="" width="360" height="360" loading="lazy"></span><b>Amarela</b><small>Estrutura preta</small></button>
+        </div>
+
+        <div class="qtyline">
+          <div>
+            <div class="field-label" style="margin:0 0 10px">Quantidade</div>
+            <div class="qty"><button id="qtyMinus" aria-label="Diminuir quantidade">−</button><span id="qtyText" aria-live="polite">1</span><button id="qtyPlus" aria-label="Aumentar quantidade">+</button></div>
+          </div>
+          <div class="subtotal">Subtotal<b id="qtySubtotal">R$ 999,00</b></div>
+        </div>
+
+        <div class="buybtns">
+          <button class="btn btn-ink" id="addCart">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h2.2l2.2 10.6h11.2L20.8 7H6.1"/><circle cx="9.5" cy="19.5" r="1.3"/><circle cx="17.5" cy="19.5" r="1.3"/></svg>Adicionar ao carrinho</button>
+          <button class="btn btn-blue" id="buyNow" type="button">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-3.7A8.5 8.5 0 1 1 20 11.5z"/></svg>Comprar pelo WhatsApp</button>
+        </div>
+        <div class="buy-foot">
+          <button class="btn-link" id="productConsult">Falar com um consultor ↗</button>
+        </div>
+        <p class="fine">Sem pagamento no site. O WhatsApp abre com o resumo do pedido para nossa equipe confirmar frete, disponibilidade e pagamento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="diferenciais">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow"><span class="tri" aria-hidden="true"><i></i><i></i><i></i></span>Diferenciais</span>
+      <h2 style="margin-top:14px">Treino de verdade no seu espaço</h2></div>
+      <p>Pensada para quem quer constância sem depender de horário ou deslocamento.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-photo"><img src="bike-lifestyle.webp" alt="Bike VTX Fitness azul em uma sala de estar" width="716" height="1050" loading="lazy"></div>
+      <div class="cards">
+        <article class="card" style="--c:var(--blue)">
+          <span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="m22 9-6 6M16 9l6 6"/></svg></span>
+          <h3>Silenciosa</h3><p>Transmissão por correia: pedalada mais silenciosa, suave e durável.</p>
+        </article>
+        <article class="card" style="--c:var(--red)">
+          <span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4"/></svg></span>
+          <h3>Ajuste ao seu corpo</h3><p>Banco e guidão com regulagem de altura e distância.</p>
+        </article>
+        <article class="card" style="--c:var(--yellow);--ci:#0B0C0E">
+          <span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 12l4-3"/><path d="M12 4v2M20 12h-2M6 12H4"/></svg></span>
+          <h3>Do leve ao intenso</h3><p>30 níveis de resistência com ajuste preciso e progressivo.</p>
+        </article>
+        <article class="card" style="--c:var(--paper);--ci:#0B0C0E">
+          <span class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18h16M6 18V8l6-4 6 4v10"/><path d="M10 18v-5h4v5"/></svg></span>
+          <h3>Firme e estável</h3><p>Estrutura em aço e base firme. Suporta até 150 kg.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ficha">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow"><span class="tri" aria-hidden="true"><i></i><i></i><i></i></span>Especificações</span>
+      <h2 style="margin-top:14px">Ficha técnica</h2></div>
+      <p>Tudo o que a Bike Spinning VTX entrega, ponto a ponto.</p>
+    </div>
+    <div class="spec-grid">
+      <figure class="diagram" style="margin:0">
+        <img id="specImg" src="bike-azul.webp" alt="Bike VTX com os principais componentes numerados" width="1100" height="1100" loading="lazy">
+        <span class="hs" style="--x:80%;--y:9%">1</span>
+        <span class="hs" style="--x:81%;--y:32%">2</span>
+        <span class="hs" style="--x:31%;--y:29%">3</span>
+        <span class="hs" style="--x:64%;--y:36%">4</span>
+        <span class="hs" style="--x:71%;--y:61%">5</span>
+        <span class="hs" style="--x:45%;--y:65%">6</span>
+        <span class="hs" style="--x:56%;--y:45%">7</span>
+        <span class="hs" style="--x:91%;--y:84%">8</span>
+        <figcaption class="diagram-cap">Bike Spinning VTX Fitness</figcaption>
+      </figure>
+
+      <div class="spec-groups">
+        <div class="sg" style="--c:var(--blue)">
+          <h3>Desempenho</h3>
+          <dl>
+            <div class="row"><span class="n">5</span><dt>Roda de inércia de 15 kg</dt><dd>Mais estabilidade e pedalada fluida.</dd></div>
+            <div class="row"><span class="n">4</span><dt>30 níveis de resistência</dt><dd>Do treino leve ao mais intenso, com ajuste preciso e progressivo.</dd></div>
+            <div class="row"><span class="n">6</span><dt>Transmissão por correia</dt><dd>Mais silenciosa, suave e durável.</dd></div>
+          </dl>
+        </div>
+        <div class="sg" style="--c:var(--red)">
+          <h3>Conforto e ajuste</h3>
+          <dl>
+            <div class="row"><span class="n">3</span><dt>Banco ajustável</dt><dd>Regulagem de altura e distância para a posição ideal.</dd></div>
+            <div class="row"><span class="n">2</span><dt>Guidão ajustável</dt><dd>Regulagem de altura e distância.</dd></div>
+            <div class="row"><dt>Pedais com cinta de segurança</dt><dd>Mais firmeza e estabilidade durante o treino.</dd></div>
+          </dl>
+        </div>
+        <div class="sg" style="--c:var(--yellow)">
+          <h3>Estrutura</h3>
+          <dl>
+            <div class="row"><dt>Estrutura em aço</dt><dd>Mais resistência e durabilidade.</dd></div>
+            <div class="row"><dt>Base firme e estável</dt><dd>Suporta até 150 kg.</dd></div>
+          </dl>
+        </div>
+        <div class="sg" style="--c:var(--ink)">
+          <h3>Praticidade</h3>
+          <dl>
+            <div class="row"><span class="n">1</span><dt>Monitor multifunções</dt><dd>Tempo, velocidade, distância, calorias e batimentos cardíacos.</dd></div>
+            <div class="row"><span class="n">7</span><dt>Porta-garrafa</dt><dd>Hidratação sempre por perto.</dd></div>
+            <div class="row"><dt>Suporte para celular</dt><dd>Treine com suas músicas e vídeos.</dd></div>
+            <div class="row"><span class="n">8</span><dt>Rodinhas para transporte</dt><dd>Facilitam a movimentação do aparelho.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="monitor">
+      <div class="monitor-head"><h3>Treino sob controle</h3><p>O monitor acompanha seu desempenho em tempo real.</p></div>
+      <div class="lcd">
+        <div class="metric"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 16a8 8 0 1 1 16 0"/><path d="m12 16 4-5"/></svg><b>Velocidade</b></div>
+        <div class="metric"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M10 2h4"/></svg><b>Tempo</b></div>
+        <div class="metric"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.6-6-11a6 6 0 0 1 12 0c0 5.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><b>Distância</b></div>
+        <div class="metric"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 5 6 11a6 6 0 0 1-12 0c0-3 2-5 2-5s1 3 3 3c0-4 1-9 1-9z"/></svg><b>Calorias</b></div>
+        <div class="metric"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg><b>Batimentos cardíacos</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="video">
+  <div class="wrap video-grid">
+    <div class="video-copy">
+      <span class="eyebrow"><span class="tri" aria-hidden="true"><i></i><i></i><i></i></span>Em movimento</span>
+      <h2>Veja a VTX em ação</h2>
+      <p>Azul, vermelha ou amarela, sempre com estrutura preta. Confira os detalhes da bike em poucos segundos.</p>
+      <div><a class="btn btn-white" href="#comprar">Escolher minha cor</a></div>
+    </div>
+    <div class="video-frame">
+      <video id="showcaseVideo" aria-label="Vídeo de apresentação da Bike Spinning VTX Fitness" poster="vtx-video-poster.webp" preload="metadata" muted loop playsinline controls>
+        <source src="vtx-video.mp4" type="video/mp4">
+      </video>
+      <div class="stripe" aria-hidden="true"><i></i><i></i><i></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="section soon" id="novidades">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--muted-d)"><span class="tri" aria-hidden="true"><i></i><i></i><i></i></span>Linha VTX Fitness</span>
+    <h2 style="margin-top:14px;margin-bottom:30px">Novos produtos <span>em breve</span></h2>
+    <div class="lineup">
+      <div class="slot now"><img src="bike-vermelha-thumb.webp" alt="" width="360" height="360" loading="lazy"><span class="tag live">Disponível</span><strong>Bike Spinning</strong></div>
+      <div class="slot locked"><span class="lock" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><span class="tag">Próximo lançamento</span><strong>Em breve</strong></div>
+      <div class="slot locked"><span class="lock" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><span class="tag">Próximo lançamento</span><strong>Em breve</strong></div>
+    </div>
+    <div class="soon-foot">
+      <p>A linha VTX Fitness está crescendo. Novos equipamentos para levar seu treino ainda mais longe chegam em breve.</p>
+      <div><a class="btn btn-ghost" href="https://www.instagram.com/vtx.fitness/" target="_blank" rel="noopener">Acompanhar no Instagram ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section consult" id="atendimento">
+  <div class="wrap consult-grid">
+    <div>
+      <span class="eyebrow" style="color:rgba(255,255,255,.8)">Atendimento</span>
+      <h2 style="margin-top:14px">Fale com um consultor</h2>
+      <p class="lead">Tire suas dúvidas sobre a bike, frete e pagamento direto com nossa equipe pelo WhatsApp.</p>
+      <span class="phone"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-3.7A8.5 8.5 0 1 1 20 11.5z"/></svg>(11) 96576-5247</span>
+    </div>
+    <div class="topics">
+      <button class="topic" data-topic="Olá! Vim pelo site da VTX Fitness e tenho dúvidas sobre a bike de spinning.">Dúvidas sobre a bike <span aria-hidden="true">↗</span></button>
+      <button class="topic" data-topic="Olá! Vim pelo site da VTX Fitness e gostaria de saber sobre frete e entrega da bike de spinning.">Frete e entrega <span aria-hidden="true">↗</span></button>
+      <button class="topic" data-topic="Olá! Vim pelo site da VTX Fitness e gostaria de saber as formas de pagamento da bike de spinning.">Formas de pagamento <span aria-hidden="true">↗</span></button>
+      <button class="topic" data-topic="Olá! Vim pelo site da VTX Fitness e quero ajuda para escolher a cor da minha bike.">Ajuda para escolher a cor <span aria-hidden="true">↗</span></button>
+      <button class="btn btn-white" onclick="consultar()">Chamar no WhatsApp</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div><a class="brand" href="#inicio" aria-label="VTX Fitness, início"><img src="logo-vtx.webp" alt="VTX Fitness" width="480" height="213" loading="lazy"></a>
+      <p>Sua academia em casa. Performance em cada giro.</p></div>
+      <nav class="footer-nav" aria-label="Rodapé"><a href="#comprar">Comprar</a><a href="#ficha">Ficha técnica</a><a href="#video">Vídeo</a><a href="#atendimento">Atendimento</a><a href="https://www.instagram.com/vtx.fitness/" target="_blank" rel="noopener">Instagram ↗</a></nav>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> VTX Fitness. Todos os direitos reservados.</span><span>Imagens ilustrativas.</span></div>
+  </div>
+</footer>
+
+<a class="support" id="floatSupport" href="https://wa.me/5511965765247?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20VTX%20Fitness" target="_blank" rel="noopener">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-3.7A8.5 8.5 0 1 1 20 11.5z"/></svg>Atendimento</a>
+
+<div class="buybar" id="buyBar" aria-hidden="true">
+  <div class="bb-info"><small id="bbColor">Preto / Azul</small><b>R$ 999,00</b></div>
+  <button class="wa" onclick="consultar()" aria-label="Falar no WhatsApp" tabindex="-1"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8.5 8.5 0 0 1-12.6 7.4L3.5 20l1.2-3.7A8.5 8.5 0 1 1 20 11.5z"/></svg></button>
+  <a class="btn btn-acc" href="#comprar" tabindex="-1">Comprar</a>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+  <div class="drawer-head"><h3 id="cartTitle">Meu carrinho</h3><button class="icon-btn" id="closeCart" aria-label="Fechar carrinho"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="drawer-body" id="cartContents"></div>
+  <div class="drawer-foot">
+    <button class="btn btn-blue" id="sendOrder">Enviar pedido pelo WhatsApp ↗</button>
+    <button class="btn btn-outline" id="copyOrder">Copiar pedido</button>
+    <div class="notice" id="notice">WhatsApp temporariamente indisponível. Copie seu pedido ou fale com a VTX pelo Instagram.</div>
+    <p>O WhatsApp abre com as bikes e o subtotal. Nossa equipe confirma frete, disponibilidade e pagamento.</p>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// INSIRA AQUI O NÚMERO COM DDI E DDD (ex: '5511999999999').
+const WHATSAPP_NUMBER = '5511965765247';
+const pics={azul:'bike-azul.webp',vermelha:'bike-vermelha.webp',amarela:'bike-amarela.webp'};
+const thumbs={azul:'bike-azul-thumb.webp',vermelha:'bike-vermelha-thumb.webp',amarela:'bike-amarela-thumb.webp'};
+const labels={azul:'Preto / Azul',vermelha:'Preto / Vermelho',amarela:'Preto / Amarelo'};
+let selected='azul',qty=1,cart={};
+const $=x=>document.getElementById(x);const $all=s=>Array.from(document.querySelectorAll(s));
+const UNIT_PRICE=999;
+const money=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+function toast(t){$('toast').textContent=t;$('toast').classList.add('show');clearTimeout(window._toastTimer);window._toastTimer=setTimeout(()=>$('toast').classList.remove('show'),3200)}
+function choose(color){
+  selected=color;
+  document.documentElement.dataset.color=color;
+  const alt='Bike Spinning VTX Fitness na cor '+labels[color];
+  ['productMain','heroBike','specImg'].forEach(id=>{const el=$(id);if(el){el.src=pics[color];el.alt=alt}});
+  $('galleryChip').textContent=labels[color];$('selectedLabel').textContent=labels[color];$('bbColor').textContent='Bike VTX · '+labels[color];
+  $all('[data-color]').forEach(b=>{const active=b.dataset.color===color;b.classList.toggle('active',active);if(b.classList.contains('swatch')||b.classList.contains('cdot'))b.setAttribute('aria-pressed',String(active))});
+}
+$all('[data-color]').forEach(b=>b.addEventListener('click',()=>choose(b.dataset.color)));
+function setQty(n){qty=Math.max(1,n);$('qtyText').textContent=qty;$('qtySubtotal').textContent=money(qty*UNIT_PRICE)}
+$('qtyPlus').addEventListener('click',()=>setQty(qty+1));$('qtyMinus').addEventListener('click',()=>setQty(qty-1));
+function totalItems(){return Object.values(cart).reduce((a,b)=>a+b,0)}
+function updateCount(){const n=totalItems();$('cartCount').textContent=n;$('cartCount').style.display=n?'inline-block':'none'}
+function openCart(){drawCart();$('scrim').classList.add('show');$('cartDrawer').classList.add('show');document.body.style.overflow='hidden';$('closeCart').focus()}
+function closeCart(){$('scrim').classList.remove('show');$('cartDrawer').classList.remove('show');document.body.style.overflow=''}
+function addCart(){cart[selected]=(cart[selected]||0)+qty;updateCount();openCart();toast('Bike '+labels[selected].toLowerCase()+' adicionada ao carrinho!')}
+function changeCart(color,delta){cart[color]=Math.max(0,(cart[color]||0)+delta);if(cart[color]===0)delete cart[color];updateCount();drawCart()}
+function cartTotal(){return totalItems()*UNIT_PRICE}
+function drawCart(){
+  const el=$('cartContents');
+  if(!totalItems()){el.innerHTML='<div class="empty">Seu carrinho está vazio.<br>Escolha a cor da sua VTX e adicione uma bike.</div>';return}
+  el.innerHTML=Object.entries(cart).map(([color,n])=>`<div class="cart-item"><img src="${thumbs[color]}" alt="Bike VTX ${labels[color]}"><div><strong>Bike Spinning VTX 15 kg</strong><small>Cor: ${labels[color]}<br>${money(UNIT_PRICE)} cada</small><div class="mini-qty"><button aria-label="Diminuir" data-change="-1" data-c="${color}">−</button><span>${n}</span><button aria-label="Aumentar" data-change="1" data-c="${color}">+</button></div></div><button class="remove" data-remove="${color}" aria-label="Remover produto">×</button></div>`).join('')+`<div class="cart-total"><span>Subtotal (${totalItems()} ${totalItems()===1?'item':'itens'})</span><strong>${money(cartTotal())}</strong></div><p class="frete-tip">Frete e condições de pagamento são confirmados pela equipe no WhatsApp.</p>`;
+  el.querySelectorAll('[data-change]').forEach(b=>b.addEventListener('click',()=>changeCart(b.dataset.c,Number(b.dataset.change))));
+  el.querySelectorAll('[data-remove]').forEach(b=>b.addEventListener('click',()=>changeCart(b.dataset.remove,-cart[b.dataset.remove])));
+}
+function orderText(){
+  const rows=Object.entries(cart).map(([color,n])=>`• ${n}x Bike Spinning VTX 15 kg – ${labels[color]} – ${money(n*UNIT_PRICE)}`).join('\n');
+  return `Olá! Vim pelo catálogo da VTX Fitness e gostaria de fazer este pedido:\n\n${rows}\n\n*Subtotal: ${money(cartTotal())}*\n\nPodem confirmar frete, disponibilidade e condições de pagamento?`;
+}
+function goWhatsapp(message){
+  if(!WHATSAPP_NUMBER){$('notice').classList.add('show');toast('WhatsApp ainda não configurado. Você pode copiar a mensagem.');return}
+  const a=document.createElement('a');a.href='https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(message);a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();
+}
+function consultar(){goWhatsapp('Olá! Vim pelo site da VTX Fitness e gostaria de conversar com um consultor sobre a bike de spinning.')}
+$('buyNow').addEventListener('click',()=>{const subtotal=qty*UNIT_PRICE;goWhatsapp(`Olá! Vim pelo site da VTX Fitness e quero comprar ${qty}x Bike Spinning VTX 15 kg na cor ${labels[selected]}.\n\n*Subtotal: ${money(subtotal)}*\n\nPodem confirmar disponibilidade, frete e formas de pagamento?`)});
+$('addCart').addEventListener('click',addCart);$('productConsult').addEventListener('click',consultar);$('cartTop').addEventListener('click',openCart);$('closeCart').addEventListener('click',closeCart);$('scrim').addEventListener('click',closeCart);
+$('sendOrder').addEventListener('click',()=>{if(totalItems())goWhatsapp(orderText());else toast('Adicione uma bike ao carrinho primeiro.')});
+$('copyOrder').addEventListener('click',async()=>{if(!totalItems()){toast('Seu carrinho está vazio.');return}try{await navigator.clipboard.writeText(orderText());toast('Pedido copiado!')}catch{toast('Não foi possível copiar automaticamente.')}});
+$all('[data-topic]').forEach(b=>b.addEventListener('click',()=>goWhatsapp(b.dataset.topic)));
+$('seeVideo').addEventListener('click',()=>{$('video').scrollIntoView({behavior:'smooth'});$('showcaseVideo').play().catch(()=>{})});
+$('year').textContent=new Date().getFullYear();
+$('menuToggle').addEventListener('click',()=>{const o=$('mobileMenu').classList.toggle('open');$('menuToggle').setAttribute('aria-expanded',String(o))});
+$all('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>{$('mobileMenu').classList.remove('open');$('menuToggle').setAttribute('aria-expanded','false')}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCart()});
+// Vídeo: toca (sem som) quando aparece na tela
+if('IntersectionObserver' in window){
+  const v=$('showcaseVideo');
+  new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)v.play().catch(()=>{});else v.pause()}),{threshold:.4}).observe(v);
+  // Barra de compra no celular: aparece depois da capa e some na área de compra
+  let pastHero=false,inShop=false,atEnd=false;const bar=$('buyBar');
+  const sync=()=>bar.classList.toggle('show',pastHero&&!inShop&&!atEnd);
+  new IntersectionObserver(([e])=>{pastHero=!e.isIntersecting&&e.boundingClientRect.top<0;sync()}).observe($('inicio'));
+  new IntersectionObserver(([e])=>{inShop=e.isIntersecting;sync()},{rootMargin:'-20% 0px -20% 0px'}).observe($('produto'));
+  new IntersectionObserver(([e])=>{atEnd=e.isIntersecting;sync()}).observe($('atendimento'));
+}
+choose(selected);
+</script>
+</body>
+</html>
