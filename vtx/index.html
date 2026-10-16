@@ -362,16 +362,20 @@ p{margin:0}
 .hero.hero-art::before{display:none}
 .hero-banner-wrap{position:relative;width:100%;max-width:none}
 .hero-banner{display:block;width:100%;height:auto;min-height:320px;object-fit:cover;object-position:center center}
-.hero-switch{position:absolute;left:80.3%;top:31.5%;display:flex;align-items:center;gap:1.9vw;z-index:3}
-.hswatch{width:clamp(20px,1.9vw,36px);height:clamp(20px,1.9vw,36px);border-radius:999px;border:2px solid transparent;display:grid;place-items:center;background:transparent;padding:0;cursor:pointer;transition:transform .18s ease, box-shadow .2s ease, border-color .2s ease}
-.hswatch i{display:block;width:12px;height:12px;border-radius:999px;visibility:hidden}
-.hswatch.active{border-color:rgba(255,255,255,.75);box-shadow:0 0 0 4px rgba(255,255,255,.13)}
-.hswatch:hover{transform:scale(1.06)}
+/* A arte horizontal já possui as três bolinhas e o aro luminoso da cor ativa. Não desenhar outra bolinha por cima. */
+.hero-switch{position:absolute;inset:0;z-index:3;pointer-events:none}
+.hero-switch .hswatch{position:absolute;top:34.5%;width:max(34px,3.4%);aspect-ratio:1;height:auto;transform:translate(-50%,-50%);border:0;border-radius:50%;background:transparent;padding:0;pointer-events:auto;cursor:pointer;box-shadow:none;transition:none}
+.hero-switch .hswatch:nth-child(1){left:84.0%}
+.hero-switch .hswatch:nth-child(2){left:87.6%}
+.hero-switch .hswatch:nth-child(3){left:91.2%}
+.hero-switch .hswatch i{display:none}
+.hero-switch .hswatch.active,.hero-switch .hswatch:hover{border:0;box-shadow:none;transform:translate(-50%,-50%)}
+.hero-switch .hswatch:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .hero-art-link{position:absolute;z-index:2;display:block;background:transparent;border-radius:12px}
 .hero-art-video{left:77.4%;top:39.6%;width:19%;height:10%}
 .hero-art-buy{left:77.4%;top:64.5%;width:19%;height:10%}
 .hero-art-link:focus-visible{outline:3px solid white;outline-offset:3px}
-@media (max-width: 900px){.hero-banner{min-height:260px;object-position:center center}.hero-switch{left:auto;top:auto;right:12px;bottom:12px;gap:12px;padding:8px 12px;border-radius:999px;background:rgba(8,10,14,.75);backdrop-filter:blur(8px)}.hswatch{width:24px;height:24px}.hswatch i{width:14px;height:14px;visibility:visible}.hswatch.active{border-color:#fff}.hero-art-link{display:none}}
+@media (max-width: 900px){.hero-banner{min-height:260px;object-position:center center}.hero-art-link{display:none}}
 
 
 /* Hero exclusiva do celular: a hero desktop permanece inalterada. */
