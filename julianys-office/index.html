@@ -15,6 +15,72 @@ header{background:#fffafc;border-bottom:1px solid var(--line);position:sticky;to
 @media(max-width:1100px){.office{grid-template-columns:repeat(3,minmax(0,1fr))}.layout{grid-template-columns:minmax(0,1fr) 330px}.boardgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:780px){.topbar{padding:12px 14px}.brand h1{font-size:16px}.brand p{font-size:10px}.brandmark{height:38px;width:38px;font-size:24px}.head-actions .chip{display:none}.app{padding:19px 12px 40px}.hero{align-items:start}.hero h2{font-size:26px}.stats{grid-template-columns:repeat(2,1fr);gap:9px}.stat{padding:12px}.stat b{font-size:20px}.layout{grid-template-columns:1fr}.sidebar{position:static}.office{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.world{padding:24px 12px 30px}.agent-room{min-height:182px}.room-header{padding:16px}.head-actions .button{padding:9px;font-size:11px}.boardgrid{grid-template-columns:repeat(2,minmax(0,1fr));padding:0 9px 9px;gap:8px}.lane{padding:8px}.room-desc{font-size:9px}}
 @media(max-width:360px){.office{gap:8px}.agent-room{min-height:170px}.sim{left:14%}.desk{left:28%}.brand p{display:none}.boardgrid{grid-template-columns:1fr}}
+
+/* JULIANY'S OFFICE — GAME ROOM V2 */
+.hero .eyebrow{color:#bb7693}.hero h2{color:#503346}
+.app{max-width:1680px}
+#view-office{grid-template-columns:minmax(0,1fr) 335px}
+#view-office>.panel:first-child{background:#fffaf7}
+#view-office>.panel:first-child>.world{display:none}
+.room-header{background:linear-gradient(90deg,#fff8f2,#fffbff)}
+.game-wrap{padding:12px 14px 16px;background:linear-gradient(180deg,#fff9f5,#f1e0df);border-top:1px solid #f3e3e4}
+.game-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:5px 6px 11px;color:#8d667e;font-size:11px;font-weight:800}
+.game-toolbar .game-controls{display:flex;gap:8px;align-items:center}
+.game-control{border:1px solid #e9d3d7;border-radius:9px;padding:7px 10px;background:white;color:#7d5267;font-size:11px;font-weight:800}
+.game-scroller{overflow-x:auto;overflow-y:hidden;border-radius:20px;scrollbar-color:#b58f9b #f1e6ed;box-shadow:0 12px 28px #66334519;background:#634459}
+.game-scene{position:relative;min-width:980px;max-width:100%;aspect-ratio:1.62;background:linear-gradient(#603648 0 16%,#a66e82 16% 17%,#c897a4 17% 52%,#e9bec3 52% 53%,#ab7975 53% 100%);overflow:hidden;isolation:isolate}
+.game-scene:before{content:"";position:absolute;inset:53% 0 0;background:repeating-linear-gradient(0deg,transparent 0 51px,#6c4b5547 52px 55px),repeating-linear-gradient(90deg,transparent 0 90px,#714b5c35 91px 95px),linear-gradient(160deg,#8e6662,#cbada3 55%,#947076);transform:perspective(500px) rotateX(11deg) scale(1.2);transform-origin:top;z-index:0}
+.game-scene .windows{position:absolute;left:0;top:0;width:30%;height:44%;background:linear-gradient(120deg,#291e37 5%,#705668 5% 8%,transparent 8% 48%,#4b354e 48% 51%,transparent 51%),linear-gradient(#ffd1b1,#eab3bd 48%,#787595 49%,#756684);border:10px solid #503a4b;box-shadow:5px 5px 0 #44283d;overflow:hidden}
+.game-scene .windows:after{content:"";position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(90deg,#786577 0 7%,transparent 7% 14%,#766675 14% 22%,transparent 22% 32%,#554b65 32% 41%,transparent 41% 49%,#8c6381 49% 61%,transparent 61% 75%,#7e6588 75%);clip-path:polygon(0% 40%,15% 40%,15% 24%,29% 24%,29% 35%,44% 35%,44% 0,56% 0,56% 38%,70% 38%,70% 12%,90% 12%,90% 30%,100% 30%,100% 100%,0 100%)}
+.game-scene .brandwall{position:absolute;top:5%;left:38%;width:34%;height:23%;background:linear-gradient(130deg,#5d3041,#814352);border:8px solid #8b5560;border-radius:3px;box-shadow:inset 0 0 50px #240b2330,0 13px 16px #44253533;text-align:center;display:grid;place-items:center;color:#ffe4b2;text-shadow:0 0 12px #ffd3ab,0 0 20px #faad92;font-family:Georgia,serif;font-size:clamp(26px,4vw,47px);font-style:italic;line-height:1.05;z-index:1}
+.game-scene .brandwall small{display:block;font-size:14px;letter-spacing:5px;font-family:Arial,sans-serif;font-style:normal}
+.game-scene .shelves{position:absolute;top:3%;right:1%;width:26%;height:36%;border:8px solid #663e47;background:repeating-linear-gradient(0deg,#65404b 0 6px,#9f6f5a 7px 12px,transparent 13px 70px),linear-gradient(90deg,#8a4d5a,#5c354b)}
+.game-scene .shelves:after{content:"🪴    📚  🏆   🌷   📔   📦";font-size:21px;position:absolute;inset:18% 2%;letter-spacing:9px;line-height:70px}
+.game-scene .floor-rug{position:absolute;left:10%;top:72%;width:80%;height:22%;border-radius:50%;background:#ddb1a2;box-shadow:0 0 0 5px #f7d6c266,0 0 0 14px #a0617080;z-index:1}
+.game-scene .sofa{position:absolute;bottom:3%;right:1%;width:22%;height:14%;border-radius:35px 35px 10px 10px;background:linear-gradient(#7e354f,#5c243d);box-shadow:0 9px 0 #4b2139,0 16px 15px #2d1c2a44;z-index:2}
+.game-scene .coffee{position:absolute;bottom:2%;left:2%;font-size:28px;filter:drop-shadow(1px 4px 4px #3b2735);z-index:3}
+.game-scene .fridge{position:absolute;bottom:1%;left:1%;width:10%;height:22%;border:6px solid #352331;border-radius:8px;background:linear-gradient(#353050,#1a1929);box-shadow:5px 7px 0 #282030,0 0 0 2px #86556a;z-index:2;text-align:center;color:#e7b7cf;font-size:12px;padding-top:7px;font-weight:900}
+.game-scene .fridge:after{content:"🥤🥤🥤🥤🥤🥤";display:block;font-size:16px;line-height:21px;letter-spacing:1px;margin:7px auto 0}
+.game-scene .plant-decor{position:absolute;z-index:4;font-size:48px;filter:drop-shadow(0 8px 5px #3d2a3f88)}
+.game-scene .plant-decor.one{left:0;top:35%}.game-scene .plant-decor.two{right:1%;top:36%}
+.game-desk{position:absolute;width:21%;height:33%;top:var(--y);left:var(--x);z-index:var(--z);border:0;background:transparent;cursor:pointer;text-align:center;transform:translateY(0);transition:filter .25s,transform .25s;padding:0;color:#f9e9ea}
+.game-desk:focus-visible{outline:3px solid #e8ec96;border-radius:15px}
+.game-desk:hover,.game-desk.current{filter:drop-shadow(0 0 13px #eafab8);transform:translateY(-6px);z-index:15}
+.game-desk .plumb{position:absolute;top:-15%;left:42%;width:20%;height:25%;background:linear-gradient(100deg,#aaf34b 0 20%,#37c77e 40% 66%,#0a8f63 67%);clip-path:polygon(50% 0,100% 48%,50% 100%,0 48%);filter:drop-shadow(0 0 10px #b7ff7b);animation:pbFloat 3s ease-in-out infinite;z-index:10}
+.game-desk .chair{position:absolute;top:39%;left:18%;width:34%;height:39%;border-radius:16px 16px 6px 6px;background:linear-gradient(110deg,#f5b5bf,#c67c9d);border:4px solid #98627e;box-shadow:0 6px 0 #a76b80}
+.game-desk .hair-back{position:absolute;top:18%;left:22%;width:31%;height:43%;border-radius:50% 50% 37% 35%;background:linear-gradient(100deg,#4a262a,#a15b3f,#5e332c);z-index:4;animation:workerNod 3.5s ease-in-out infinite}
+.game-desk .face{position:absolute;top:28%;left:27%;height:23%;width:22%;border-radius:45%;background:linear-gradient(90deg,#dda57f,#f3c39c);border:2px solid #be836c;z-index:5;font-size:13px;color:#5f363b;padding-top:10px}
+.game-desk .face:before{content:"•  •";position:absolute;top:2px;left:8px;font-size:12px;letter-spacing:1px}
+.game-desk .jacket{position:absolute;top:50%;left:21%;width:35%;height:36%;border-radius:22px 20px 10px 10px;background:var(--shirt);box-shadow:inset 5px 0 0 #ffffff33;z-index:4}
+.game-desk .desk-top{position:absolute;top:72%;left:4%;width:90%;height:15%;background:linear-gradient(180deg,#f5cfc5,#b07978);border:3px solid #ce9690;border-radius:10px;transform:skewX(-12deg);box-shadow:0 10px 0 #7d5158,2px 14px 13px #341d2966;z-index:6}
+.game-desk .laptop{position:absolute;top:55%;left:55%;height:22%;width:35%;background:linear-gradient(135deg,#d8bdc2,#806f86);border:4px solid #b7a8b2;border-radius:6px;z-index:6;box-shadow:2px 5px 0 #604e66}
+.game-desk .laptop:after{content:var(--symbol,"♥");position:absolute;top:22%;left:33%;font-size:18px;color:#ffdee5}
+.game-desk .desk-prop{position:absolute;top:60%;left:6%;font-size:26px;z-index:7;animation:propPulse 3.2s ease-in-out infinite}
+.game-desk .nameplate{position:absolute;top:85%;left:8%;right:8%;padding:7px 4px 6px;background:linear-gradient(#814056,#572c44);border:2px solid #d89d7c;box-shadow:0 4px 0 #49223b;border-radius:11px;color:#fff6ee;text-shadow:0 1px 2px #442636;font-size:clamp(10px,1.1vw,15px);font-weight:900;z-index:8}
+.game-desk .statusflag{position:absolute;top:1%;left:64%;border-radius:100px;background:#fff3e7;color:#7e4c62;box-shadow:0 3px 10px #4f273f55;font-weight:900;padding:5px 8px;font-size:10px;white-space:nowrap;z-index:11;animation:bubblePop 3s infinite}
+.game-desk[data-state="fazendo"] .statusflag{background:#fff1c2;color:#926a20}
+.game-desk[data-state="revisao"] .statusflag{background:#dce3ff;color:#535f9b}
+.game-desk[data-state="concluida"] .statusflag{background:#d5f4d8;color:#327e58}
+.game-desk.current .nameplate{background:linear-gradient(#a86f92,#6b3559);border-color:#f6e7a5}
+.game-desk.active .laptop{animation:typing .28s ease-in-out infinite alternate}
+.game-desk.active .face{animation:workerNod 1s ease-in-out infinite alternate}
+.game-desk.active .plumb{animation:pbFloat 1.6s ease-in-out infinite}
+.game-desk .speech{position:absolute;left:65%;top:17%;background:#fffdf8;color:#785165;font-size:11px;font-weight:850;border-radius:12px;padding:9px;box-shadow:0 6px 12px #4e2a3c48;opacity:0;transform:translateY(8px);transition:.2s;z-index:15;white-space:nowrap;pointer-events:none}
+.game-desk:hover .speech,.game-desk.current .speech{opacity:1;transform:translateY(0)}
+.game-scene.night{filter:saturate(.75) hue-rotate(8deg);background:linear-gradient(#261c37 0 16%,#4d435e 16% 52%,#89697f 53% 100%)}
+.game-caption{text-align:center;color:#987688;margin-top:12px;font-size:12px}
+.game-legend{display:flex;justify-content:center;gap:14px;margin-top:10px;flex-wrap:wrap;font-size:11px;color:#866e7f}
+.game-legend span{display:inline-flex;align-items:center;gap:5px}.tinygreen{display:inline-block;width:9px;height:9px;background:#88cb7b;border-radius:50%}
+#view-office .sidehead{border-top:4px solid #cc9ba5}
+@keyframes workerNod{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(4deg) translateY(2px)}}
+@keyframes pbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes typing{to{transform:translateY(-2px) rotate(-1deg)}}
+@keyframes propPulse{50%{transform:translateY(-3px)}}
+@keyframes bubblePop{50%{box-shadow:0 6px 16px #ffcbba66}}
+@media(max-width:1100px){#view-office{grid-template-columns:1fr}.game-scene{max-width:none;min-width:930px}.game-wrap{padding:8px}.sidebar{position:static}}
+@media(max-width:780px){.room-header{padding:14px!important}.game-scroller{border-radius:15px}.game-scene{min-width:900px}.game-wrap{padding:8px}.game-desk .nameplate{font-size:13px}.game-legend{gap:8px}}
+@media(prefers-reduced-motion:reduce){.game-desk *{animation:none!important}}
+
 </style></head><body>
 <header><div class="topbar"><div class="brand"><div class="brandmark">◆</div><div><h1>JULIANY'S OFFICE <span style="color:#ac79c3">✦</span></h1><p>Um multiverso de produtividade, do seu jeito.</p></div></div><div class="head-actions"><span class="chip"><i class="dot"></i>Versão inicial • sem IA autônoma</span><button id="export" class="button secondary tiny" title="Salvar tarefas em arquivo JSON">↓ Backup</button><button id="import" class="button secondary tiny" title="Importar tarefas de arquivo JSON">↑ Restaurar</button><input id="importfile" type="file" accept=".json,application/json" hidden></div></div></header>
 <main class="app"><div class="hero"><div><div class="eyebrow">✦ Seu quartel-general</div><h2>Bom dia, chefe! <span aria-hidden="true">☕</span></h2><p>Sete Julianys, cada uma com sua especialidade. Você decide o que vem primeiro.</p></div><div class="tabs"><button id="tab-office" class="active">🏡 Escritório</button><button id="tab-board">📋 Quadro</button></div></div>
@@ -58,5 +124,40 @@ $("export").onclick=()=>{const blob=new Blob([JSON.stringify({app:"julianys-offi
 $("import").onclick=()=>$("importfile").click();
 $("importfile").onchange=async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>500000)throw Error("Arquivo muito grande");const parsed=JSON.parse(await file.text());if(parsed.app!=="julianys-office"||!Array.isArray(parsed.tasks))throw Error("Formato inválido");if(!confirm("Restaurar "+parsed.tasks.length+" tarefas? As tarefas atuais serão substituídas."))return;tasks=parsed.tasks.filter(validTask).slice(0,500);persist();render();toast("Backup restaurado!")}catch(err){toast("Arquivo inválido. Use um backup deste escritório.")}finally{e.target.value=""}};
 render();
+})();
+</script>
+<script>
+(function(){
+const prior=document.querySelector("#view-office > .panel:first-child");
+if(!prior)return;
+const world=prior.querySelector(".world");
+if(!world)return;
+const wrap=document.createElement("div");wrap.className="game-wrap";
+wrap.innerHTML='<div class="game-toolbar"><span>🎮 MODO ESCRITÓRIO · CLIQUE NAS JULIANYS</span><div class="game-controls"><button type="button" class="game-control" id="game-lights">🌤️ Dia / Noite</button><span>✦ 7 personagens</span></div></div><div class="game-scroller"><div id="game-scene" class="game-scene" role="group" aria-label="Escritório virtual interativo"><div class="windows"></div><div class="brandwall">Juliany’s Office <small>✦ DREAM TEAM ✦</small></div><div class="shelves"></div><div class="floor-rug"></div><div class="sofa"></div><div class="fridge">RED BULL</div><div class="plant-decor one">🪴</div><div class="plant-decor two">🌿</div><div class="coffee">☕ 📚 🌷</div></div></div><div class="game-legend"><span>💚 Personagens animados</span><span>💻 Trabalhando nas mesas</span><span>💬 Clique para delegar</span></div><div class="game-caption">Use a rolagem horizontal no celular para visitar todas as mesas. Os movimentos são visuais; agentes automáticos ainda não estão conectados.</div>';
+world.before(wrap);
+const scene=document.getElementById("game-scene");
+const desks=[
+{id:"tech",name:"Tech",x:3,y:37,z:3,shirt:"#4c414f",symbol:"'⌘'",prop:"🎧",speech:"Criando soluções"},
+{id:"ecommerce",name:"E-commerce",x:24,y:36,z:4,shirt:"#f6d7d4",symbol:"'▣'",prop:"📦",speech:"Organizando pedidos"},
+{id:"comercial",name:"Comercial",x:45,y:34,z:5,shirt:"#533f4b",symbol:"'☎'",prop:"📱",speech:"Cuidando dos leads"},
+{id:"marketing",name:"Marketing",x:67,y:36,z:4,shirt:"#eed8e0",symbol:"'✦'",prop:"🎨",speech:"Criando campanhas"},
+{id:"ceo",name:"CEO",x:37,y:62,z:8,shirt:"#8c354d",symbol:"'♛'",prop:"☕",speech:"Organizando prioridades"},
+{id:"carreira",name:"Carreira",x:66,y:65,z:9,shirt:"#663d4c",symbol:"'★'",prop:"💼",speech:"Preparando vagas"},
+{id:"mae",name:"Mãe",x:5,y:64,z:7,shirt:"#dba8b3",symbol:"'♥'",prop:"🧸",speech:"Cuidando da família"}
+];
+function statusFor(id){try{const tasks=JSON.parse(localStorage.getItem("julianys-office-tasks-v1")||"[]").filter(t=>t.agent===id);const active=tasks.find(t=>t.status==="fazendo");const review=tasks.find(t=>t.status==="revisao");const queued=tasks.find(t=>t.status==="fila");if(active)return {state:"fazendo",name:"⚡ Trabalhando"};if(review)return {state:"revisao",name:"👀 Revisar"};if(queued)return {state:"fila",name:"📋 "+tasks.filter(t=>t.status==="fila").length+" tarefa(s)"};if(tasks.length&&tasks.every(t=>t.status==="concluida"))return {state:"concluida",name:"✨ Feito!"};return {state:"livre",name:"☕ Disponível"}}catch(e){return {state:"livre",name:"☕ Disponível"}}}
+function currentAgent(){const found=document.querySelector(".agent-room.selected");const all=[...document.querySelectorAll(".agent-room")];const ids=["ceo","marketing","comercial","ecommerce","tech","carreira","mae"];return ids[all.indexOf(found)]||"ceo"}
+function updateDesks(){const current=currentAgent();for(const el of scene.querySelectorAll(".game-desk")){let state=statusFor(el.dataset.agent);el.dataset.state=state.state;el.classList.toggle("active",state.state==="fazendo");el.classList.toggle("current",current===el.dataset.agent);el.querySelector(".statusflag").textContent=state.name;el.setAttribute("aria-pressed",String(current===el.dataset.agent));}}
+const agentOrder=["ceo","marketing","comercial","ecommerce","tech","carreira","mae"];
+for(const item of desks){const el=document.createElement("button");el.type="button";el.className="game-desk";el.dataset.agent=item.id;el.style.setProperty("--x",item.x+"%");el.style.setProperty("--y",item.y+"%");el.style.setProperty("--z",item.z);el.style.setProperty("--shirt",item.shirt);el.style.setProperty("--symbol",item.symbol);el.setAttribute("aria-label","Abrir a mesa da Juliany "+item.name);el.innerHTML='<span class="plumb" aria-hidden="true"></span><span class="chair"></span><span class="hair-back"></span><span class="face">⌣</span><span class="jacket"></span><span class="laptop"></span><span class="desk-top"></span><span class="desk-prop">'+item.prop+'</span><span class="statusflag"></span><span class="speech">'+item.speech+'</span><span class="nameplate">Juliany '+item.name+'</span>';
+el.onclick=()=>{const buttons=[...document.querySelectorAll(".agent-room")];const i=agentOrder.indexOf(item.id);if(buttons[i])buttons[i].click();updateDesks();if(matchMedia("(max-width:1100px)").matches){document.querySelector(".sidebar").scrollIntoView({behavior:"smooth",block:"start"});}};
+scene.append(el)}
+document.getElementById("game-lights").onclick=()=>{scene.classList.toggle("night")};
+const observer=new MutationObserver(()=>updateDesks());observer.observe(document.getElementById("office"),{childList:true});
+window.addEventListener("storage",updateDesks);
+document.getElementById("task-form").addEventListener("submit",()=>setTimeout(updateDesks,10));
+document.getElementById("agent-tasks").addEventListener("change",()=>setTimeout(updateDesks,10));
+document.getElementById("view-board").addEventListener("change",()=>setTimeout(updateDesks,10));
+updateDesks();
 })();
 </script></body></html>
